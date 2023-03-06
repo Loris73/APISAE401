@@ -67,6 +67,10 @@ namespace APISAE401.Models.EntityFramework
         [ForeignKey("IdBar")]
         [InverseProperty("NavigationBar")]
         public virtual Bar BarNav { get; set; } = null!;
+        
+        [ForeignKey("IdRestaurant")]
+        [InverseProperty("NavigationRestaurant")]
+        public virtual Restaurant RestaurantNav { get; set; } = null!;
 
         [ForeignKey("IdClub")]
         [InverseProperty("NavigationDisposer")]
