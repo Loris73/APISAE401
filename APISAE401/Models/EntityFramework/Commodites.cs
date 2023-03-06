@@ -13,12 +13,10 @@ namespace APISAE401.Models.EntityFramework
         [Column("cmd_id")]
         public int IdCommodites { get; set; }
 
-
-
         [Required]
-        [Column("cmd_nom")]
-        [StringLength(50)]
-        public string NomClub { get; set; }
+        [Column("cmd_typecommodites")]
+        [StringLength(255)]
+        public string TypeCommodites { get; set; }
 
     }
 }
