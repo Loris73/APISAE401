@@ -4,40 +4,28 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
+
+
 namespace APISAE401.Models.EntityFramework
 {
-    
-        [Table("t_e_typechambre_tpc")]
-        
+    public class PointFort
+    {
+        [Table("t_e_pointfort_ptf")]
+
 
         public partial class TypeChambre
         {
             [Key]
-            [Column("tpc_id")]
-            public int TypeChambreId { get; set; }
+            [Column("ptf_id")]
+            public int PointFortId { get; set; }
 
             [Required]
-            [Column("tpc_nom")]
+            [Column("ptf_nom")]
             [StringLength(255)]
-            public string? TypeChambreNom { get; set; }
+            public string? PointFortNom { get; set; }
 
-            [Required]
-            [Column("tpc_dimension")]
-            [StringLength(255)]
-            public string? TypeChambreDimension { get; set; }
-
-            [Required]
-            [Column("tpc_capacite")]
-            public int TypeChambreCapacite { get; set; }
-
-            [Required]
-            [Column("tpc_description")]
-            [StringLength(255)]
-            public string? TypeChambreDescription { get; set; }
-
-
-            [InverseProperty("UtilisateurNaviguation")]
-            public virtual ICollection<Notation> NotationUtilisateur { get; set; } = new List<Notation>();
+            [InverseProperty("PointFortNaviguation")]
+            public virtual ICollection<APourPf> NotationUtilisateur { get; set; } = new List<APourPf>();
 
             public override bool Equals(object? obj)
             {
@@ -74,5 +62,5 @@ namespace APISAE401.Models.EntityFramework
                 return hash.ToHashCode();
             }
         }
-    
+    }
 }
