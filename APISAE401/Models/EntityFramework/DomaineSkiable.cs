@@ -6,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace APISAE401.Models.EntityFramework
 {
-    [Table("t_e_domaine_skiable_skb")]
+    [Table("t_e_domaineskiable_skb")]
     [Index(nameof(IdDomaineSkiable), IsUnique = true)]
 
     public partial class DomaineSkiable

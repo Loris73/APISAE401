@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace APISAE401.Models.EntityFramework
 {
-    [Table("t_e_type_activite_tat")]
+    [Table("t_e_typeactivite_tat")]
     [Index(nameof(IdTypeActivite), IsUnique = true)]
 
     public partial class TypeActivite
