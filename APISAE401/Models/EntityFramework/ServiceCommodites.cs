@@ -25,6 +25,9 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("CommoditesNav")]
         public virtual ICollection<Commodites> NavigationCommodites { get; set; } = new List<Commodites>();
 
+        [InverseProperty("ServiceCommoditesNaviguation")]
+        public virtual ICollection<AvoirComme> AvoirCommeServiceCommodites { get; set; } = new List<AvoirComme>();
+
         public override bool Equals(object? obj)
         {
             return obj is ServiceCommodites commodites &&
