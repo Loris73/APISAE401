@@ -81,8 +81,15 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         public string? PasswordClient { get; set; }
 
+
+        //A update
         [ForeignKey("IdTypeClient")]
-        public virtual TypeClient TypeClientNavigation { get; set; } = null!;
+        [Column("clt_idtypeclient")]
+        [Required]
+        public int IdTypeClient { get; set; }
+
+
+        public virtual TypeClient TypeClient { get; set; } = null!;
 
         public override bool Equals(object? obj)
         {

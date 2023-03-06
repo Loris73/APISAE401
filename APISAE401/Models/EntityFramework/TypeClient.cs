@@ -18,6 +18,9 @@ namespace APISAE401.Models.EntityFramework
         [Column("tpc_intituletypeclient", TypeName = "varchar")]
         public string? IntituleTypeClient { get; set; }
 
+        [InverseProperty("TypeClient")]
+        public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
+
         public override bool Equals(object? obj)
         {
             return obj is TypeClient client &&
