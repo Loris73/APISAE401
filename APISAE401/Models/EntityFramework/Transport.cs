@@ -21,9 +21,17 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("TransportNaviguation")]
         public virtual ICollection<Deplacer> DeplacerTransport { get; set; } = new List<Deplacer>();
 
+        public override bool Equals(object? obj)
+        {
+            return obj is Transport transport &&
+                   IdTransport == transport.IdTransport &&
+                   TransportNom == transport.TransportNom &&
+                   EqualityComparer<ICollection<Deplacer>>.Default.Equals(DeplacerTransport, transport.DeplacerTransport);
+        }
 
-
-
-
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(IdTransport, TransportNom, DeplacerTransport);
+        }
     }
 }
