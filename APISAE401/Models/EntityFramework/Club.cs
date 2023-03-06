@@ -59,6 +59,11 @@ namespace APISAE401.Models.EntityFramework
         public string DocumentationClub { get; set; }
 
 
+        [ForeignKey("IdDomaineSkiable")]
+        [InverseProperty("NavigationDomaineSkiable")]
+        public virtual DomaineSkiable DomaineSkiableNav { get; set; } = null!;
+
+
         [InverseProperty("ClubTarif")]
         public virtual PointFort TarifClub { get; set; };
     }

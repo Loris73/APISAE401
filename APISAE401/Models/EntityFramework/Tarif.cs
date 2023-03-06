@@ -34,6 +34,8 @@ namespace APISAE401.Models.EntityFramework
             [InverseProperty("TarifChambre")]
             public virtual TypeChambre TypeChambreTarif { get; set; } = null!;
 
+
+
             [ForeignKey("IdClub")]
             [InverseProperty("TarifClub")]
             public virtual Club ClubTarif { get; set; } = null!;

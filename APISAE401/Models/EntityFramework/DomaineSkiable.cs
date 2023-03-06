@@ -47,5 +47,10 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         [Column("skb_descritpion")]
         public string descriptionDomaineSkiable { get; set; }
+
+
+
+        [InverseProperty("DomaineSkiableNav")]
+        public virtual ICollection<Club> NavigationDomaineSkiable { get; set; } = new List<Club>();
     }
 }
