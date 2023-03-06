@@ -61,6 +61,6 @@ namespace APISAE401.Models.EntityFramework
 
         
         [InverseProperty("ClubTarif")]
-        public virtual PointFort TarifClub { get; set; } = null!;
+        public virtual PointFort TarifClub { get; set; };
     }
 }
