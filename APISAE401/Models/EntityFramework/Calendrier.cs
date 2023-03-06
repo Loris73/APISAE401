@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace APISAE401.Models.EntityFramework
 {
+    [Table("t_e_calendrier_cal")]
     public partial class Calendrier
     {
         // Clé primaire

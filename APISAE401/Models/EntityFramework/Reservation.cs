@@ -24,5 +24,8 @@ namespace APISAE401.Models.EntityFramework
         // ForeignKey : idClub, IdClient, dateCal à faire
         [InverseProperty("ReservationNavigation")]
         public virtual ICollection<Participer> ParticiperReservation { get; set;} = new List<Participer>();
+
+        [InverseProperty("TransportNavigation")]
+        public virtual ICollection<Deplacer> DeplacerTransport { get; set; } = new List<Deplacer>();
     }
 }
