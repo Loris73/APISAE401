@@ -17,6 +17,5 @@ namespace APISAE401.Models.EntityFramework
         [Column("cmd_typecommodites")]
         [StringLength(255)]
         public string TypeCommodites { get; set; }
-
     }
 }
