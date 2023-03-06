@@ -7,11 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace APISAE401.Models.EntityFramework
 {
+    [Table("t_j_apourpf_apf")]
     public class APourPf
     {
-        [Table("t_j_apourpf_apf")]
-        public partial class Notation
-        {
+        
             [Key]
             [Column("ptf_id")]
             public int PointFortId { get; set; }
@@ -29,6 +28,6 @@ namespace APISAE401.Models.EntityFramework
             [InverseProperty("APourTypeChambre")]
             public virtual TypeChambre TypeChambreNavigation { get; set; } = null!;
 
-        }
+        
     }
 }

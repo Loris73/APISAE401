@@ -38,6 +38,9 @@ namespace APISAE401.Models.EntityFramework
             [InverseProperty("TarifClub")]
             public virtual Club ClubTarif { get; set; } = null!;
 
+            [ForeignKey("DateCal")]
+            [InverseProperty("TarifDate")]
+            public virtual Calendrier CalendrierTarif { get; set; } = null!;
         }
     }
 }

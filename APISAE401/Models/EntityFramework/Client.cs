@@ -89,7 +89,10 @@ namespace APISAE401.Models.EntityFramework
         public int IdTypeClient { get; set; }
 
 
-        public virtual TypeClient TypeClient { get; set; } = null!;
+        //public virtual TypeClient TypeClient { get; set; } = null!;
+
+        [InverseProperty("ClientNavigation")]
+        public virtual Detient DetientClient { get; set; } = null!;
 
         public override bool Equals(object? obj)
         {

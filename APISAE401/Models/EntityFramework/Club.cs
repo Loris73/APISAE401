@@ -57,10 +57,22 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         [Column("clb_documentation")]
         public string DocumentationClub { get; set; }
-        
 
-        
+        // Foreign Keys
+
+        [ForeignKey("IdDomaineSkiable")]
+        [InverseProperty("NavigationDomaineSkiable")]
+        public virtual DomaineSkiable DomaineSkiableNav { get; set; } = null!;
+
+        [ForeignKey("IdBar")]
+        [InverseProperty("NavigationBar")]
+        public virtual Bar BarNav { get; set; } = null!;
+
+        [ForeignKey("IdClub")]
+        [InverseProperty("NavigationDisposer")]
+        public virtual Disposer DisposerNav { get; set; } = null!;
+
         [InverseProperty("ClubTarif")]
-        public virtual PointFort TarifClub { get; set; } = null!;
+        public virtual PointFort TarifClub { get; set; }
     }
 }
