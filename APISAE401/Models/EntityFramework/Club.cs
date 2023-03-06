@@ -68,6 +68,10 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("NavigationBar")]
         public virtual Bar BarNav { get; set; } = null!;
 
+        [ForeignKey("IdClub")]
+        [InverseProperty("NavigationDisposer")]
+        public virtual Disposer DisposerNav { get; set; } = null!;
+
         [InverseProperty("ClubTarif")]
         public virtual PointFort TarifClub { get; set; }
     }

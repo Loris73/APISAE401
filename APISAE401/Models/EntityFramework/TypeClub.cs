@@ -17,5 +17,9 @@ namespace APISAE401.Models.EntityFramework
         [Column("tcb_typeclub")]
         [StringLength(255)]
         public string NomTypeClub { get; set; }
+
+        [ForeignKey("IdTypeClub")]
+        [InverseProperty("NavigationDisposer")]
+        public virtual Disposer DisposerNav { get; set; } = null!;
     }
 }
