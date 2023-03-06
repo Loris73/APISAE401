@@ -25,41 +25,19 @@ namespace APISAE401.Models.EntityFramework
             public string? PointFortNom { get; set; }
 
             [InverseProperty("PointFortNaviguation")]
-            public virtual ICollection<APourPf> NotationUtilisateur { get; set; } = new List<APourPf>();
+            public virtual ICollection<APourPf> APourPointFort { get; set; } = new List<APourPf>();
 
             public override bool Equals(object? obj)
             {
-                return obj is Utilisateur utilisateur &&
-                       UtilisateurId == utilisateur.UtilisateurId &&
-                       Nom == utilisateur.Nom &&
-                       Prenom == utilisateur.Prenom &&
-                       Mobile == utilisateur.Mobile &&
-                       Mail == utilisateur.Mail &&
-                       Pwd == utilisateur.Pwd &&
-                       Rue == utilisateur.Rue &&
-                       CodePostal == utilisateur.CodePostal &&
-                       Ville == utilisateur.Ville &&
-                       Pays == utilisateur.Pays &&
-                       Latitude == utilisateur.Latitude &&
-                       Longitude == utilisateur.Longitude;
+                return obj is TypeChambre chambre &&
+                       PointFortId == chambre.PointFortId &&
+                       PointFortNom == chambre.PointFortNom &&
+                       EqualityComparer<ICollection<APourPf>>.Default.Equals(APourPointFort, chambre.APourPointFort);
             }
 
             public override int GetHashCode()
             {
-                HashCode hash = new HashCode();
-                hash.Add(UtilisateurId);
-                hash.Add(Nom);
-                hash.Add(Prenom);
-                hash.Add(Mobile);
-                hash.Add(Mail);
-                hash.Add(Pwd);
-                hash.Add(Rue);
-                hash.Add(CodePostal);
-                hash.Add(Ville);
-                hash.Add(Pays);
-                hash.Add(Latitude);
-                hash.Add(Longitude);
-                return hash.ToHashCode();
+                return HashCode.Combine(PointFortId, PointFortNom, APourPointFort);
             }
         }
     }
