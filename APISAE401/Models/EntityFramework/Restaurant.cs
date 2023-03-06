@@ -28,5 +28,20 @@ namespace APISAE401.Models.EntityFramework
 
         [InverseProperty("RestaurantNav")]
         public virtual ICollection<Restaurant> NavigationRestaurant { get; set; } = new List<Restaurant>();
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Restaurant restaurant &&
+                   this.IdRestaurant == restaurant.IdRestaurant &&
+                   this.IdClub == restaurant.IdClub &&
+                   this.NomRestaurant == restaurant.NomRestaurant &&
+                   this.DescriptionRestaurant == restaurant.DescriptionRestaurant &&
+                   EqualityComparer<ICollection<Restaurant>>.Default.Equals(this.NavigationRestaurant, restaurant.NavigationRestaurant);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(this.IdRestaurant, this.IdClub, this.NomRestaurant, this.DescriptionRestaurant, this.NavigationRestaurant);
+        }
     }
 }

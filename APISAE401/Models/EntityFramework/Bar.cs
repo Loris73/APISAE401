@@ -31,12 +31,17 @@ namespace APISAE401.Models.EntityFramework
 
         public override bool Equals(object? obj)
         {
-            return base.Equals(obj);
+            return obj is Bar bar &&
+                   this.IdBar == bar.IdBar &&
+                   this.IdClub == bar.IdClub &&
+                   this.NomBar == bar.NomBar &&
+                   this.DescriptionBar == bar.DescriptionBar &&
+                   EqualityComparer<ICollection<Bar>>.Default.Equals(this.NavigationBar, bar.NavigationBar);
         }
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return HashCode.Combine(this.IdBar, this.IdClub, this.NomBar, this.DescriptionBar, this.NavigationBar);
         }
     }
 }
