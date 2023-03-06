@@ -57,9 +57,8 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         [Column("clb_documentation")]
         public string DocumentationClub { get; set; }
-        
 
-        
+
         [InverseProperty("ClubTarif")]
         public virtual PointFort TarifClub { get; set; } = null!;
     }
