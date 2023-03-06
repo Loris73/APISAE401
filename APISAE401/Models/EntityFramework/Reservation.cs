@@ -12,7 +12,7 @@ namespace APISAE401.Models.EntityFramework
     public class Reservation
     {
         [Key]
-        [Required]
+        [Column("rsv_idreservation")]
         public int IdReservation { get; set; }
 
         [Column("rsv_datereservation", TypeName = "date")]
@@ -22,5 +22,7 @@ namespace APISAE401.Models.EntityFramework
         public decimal Montant { get; set; }
 
         // ForeignKey : idClub, IdClient, dateCal à faire
+        [InverseProperty("ReservationNavigation")]
+        public virtual ICollection<Participer> ParticiperReservation { get; set;} = new List<Participer>();
     }
 }
