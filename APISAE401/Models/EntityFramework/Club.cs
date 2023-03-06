@@ -9,7 +9,7 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_e_club_clb")]
     [Index(nameof(IdClub), IsUnique = true)]
 
-    public partial class Utilisateur
+    public partial class Club
     {
         [Key]
         [Column("clb_id")]
