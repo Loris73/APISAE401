@@ -39,6 +39,10 @@ namespace APISAE401.Models.EntityFramework
             [InverseProperty("TypeChambreNavigation")]
             public virtual ICollection<APourPf> APourTypeChambre { get; set; } = new List<APourPf>();
 
+            [InverseProperty("TypeChambreTarif")]
+            public virtual TypeChambre arifChambre { get; set; }
+
+
         public override bool Equals(object? obj)
         {
             return obj is TypeChambre chambre &&
