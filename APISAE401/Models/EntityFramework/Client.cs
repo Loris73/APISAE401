@@ -82,7 +82,7 @@ namespace APISAE401.Models.EntityFramework
         public string? PasswordClient { get; set; }
 
         //A update
-        [Column("clt_idtypeclient")]
+        [Column("tpc_idtypeclient")]
         [Required]
         public int IdTypeClient { get; set; }
 
@@ -94,8 +94,8 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("ClientCBNavigation")]
         public virtual Detient DetientClient { get; set; } = null!;
 
-        [InverseProperty("IDClient")]
-        public virtual ICollection<Reservation> ReservationsNavigation { get; set; } = new List<Reservation>();
+        [InverseProperty("ClientReservationNavigation")]
+        public virtual ICollection<Reservation> ReservationClientNavigation { get; set; } = new List<Reservation>();
 
         /*----Jules---- => 
          * InverseProperty permettant de Rrecuperer l'IdClient dans la table Reponse
