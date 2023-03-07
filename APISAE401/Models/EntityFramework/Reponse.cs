@@ -4,6 +4,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace APISAE401.Models.EntityFramework
 {
+    /*----Jules---- => 
+    * Model Reponse
+    * Modifié le 07/03/2023 par Jules
+    */
+
     [Table("t_e_reponse_rps")]
     [Index(nameof(IdReponse), IsUnique = true)]
 
@@ -25,14 +30,6 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("ReponsesNavigation")]
         public virtual Avis IdAvis { get; set; } = new Avis();
 
-        [Key]
-        [Column("clb_id")]
-        public int IdClub { get; set; }
-
-        [Key]
-        [Column("avi_id")]
-        public int IdAvis { get; set; }
-
         [Required]
         [Column("rps_titre")]
         [StringLength(50)]
@@ -40,6 +37,8 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("rps_commentaire")]
-        public string CommentaireReponse { get; set; }        
+        public string CommentaireReponse { get; set; }
+
     }
+    //------------------------------
 }
