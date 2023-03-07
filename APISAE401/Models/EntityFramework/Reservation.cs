@@ -18,9 +18,30 @@ namespace APISAE401.Models.EntityFramework
         [Column("clt_id")]
         public int IdCleint { get; set; }
 
-        [ForeignKey("clt_id")]
+        // Id Client
+        [Column("clt_id")]
+        public int IdClient { get; set; }
+
+        [ForeignKey("IdClient")]
         [InverseProperty("ReservationNavigation")]
-        public virtual Client ClientReservationNavigation { get; set; } = new Client();
+        public virtual Client ClientNavigation { get; set; }
+
+        // Id Club
+        [Column("clb_id")]
+        public int IdClub;
+
+        [ForeignKey("IdClub")]
+        [InverseProperty("")]
+        public virtual Club ClubReservationNavigation { get; set; }//navigation dans club à faire
+
+        // Date Calendrier
+        [Column("cld_date")]
+        public int DateCal { get; set; }
+
+        [ForeignKey("DateCal")]
+        [InverseProperty("")]
+        public virtual Calendrier CalendrierReservationNavigation { get; set; }
+
 
         [Column("rsv_datereservation", TypeName = "date")]
         public DateTime DateReservation { get; set; }
@@ -28,7 +49,7 @@ namespace APISAE401.Models.EntityFramework
         [Column("rsv_montant")]
         public decimal Montant { get; set; }
 
-        // ForeignKey : idClub, IdClient, dateCal à faire
+        // ForeignKey : dateCal à faire
         [InverseProperty("ReservationNavigation")]
         public virtual ICollection<Participer> ParticiperReservation { get; set;} = new List<Participer>();
 

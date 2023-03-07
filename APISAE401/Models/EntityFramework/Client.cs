@@ -17,7 +17,7 @@ namespace APISAE401.Models.EntityFramework
         // Clé primaire
         [Key]
         [Column("clt_id")]
-        public int IDClient { get; set; }
+        public int IdClient { get; set; }
 
         // Genre du Client
         [Column("clt_genre", TypeName = "varchar")]
@@ -82,21 +82,34 @@ namespace APISAE401.Models.EntityFramework
         public string? PasswordClient { get; set; }
 
         //A update
-        [ForeignKey("tpc_idtypeclient")]
-        [InverseProperty(nameof(TypeClient.ClientTypeClientNavigation))]
+        [Column("tpc_idtypeclient")]
         public int IdTypeClient { get; set; }
 
+        [ForeignKey("IdTypeClient")]
+        [InverseProperty("ClientNavigation")]
+        public virtual TypeClient TypeClientNavigation { get; set; }
 
 
-        [InverseProperty("ClientCBNavigation")]
-        public virtual Detient DetientClient { get; set; } = null!;
-
-        [InverseProperty("ClientReservationNavigation")]
-        public virtual ICollection<Reservation> ReservationClientNavigation { get; set; } = new List<Reservation>();
 
         //==========================================================================================================
 
-        //InverseProperties => IdClient
+        /*----Matheo---- => 
+         * InverseProperty permettant de Recuperer l'IdClient dans la table Reservation
+         * Modifié le 07/03/2023
+         */
+
+        [InverseProperty("ClientNavigation")]
+        public virtual ICollection<Reservation> ReservationNavigation { get; set; } = new List<Reservation>();//==========================================================================================================
+
+        /*----Matheo---- => 
+         * InverseProperty permettant de Recuperer l'IdClient dans la table Detient
+         * Modifié le 07/03/2023
+         */
+
+        [InverseProperty("ClientCBNavigation")]
+        public virtual Detient DetientNavigation { get; set; }
+        
+        //==========================================================================================================
 
         /*----Jules---- => 
          * InverseProperty permettant de Recuperer l'IdClient dans la table Reponse
@@ -112,7 +125,7 @@ namespace APISAE401.Models.EntityFramework
         public override bool Equals(object? obj)
         {
             return obj is Client client &&
-                   IDClient == client.IDClient &&
+                   IdClient == client.IdClient &&
                    GenreClient == client.GenreClient &&
                    NomClient == client.NomClient &&
                    PrenomClient == client.PrenomClient &&
@@ -130,7 +143,7 @@ namespace APISAE401.Models.EntityFramework
         public override int GetHashCode()
         {
             HashCode hash = new HashCode();
-            hash.Add(IDClient);
+            hash.Add(IdClient);
             hash.Add(GenreClient);
             hash.Add(NomClient);
             hash.Add(PrenomClient);

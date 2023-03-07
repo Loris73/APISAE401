@@ -23,6 +23,6 @@ namespace APISAE401.Models.EntityFramework
         public DateTime DateExpirationCB { get; set; }
 
         [InverseProperty("CarteBancaireNaviguation")]
-        public virtual Detient DetientCarteBancaire { get; set; } = null!;
+        public virtual Detient DetientNavigation { get; set; } = null!;
     }
 }
