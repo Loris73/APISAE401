@@ -58,9 +58,5 @@ namespace APISAE401.Models.EntityFramework
         public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
 
         //----------------------------------------------
-
-
-
-
     }
 }

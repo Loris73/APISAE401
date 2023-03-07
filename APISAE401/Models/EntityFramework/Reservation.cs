@@ -15,9 +15,12 @@ namespace APISAE401.Models.EntityFramework
         [Column("rsv_idreservation")]
         public int IdReservation { get; set; }
 
+        [Column("clt_id")]
+        public int IdCleint { get; set; }
+
         [ForeignKey("clt_id")]
-        [InverseProperty("ReservationsNavigation")]
-        public virtual Client IDClient { get; set; } = new Client();
+        [InverseProperty("ReservationNavigation")]
+        public virtual Client ClientReservationNavigation { get; set; } = new Client();
 
         [Column("rsv_datereservation", TypeName = "date")]
         public DateTime DateReservation { get; set; }
