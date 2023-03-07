@@ -19,7 +19,7 @@ namespace APISAE401.Models.EntityFramework
         public string? IntituleTypeClient { get; set; }
 
         [InverseProperty("TypeClient")]
-        public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
+        public virtual ICollection<Client> ClientsNavigation { get; set; } = new List<Client>();
 
         public override bool Equals(object? obj)
         {
