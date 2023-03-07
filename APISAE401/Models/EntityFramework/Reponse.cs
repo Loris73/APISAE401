@@ -4,26 +4,25 @@ using System.ComponentModel.DataAnnotations;
 
 namespace APISAE401.Models.EntityFramework
 {
+    /*----Jules---- => 
+    * Model Reponse
+    * Modifié le 07/03/2023 par Jules
+    */
+
     [Table("t_e_reponse_rps")]
     [Index(nameof(IdReponse), IsUnique = true)]
 
     public partial class Reponse
     {
+        //=======================================
+        //Properties du model Reponse
         [Key]
         [Column("rps_id")]
         public int IdReponse { get; set; }
 
-        [ForeignKey("clt_id")]
-        [InverseProperty("ReponsesNavigation")]
-        public virtual Client IdClient { get; set; } = new Client();
-
-        [ForeignKey("clb_id")]
-        [InverseProperty("ReponsesNavigation")]
-        public virtual Club IdClub { get; set; } = new Club();
-
-        [ForeignKey("avi_id")]
-        [InverseProperty("ReponsesNavigation")]
-        public virtual Avis IdAvis { get; set; } = new Avis();
+        [Key]
+        [Column("clt_id")]
+        public int IdClient { get; set; }
 
         [Key]
         [Column("clb_id")]
@@ -40,6 +39,24 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("rps_commentaire")]
-        public string CommentaireReponse { get; set; }        
+        public string CommentaireReponse { get; set; }
+        //=======================================
+
+        //=======================================
+        //ForeignKeys => IdClient, IdClub, IdAvis
+
+        [ForeignKey("IdClient")]
+        [InverseProperty("ReponsesNavigation")]
+        public virtual Client ClientNavigation { get; set; } = new Client();
+
+        [ForeignKey("IdClub")]
+        [InverseProperty("ReponsesNavigation")]
+        public virtual Club ClubNavigation { get; set; } = new Club();
+
+        [ForeignKey("IdAvis")]
+        [InverseProperty("ReponsesNavigation")]
+        public virtual Avis AvisNavigation { get; set; } = new Avis();
+        //=======================================
     }
+    //------------------------------
 }

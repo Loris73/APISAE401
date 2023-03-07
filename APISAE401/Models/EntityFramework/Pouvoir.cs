@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace APISAE401.Models.EntityFramework
 {
-    [System.ComponentModel.DataAnnotations.Schema.Table("t_j_pou_pouvoir")]
-    public class Pouvoir
+    [Table("t_j_pouvoir_pou")]
+    public partial class Pouvoir
     {
         [Key]
         [ForeignKey("IdReservation")]

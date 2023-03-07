@@ -81,23 +81,18 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         public string? PasswordClient { get; set; }
 
-
         //A update
-        [ForeignKey("IdTypeClient")]
-        [Column("clt_idtypeclient")]
-        [Required]
+        [ForeignKey("tpc_idtypeclient")]
+        [InverseProperty(nameof(TypeClient.ClientTypeClientNavigation))]
         public int IdTypeClient { get; set; }
 
 
-        [ForeignKey("tpc_idtypeclient")]
-        [InverseProperty("ClientsNavigation")]
-        public virtual TypeClient TypeClient { get; set; } = null!;
 
-        [InverseProperty("ClientNavigation")]
+        [InverseProperty("ClientCBNavigation")]
         public virtual Detient DetientClient { get; set; } = null!;
 
-        [InverseProperty("IDClient")]
-        public virtual ICollection<Reservation> ReservationsNavigation { get; set; } = new List<Reservation>();
+        [InverseProperty("ClientReservationNavigation")]
+        public virtual ICollection<Reservation> ReservationClientNavigation { get; set; } = new List<Reservation>();
 
         /*----Jules---- => 
          * InverseProperty permettant de Rrecuperer l'IdClient dans la table Reponse

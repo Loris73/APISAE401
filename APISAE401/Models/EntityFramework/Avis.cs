@@ -23,7 +23,7 @@ namespace APISAE401.Models.EntityFramework
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("avi_id")]
-        public int IDAvis { get; set; }
+        public int IdAvis { get; set; }
 
         [Required]
         [StringLength(255)]
@@ -53,14 +53,9 @@ namespace APISAE401.Models.EntityFramework
          * InverseProperty permettant de Recuperer l'IdAvis dans la table Reponse
          * Modifié le 07/03/2023
          */
-
-        [InverseProperty("IdAvis")]
+        [InverseProperty("AvisNavigation")]
         public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
 
         //----------------------------------------------
-
-
-
-
     }
 }
