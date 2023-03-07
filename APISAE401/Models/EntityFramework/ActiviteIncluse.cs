@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace APISAE401.Models.EntityFramework
 {
-    [Table("t_e_aci_activiteincluse") ]
+    [Table("t_e_activiteincluse_aci") ]
     public partial class ActiviteIncluse
     {
         

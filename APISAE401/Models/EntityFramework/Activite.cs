@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace APISAE401.Models.EntityFramework
 {
-    [Table("t_e_act_activite")]
+    [Table("t_e_activite_act")]
     public class Activite
     {
         public Activite()

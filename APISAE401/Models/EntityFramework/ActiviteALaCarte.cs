@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace APISAE401.Models.EntityFramework
 {
-    [Table("t_e_alc_activitealacarte")]
+    [Table("t_e_activitealacarte_alc")]
     public class ActiviteALaCarte
     {
 
