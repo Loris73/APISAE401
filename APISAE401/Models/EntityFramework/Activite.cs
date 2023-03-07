@@ -6,11 +6,6 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_e_activite_act")]
     public class Activite
     {
-        public Activite()
-        {
-            ActiviteIncluseActivite = new HashSet<ActiviteIncluse>();
-            ActiviteALaCarteActivite = new HashSet<ActiviteALaCarte>();
-        }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

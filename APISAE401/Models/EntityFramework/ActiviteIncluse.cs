@@ -53,8 +53,35 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("ActiviteIncluseNavigation")]
         public virtual Activite ActiviteNavigation { get; set; } = new Activite();
 
+        public override bool Equals(object? obj)
+        {
+            return obj is ActiviteIncluse incluse &&
+                   IdActivite == incluse.IdActivite &&
+                   IdActiviteIncluse == incluse.IdActiviteIncluse &&
+                   IdTrancheAge == incluse.IdTrancheAge &&
+                   IdTypeActivite == incluse.IdTypeActivite &&
+                   TitreActivite == incluse.TitreActivite &&
+                   DureeActivite == incluse.DureeActivite &&
+                   DescriptionActivite == incluse.DescriptionActivite &&
+                   AgeMinActivite == incluse.AgeMinActivite &&
+                   FrequenceActivite == incluse.FrequenceActivite &&
+                   EqualityComparer<Activite>.Default.Equals(ActiviteNavigation, incluse.ActiviteNavigation);
+        }
 
-
-
+        public override int GetHashCode()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(IdActivite);
+            hash.Add(IdActiviteIncluse);
+            hash.Add(IdTrancheAge);
+            hash.Add(IdTypeActivite);
+            hash.Add(TitreActivite);
+            hash.Add(DureeActivite);
+            hash.Add(DescriptionActivite);
+            hash.Add(AgeMinActivite);
+            hash.Add(FrequenceActivite);
+            hash.Add(ActiviteNavigation);
+            return hash.ToHashCode();
+        }
     }
 }

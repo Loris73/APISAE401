@@ -21,7 +21,18 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("TypeSignalementNavigation")]
         public virtual ICollection<Signalement> SignalementNavigation { get; set; } = new List<Signalement>();
 
+        public override bool Equals(object? obj)
+        {
+            return obj is TypeSignalement signalement &&
+                   IdTypeSignalement == signalement.IdTypeSignalement &&
+                   TitreTypeSignalement == signalement.TitreTypeSignalement &&
+                   EqualityComparer<ICollection<Signalement>>.Default.Equals(SignalementNavigation, signalement.SignalementNavigation);
+        }
 
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(IdTypeSignalement, TitreTypeSignalement, SignalementNavigation);
+        }
     }
 
 

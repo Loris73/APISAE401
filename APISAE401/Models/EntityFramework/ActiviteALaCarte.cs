@@ -63,5 +63,40 @@ namespace APISAE401.Models.EntityFramework
 
         [InverseProperty("PouvoirNavigation")]
         public virtual ICollection<Pouvoir> PouvoirNavigation { get; set; } = new List<Pouvoir>();
+
+        public override bool Equals(object? obj)
+        {
+            return obj is ActiviteALaCarte carte &&
+                   IdActivite == carte.IdActivite &&
+                   IdActiviteALaCarte == carte.IdActiviteALaCarte &&
+                   IdTrancheAge == carte.IdTrancheAge &&
+                   IdTypeActivite == carte.IdTypeActivite &&
+                   TitreActivite == carte.TitreActivite &&
+                   DureeActivite == carte.DureeActivite &&
+                   DescriptionActivite == carte.DescriptionActivite &&
+                   AgeMinActivite == carte.AgeMinActivite &&
+                   FrequenceActivite == carte.FrequenceActivite &&
+                   PrixMinActivite == carte.PrixMinActivite &&
+                   EqualityComparer<Activite>.Default.Equals(ActiviteNavigation, carte.ActiviteNavigation) &&
+                   EqualityComparer<ICollection<Pouvoir>>.Default.Equals(PouvoirNavigation, carte.PouvoirNavigation);
+        }
+
+        public override int GetHashCode()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(IdActivite);
+            hash.Add(IdActiviteALaCarte);
+            hash.Add(IdTrancheAge);
+            hash.Add(IdTypeActivite);
+            hash.Add(TitreActivite);
+            hash.Add(DureeActivite);
+            hash.Add(DescriptionActivite);
+            hash.Add(AgeMinActivite);
+            hash.Add(FrequenceActivite);
+            hash.Add(PrixMinActivite);
+            hash.Add(ActiviteNavigation);
+            hash.Add(PouvoirNavigation);
+            return hash.ToHashCode();
+        }
     }
 }

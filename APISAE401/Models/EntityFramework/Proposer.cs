@@ -25,5 +25,18 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("ProposerNavigation")]
         public virtual Activite ActiviteNavigation { get; set; } = new Activite();
 
+        public override bool Equals(object? obj)
+        {
+            return obj is Proposer proposer &&
+                   IdClub == proposer.IdClub &&
+                   IdActivite == proposer.IdActivite &&
+                   EqualityComparer<Club>.Default.Equals(ClubNavigation, proposer.ClubNavigation) &&
+                   EqualityComparer<Activite>.Default.Equals(ActiviteNavigation, proposer.ActiviteNavigation);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(IdClub, IdActivite, ClubNavigation, ActiviteNavigation);
+        }
     }
 }
