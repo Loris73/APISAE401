@@ -4,6 +4,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace APISAE401.Models.EntityFramework
 {
+    /*----Jules---- => 
+    * Model Commodites
+    * Modifié le 07/03/2023 par Jules
+    */
+
     [Table("t_e_commodites_cmd")]
     [Index(nameof(IdCommodites), IsUnique = true)]
 
@@ -18,21 +23,15 @@ namespace APISAE401.Models.EntityFramework
         [StringLength(255)]
         public string TypeCommodites { get; set; }
 
-        [ForeignKey("IdCommodites")]
-        [InverseProperty("NavigationCommodites")]
-        public virtual Commodites CommoditesNav { get; set; } = null!;
+        /*----Jules---- => 
+         * InverseProperty permettant de Recuperer l'IdCommodites dans la table ServiceCommodites
+         * Modifié le 07/03/2023
+         */
 
-        public override bool Equals(object? obj)
-        {
-            return obj is Commodites commodites &&
-                   this.IdCommodites == commodites.IdCommodites &&
-                   this.TypeCommodites == commodites.TypeCommodites &&
-                   EqualityComparer<Commodites>.Default.Equals(this.CommoditesNav, commodites.CommoditesNav);
-        }
+        [InverseProperty("IdCommodites")]
+        public virtual ICollection<Commodites> CommoditesNavigation { get; set; } = new List<Commodites>();
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(this.IdCommodites, this.TypeCommodites, this.CommoditesNav);
-        }
+        //----------------------------------------------
     }
+    //------------------------------
 }
