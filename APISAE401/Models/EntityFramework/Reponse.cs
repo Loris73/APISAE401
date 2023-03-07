@@ -20,15 +20,15 @@ namespace APISAE401.Models.EntityFramework
         [Column("rps_id")]
         public int IdReponse { get; set; }
 
-        [Key]
+        [Required]
         [Column("clt_id")]
         public int IdClient { get; set; }
 
-        [Key]
+        [Required]
         [Column("clb_id")]
         public int IdClub { get; set; }
 
-        [Key]
+        [Required]
         [Column("avi_id")]
         public int IdAvis { get; set; }
 
