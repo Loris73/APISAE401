@@ -76,45 +76,37 @@ namespace APISAE401.Models.EntityFramework
 
         //---------------------------------------------
 
-        [ForeignKey("IdBar")]
-        [InverseProperty("NavigationBar")]
-        public virtual Bar BarNav { get; set; } = null!;
-
-        [ForeignKey("IdRestaurant")]
-        [InverseProperty("NavigationRestaurant")]
-        public virtual Restaurant RestaurantNav { get; set; } = null!;
-
-        [ForeignKey("IdClub")]
-        [InverseProperty("NavigationDisposer")]
-        public virtual Disposer DisposerNav { get; set; } = null!;
-
-        //=======================================
+        //=========================================================================================================================
         //InverseProperties => IdClub
 
-        /*----Mathéo---- => 
+        /*----------------------------------Mathéo------------------------------------- =>  
          * InverseProperty permettant de recuperer l'IdClub dans la table Reponse
          * Modifié le 07/03/2023
          */
         [InverseProperty("ClubTarif")]
         public virtual PointFort TarifClub { get; set; }
+        //-------------------------------------------------------------------------------   
 
-        //----------------------------------------------
 
-        /*----Jules---- => 
-         * InverseProperty permettant de recuperer l'IdClub dans la table Reponse
+        /*----------------------------------Jules------------------------------------- => 
+         * InverseProperty par Jules
          * Modifié le 07/03/2023
          */
+        // InverseProperty permettant de recuperer l'IdClub dans la table Reponse
         [InverseProperty("ClubNavigation")]
         public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
 
-        /*
-         *InverseProperty permettant de recuperer l'IdClub dans la table Bar
-         */
+        // InverseProperty permettant de recuperer l'IdClub dans la table Bar
         [InverseProperty("ClubNavigation")]
         public virtual ICollection<Bar> BarNavigation { get; set; } = new List<Bar>();
-        //----------------------------------------------   
 
-        /*----Loris---- => 
+        // InverseProperty permettant de recuperer l'IdClub dans la table Restaurant 
+        [InverseProperty("ClubNavigation")]
+        public virtual ICollection<Restaurant> RestaurantNavigation { get; set; } = new List<Restaurant>();
+        //-------------------------------------------------------------------------------   
+
+
+        /*----------------------------------Loris------------------------------------- =>  
          * Modifié le 07/03/2023
          */
         [InverseProperty("EstComptabilise")]
@@ -123,8 +115,7 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("LocNav")]
         public virtual Club APourClub { get; set; } = null!;
 
-        //----------------------------------------------
-        //=======================================
-
+        //-------------------------------------------------------------------------------
+        //=========================================================================================================================
     }
 }
