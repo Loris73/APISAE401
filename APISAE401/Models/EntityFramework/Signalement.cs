@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace APISAE401.Models.EntityFramework
 {
-    [Table("t_e_sig_signalement")]
+    [Table("t_e_signalement_sig")]
     public partial class Signalement
     {
         [Key]
