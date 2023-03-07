@@ -60,6 +60,11 @@ namespace APISAE401.Models.EntityFramework
 
         // Foreign Keys
 
+        [InverseProperty("IdClient")]
+        public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
+
+        //----a revoir----
+
         [ForeignKey("IdDomaineSkiable")]
         [InverseProperty("NavigationDomaineSkiable")]
         public virtual DomaineSkiable DomaineSkiableNav { get; set; } = null!;

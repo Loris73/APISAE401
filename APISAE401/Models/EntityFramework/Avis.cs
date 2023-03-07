@@ -8,15 +8,6 @@ namespace APISAE401.Models.EntityFramework
 
     public partial class Avis
     {
-
-        public Avis()
-        {
-            SignalementAvis = new HashSet<Signalement>();
-            ReponseAvis = new HashSet<Reponse>();
-        
-        }
-
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [ForeignKey("IdClient")]
@@ -58,7 +49,15 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("AvisReponse")]
         public virtual ICollection<Signalement> ReponseAvis { get; set; } = null!;
 
+        /*----Jules---- => 
+         * InverseProperty permettant de Recuperer l'IdAvis dans la table Reponse
+         * Modifié le 07/03/2023
+         */
 
+        [InverseProperty("IdAvis")]
+        public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
+
+        //----------------------------------------------
 
 
 
