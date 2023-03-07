@@ -6,34 +6,30 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_e_signalement_sig")]
     public partial class Signalement
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [ForeignKey("IdClient")]
-        [Column("cli_id")]
-        public int IdClient { get; set; }
-
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [ForeignKey("IdClub")]
-        [Column("clu_id")]
-        public int IdClub { get; set; }
-
-        [Key]
-        [ForeignKey("IdAvis")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("avi_id")]
-        public int IdAvis { get; set; }
-
-        [Key]
-        [ForeignKey("IdTypeSignalement")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("tsi_id")]
-        public int IdTypeSignalement { get; set; }
-
 
         [Key]
         [Column("sig_id")]
         public int IdSignalement { get; set; }
+
+        [ForeignKey("IdClient")]
+        [Column("cli_id")]
+        public int IdClient { get; set; }
+
+        
+       
+        [ForeignKey("IdClub")]
+        [Column("clu_id")]
+        public int IdClub { get; set; }
+
+      
+        [ForeignKey("IdAvis")]
+        [Column("avi_id")]
+        public int IdAvis { get; set; }
+
+        
+        [ForeignKey("IdTypeSignalement")]
+        [Column("tsi_id")]
+        public int IdTypeSignalement { get; set; }
 
         [Required]
         [Column("sig_description")]

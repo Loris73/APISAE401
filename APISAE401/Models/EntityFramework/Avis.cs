@@ -23,7 +23,7 @@ namespace APISAE401.Models.EntityFramework
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("avi_id")]
-        public int IDAvis { get; set; }
+        public int IdAvis { get; set; }
 
         [Required]
         [StringLength(255)]
