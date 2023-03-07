@@ -116,8 +116,8 @@ namespace APISAE401.Models.EntityFramework
          * InverseProperty permettant de Recuperer l'IdClient dans la table Reponse
          * Modifié le 07/03/2023
          */
-        [InverseProperty("ClientNavigation")]
-        public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
+        [InverseProperty("ClientReponsesNavigation")]
+        public virtual ICollection<Reponse> ReponsesClientNavigation { get; set; } = new List<Reponse>();
 
         //----------------------------------------------  
 
