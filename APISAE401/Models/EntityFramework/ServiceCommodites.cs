@@ -19,17 +19,25 @@ namespace APISAE401.Models.EntityFramework
         public int IdServiceCommodites { get; set; }
 
         [Required]
-        [ForeignKey("cmd_id")]
-        [InverseProperty("CommoditesNavigation")]
-        public virtual ICollection<Commodites> IdCommodites { get; set; } = new List<Commodites>();
+        [Column("cmd_id")]
+        public int IdCommodites { get; set; }
 
         [Required]
         [Column("sct_nom")]
         [StringLength(255)]
         public string NomServiceCommodites { get; set; }
+        //==========================================================================================================
 
-        [InverseProperty("ServiceCommoditesNaviguation")]
-        public virtual ICollection<AvoirComme> AvoirCommeServiceCommodites { get; set; } = new List<AvoirComme>();
+        //==========================================================================================================
+        //ForeignKeys => IdClient, IdClub, IdAvis
+
+        [ForeignKey("IdCommodites")]
+        [InverseProperty("ServiceCommoditesNavigation")]
+        public virtual Commodites CommoditesNavigation { get; set; } = new Commodites();
+
+        //==========================================================================================================
+
+
 
     }
     //------------------------------

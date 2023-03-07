@@ -21,7 +21,7 @@ namespace APISAE401.Models.EntityFramework
         public int IdClub { get; set; }
 
         [Key]
-        [Column("clb_id_domaine_skiable")]
+        [Column("clb_iddomaineskiable")]
         public int IdDomaineSkiable { get; set; }
 
         [Required]
@@ -64,13 +64,16 @@ namespace APISAE401.Models.EntityFramework
         public string DocumentationClub { get; set; }
 
         //=======================================
-        //ForeignKey
+        //ForeignKey => IdDomaineSkiable 
 
-        //----a revoir----
-
+        /*----Jules---- => 
+         * InverseProperty permettant de Recuperer l'IdDomaineSkiable dans le model Club
+         * Modifié le 07/03/2023
+         */
         [ForeignKey("IdDomaineSkiable")]
-        [InverseProperty("NavigationDomaineSkiable")]
-        public virtual DomaineSkiable DomaineSkiableNav { get; set; } = null!;
+        [InverseProperty("ClubNavigation")]
+        public virtual DomaineSkiable DomaineSkiableNavigation { get; set; } = null!;
+        //---------------
 
         [ForeignKey("IdBar")]
         [InverseProperty("NavigationBar")]
@@ -84,10 +87,13 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("NavigationDisposer")]
         public virtual Disposer DisposerNav { get; set; } = null!;
 
+        //=======================================
+
+
+
         [InverseProperty("ClubTarif")]
         public virtual PointFort TarifClub { get; set; }
 
-        //=======================================
 
         //InverseProperties => IdClub
 
@@ -100,7 +106,10 @@ namespace APISAE401.Models.EntityFramework
 
         //----------------------------------------------   
 
-
+        /*----Loris---- => 
+         * InverseProperty permettant de Recuperer l'IdClub dans la table Reponse
+         * Modifié le 07/03/2023
+         */
         [InverseProperty("EstComptabilise")]
         public virtual Comptabiliser ComptabiliserNav { get; set; } = null!;
 

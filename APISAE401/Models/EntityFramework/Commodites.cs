@@ -22,14 +22,18 @@ namespace APISAE401.Models.EntityFramework
         [Column("cmd_typecommodites")]
         [StringLength(255)]
         public string TypeCommodites { get; set; }
+        //=======================================
+
+        //=======================================
+        //InverseProperty => IdCommodites
 
         /*----Jules---- => 
          * InverseProperty permettant de Recuperer l'IdCommodites dans la table ServiceCommodites
          * Modifié le 07/03/2023
          */
 
-        [InverseProperty("IdCommodites")]
-        public virtual ICollection<Commodites> CommoditesNavigation { get; set; } = new List<Commodites>();
+        [InverseProperty("CommoditesNavigation")]
+        public virtual ICollection<Commodites> ServiceCommoditesNavigation { get; set; } = new List<Commodites>();
 
         //----------------------------------------------
     }
