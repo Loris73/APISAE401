@@ -100,7 +100,7 @@ namespace APISAE401.Models.EntityFramework
         public virtual ICollection<Reservation> ReservationsNavigation { get; set; } = new List<Reservation>();
 
         /*----Jules---- => 
-         * InverseProperty permettant de Recuperer l'IdClub dans la table Reponse
+         * InverseProperty permettant de Rrecuperer l'IdClub dans la table Reponse
          * Modifié le 07/03/2023
          */
 
