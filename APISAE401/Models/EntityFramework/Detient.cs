@@ -20,6 +20,6 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdClient")]
         [InverseProperty("DetientClient")]
-        public virtual Client ClientNavigation { get; set; } = null!;
+        public virtual Client ClientCBNavigation { get; set; } = null!;
     }
 }

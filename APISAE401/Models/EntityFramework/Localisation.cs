@@ -19,8 +19,12 @@ namespace APISAE401.Models.EntityFramework
         public string? LocalisationNom { get; set; }
 
 
+
+        [InverseProperty("LocalisationNavigation")]
+        public virtual Localisation Apourloc { get; set; } = null!;
+
+
+
         
-        [InverseProperty("TransportNaviguation")]
-        public virtual ICollection<Deplacer> DeplacerTransport { get; set; } = new List<Deplacer>();
     }
 }
