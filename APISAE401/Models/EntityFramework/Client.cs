@@ -94,15 +94,20 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("ClientReservationNavigation")]
         public virtual ICollection<Reservation> ReservationClientNavigation { get; set; } = new List<Reservation>();
 
+        //==========================================================================================================
+
+        //InverseProperties => IdClient
+
         /*----Jules---- => 
-         * InverseProperty permettant de Rrecuperer l'IdClient dans la table Reponse
+         * InverseProperty permettant de Recuperer l'IdClient dans la table Reponse
          * Modifié le 07/03/2023
          */
-
-        [InverseProperty("IdClient")]
+        [InverseProperty("ClientNavigation")]
         public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
 
-        //-----------------------------------
+        //----------------------------------------------  
+
+        //==========================================================================================================
 
         public override bool Equals(object? obj)
         {

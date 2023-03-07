@@ -6,6 +6,11 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace APISAE401.Models.EntityFramework
 {
+    /*----Jules---- => 
+    * Model Reponse
+    * Modifié le 07/03/2023 par Jules
+    */
+
     [Table("t_e_club_clb")]
     [Index(nameof(IdClub), IsUnique = true)]
 
@@ -58,19 +63,8 @@ namespace APISAE401.Models.EntityFramework
         [Column("clb_documentation")]
         public string DocumentationClub { get; set; }
 
-        // Foreign Keys
-
-        /*----Jules---- => 
-         * InverseProperty permettant de Rrecuperer l'IdClub dans la table Reponse
-         * Modifié le 07/03/2023
-         */
-
-        [InverseProperty("IdClub")]
-        public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
-
-        //-----------------------------------
-
-
+        //=======================================
+        //ForeignKey
 
         //----a revoir----
 
@@ -81,7 +75,7 @@ namespace APISAE401.Models.EntityFramework
         [ForeignKey("IdBar")]
         [InverseProperty("NavigationBar")]
         public virtual Bar BarNav { get; set; } = null!;
-        
+
         [ForeignKey("IdRestaurant")]
         [InverseProperty("NavigationRestaurant")]
         public virtual Restaurant RestaurantNav { get; set; } = null!;
@@ -93,8 +87,23 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("ClubTarif")]
         public virtual PointFort TarifClub { get; set; }
 
+        //=======================================
+
+        //InverseProperties => IdClub
+
+        /*----Jules---- => 
+         * InverseProperty permettant de Recuperer l'IdClub dans la table Reponse
+         * Modifié le 07/03/2023
+         */
+        [InverseProperty("ClubNavigation")]
+        public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
+
+        //----------------------------------------------   
+
 
         [InverseProperty("LocNav")]
         public virtual Club APourClub { get; set; } = null!;
+        //=======================================
     }
+    //----------------------------------------------
 }
