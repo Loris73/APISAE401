@@ -14,21 +14,23 @@ namespace APISAE401.Models.EntityFramework
 
     public partial class Reponse
     {
+        //=======================================
+        //Properties du model Reponse
         [Key]
         [Column("rps_id")]
         public int IdReponse { get; set; }
 
-        [ForeignKey("clt_id")]
-        [InverseProperty("ReponsesNavigation")]
-        public virtual Client IdClient { get; set; } = new Client();
+        [Key]
+        [Column("clt_id")]
+        public int IdClient { get; set; }
 
-        [ForeignKey("clb_id")]
-        [InverseProperty("ReponsesNavigation")]
-        public virtual Club IdClub { get; set; } = new Club();
+        [Key]
+        [Column("clb_id")]
+        public int IdClub { get; set; }
 
-        [ForeignKey("avi_id")]
-        [InverseProperty("ReponsesNavigation")]
-        public virtual Avis IdAvis { get; set; } = new Avis();
+        [Key]
+        [Column("avi_id")]
+        public int IdAvis { get; set; }
 
         [Required]
         [Column("rps_titre")]
@@ -38,7 +40,23 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         [Column("rps_commentaire")]
         public string CommentaireReponse { get; set; }
+        //=======================================
 
+        //=======================================
+        //ForeignKeys => IdClient, IdClub, IdAvis
+
+        [ForeignKey("IdClient")]
+        [InverseProperty("ReponsesNavigation")]
+        public virtual Client ClientNavigation { get; set; } = new Client();
+
+        [ForeignKey("IdClub")]
+        [InverseProperty("ReponsesNavigation")]
+        public virtual Club ClubNavigation { get; set; } = new Club();
+
+        [ForeignKey("IdAvis")]
+        [InverseProperty("ReponsesNavigation")]
+        public virtual Avis AvisNavigation { get; set; } = new Avis();
+        //=======================================
     }
     //------------------------------
 }

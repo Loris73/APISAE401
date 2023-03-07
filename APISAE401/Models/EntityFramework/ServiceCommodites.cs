@@ -4,6 +4,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace APISAE401.Models.EntityFramework
 {
+    /*----Jules---- => 
+    * Model Reponse
+    * Modifié le 07/03/2023 par Jules
+    */
+
     [Table("t_e_servicecommodites_sct")]
     [Index(nameof(IdServiceCommodites), IsUnique = true)]
 
@@ -27,4 +32,5 @@ namespace APISAE401.Models.EntityFramework
         public virtual ICollection<AvoirComme> AvoirCommeServiceCommodites { get; set; } = new List<AvoirComme>();
 
     }
+    //------------------------------
 }
