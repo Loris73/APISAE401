@@ -105,5 +105,4 @@ namespace APISAE401.Models.EntityFramework
         public virtual Club APourClub { get; set; } = null!;
         //=======================================
     }
-    //----------------------------------------------
 }

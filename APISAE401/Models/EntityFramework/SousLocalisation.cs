@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace APISAE401.Models.EntityFramework
 {
+    [Table("t_j_souslocalisation_slo")]
     public partial class SousLocalisation
     {
         [Key]

@@ -42,9 +42,14 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("ServiceCommoditesNaviguation")]
         public virtual ICollection<AvoirComme> AvoirCommeServiceCommodites { get; set; } = new List<AvoirComme>();
 
-        [InverseProperty("TypeChambreTarif")]
-        public virtual TypeChambre TarifChambre { get; set; }
+        [InverseProperty("TypeChambreEstComptabilise")] 
+        public virtual Comptabiliser ComptabiliserTypeChambreNav { get; set; } = null!;
 
+        [InverseProperty("TypeChambreTarif")]
+        public virtual TypeChambre TarifChambre { get; set; } = null!;
+
+        [InverseProperty("ChambreReservationNavigation")] 
+        public virtual DesirReserve ChambreReserve { get; set; } = null!;
 
         public override bool Equals(object? obj)
         {
@@ -54,12 +59,25 @@ namespace APISAE401.Models.EntityFramework
                    TypeChambreDimension == chambre.TypeChambreDimension &&
                    TypeChambreCapacite == chambre.TypeChambreCapacite &&
                    TypeChambreDescription == chambre.TypeChambreDescription &&
-                   EqualityComparer<ICollection<APourPf>>.Default.Equals(APourTypeChambre, chambre.APourTypeChambre);
+                   EqualityComparer<ICollection<APourPf>>.Default.Equals(APourTypeChambre, chambre.APourTypeChambre) &&
+                   EqualityComparer<ICollection<AvoirComme>>.Default.Equals(AvoirCommeServiceCommodites, chambre.AvoirCommeServiceCommodites) &&
+                   EqualityComparer<Comptabiliser>.Default.Equals(ComptabiliserTypeChambreNav, chambre.ComptabiliserTypeChambreNav) &&
+                   EqualityComparer<TypeChambre>.Default.Equals(TarifChambre, chambre.TarifChambre);
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(TypeChambreId, TypeChambreNom, TypeChambreDimension, TypeChambreCapacite, TypeChambreDescription, APourTypeChambre);
+            HashCode hash = new HashCode();
+            hash.Add(TypeChambreId);
+            hash.Add(TypeChambreNom);
+            hash.Add(TypeChambreDimension);
+            hash.Add(TypeChambreCapacite);
+            hash.Add(TypeChambreDescription);
+            hash.Add(APourTypeChambre);
+            hash.Add(AvoirCommeServiceCommodites);
+            hash.Add(ComptabiliserTypeChambreNav);
+            hash.Add(TarifChambre);
+            return hash.ToHashCode();
         }
     }
 }

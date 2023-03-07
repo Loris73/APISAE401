@@ -23,6 +23,6 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("loc_id")]
         [InverseProperty("APourClub")]
-        public virtual Club LocNavNavigation { get; set; } = null!;
+        public virtual Club LocNav { get; set; } = null!;
     }
 }
