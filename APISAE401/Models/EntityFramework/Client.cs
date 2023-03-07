@@ -81,19 +81,17 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         public string? PasswordClient { get; set; }
 
-
         //A update
-        [ForeignKey("IdTypeClient")]
         [Column("clt_idtypeclient")]
         [Required]
         public int IdTypeClient { get; set; }
 
 
-        [ForeignKey("tpc_idtypeclient")]
+        [ForeignKey("IdTypeClient")]
         [InverseProperty("ClientsNavigation")]
-        public virtual TypeClient TypeClient { get; set; } = null!;
+        public virtual TypeClient TypeClientNavigation { get; set; } = null!;
 
-        [InverseProperty("ClientNavigation")]
+        [InverseProperty("ClientCBNavigation")]
         public virtual Detient DetientClient { get; set; } = null!;
 
         [InverseProperty("IDClient")]
