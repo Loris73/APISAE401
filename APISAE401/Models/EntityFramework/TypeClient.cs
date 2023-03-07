@@ -18,8 +18,8 @@ namespace APISAE401.Models.EntityFramework
         [Column("tpc_intituletypeclient", TypeName = "varchar")]
         public string? IntituleTypeClient { get; set; }
 
-        [InverseProperty("TypeClientNavigation")]
-        public virtual ICollection<Client> ClientNavigation { get; set; } = new List<Client>();
+        [InverseProperty("ClientTypeClientNavigation")]
+        public virtual ICollection<Client> TypeClientClientNavigation { get; set; } = new List<Client>();
     }
 }
 

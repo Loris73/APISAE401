@@ -81,13 +81,13 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         public string? PasswordClient { get; set; }
 
-        //A update
+        // Clé étrangère : IdTypeClient
         [Column("tpc_idtypeclient")]
         public int IdTypeClient { get; set; }
 
         [ForeignKey("IdTypeClient")]
-        [InverseProperty("ClientNavigation")]
-        public virtual TypeClient TypeClientNavigation { get; set; }
+        [InverseProperty("TypeClientClientNavigation")]
+        public virtual TypeClient ClientTypeClientNavigation { get; set; }
 
 
         //==========================================================================================================
@@ -97,8 +97,18 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
 
-        [InverseProperty("ClientNavigation")]
-        public virtual ICollection<Reservation> ReservationNavigation { get; set; } = new List<Reservation>();
+        [InverseProperty("ReservationClientNavigation")]
+        public virtual ICollection<Reservation> ClientReservationNavigation { get; set; } = new List<Reservation>();
+
+        //==========================================================================================================
+
+        /*----Matheo---- => 
+         * InverseProperty permettant de Recuperer l'IdClient dans la table Reservation
+         * Modifié le 07/03/2023
+         */
+
+        [InverseProperty("AvisClientNavigation")]
+        public virtual ICollection<Avis> ClientAvisNavigation { get; set; } = new List<Avis>();
         
         //==========================================================================================================
 
@@ -107,8 +117,8 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
 
-        [InverseProperty("ClientCBNavigation")]
-        public virtual Detient DetientNavigation { get; set; }
+        [InverseProperty("CarteBancaireClientNavigation")]
+        public virtual Detient ClientDetientNavigation { get; set; }
         
         //==========================================================================================================
 

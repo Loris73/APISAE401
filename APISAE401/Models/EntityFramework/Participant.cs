@@ -35,8 +35,10 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         public DateTime DateNaissanceParticipant { get; set; }
 
-        [InverseProperty("ReservationNavigation")]
-        public virtual Participer ParticiperParticipant { get; set; } = null!;
+
+
+        [InverseProperty("ParticiperParticipantNaviguation")]
+        public virtual ICollection<Participer> ParticipantParticiperNavigation { get; set; } = new List<Participer>();
 
     }
 }
