@@ -56,9 +56,17 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("AvisNavigation")]
         public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
 
-        // InverseProperty permettant de Recuperer l'IdAvis dans la table Signalement
+        //----------------------------------------------
+
+        /*----Lucas---- => 
+         * InverseProperty permettant de Recuperer l'IdAvis dans la table Signalement
+         * Modifié le 07/03/2023
+         */
+
         [InverseProperty("AvisNavigation")]
         public virtual ICollection<Signalement> SignalementNavigation { get; set; } = new List<Signalement>();
+
+        //=======================================
 
         //----------------------------------------------
     }

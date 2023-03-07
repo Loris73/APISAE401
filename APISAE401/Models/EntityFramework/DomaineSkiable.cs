@@ -6,11 +6,16 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace APISAE401.Models.EntityFramework
 {
+    /*----Jules---- => 
+    * Model Commodites
+    * Modifié le 07/03/2023 par Jules
+    */
     [Table("t_e_domaineskiable_skb")]
     [Index(nameof(IdDomaineSkiable), IsUnique = true)]
 
     public partial class DomaineSkiable
     {
+        //=========PROPERTIES=============
         [Key]
         [Column("skb_id")]
         public int IdDomaineSkiable { get; set; }
@@ -47,10 +52,18 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         [Column("skb_descritpion")]
         public string descriptionDomaineSkiable { get; set; }
+        //=======================================
 
+        //=======================================
+        /*----Jules---- => 
+         * InverseProperty permettant de Recuperer l'IdDomaineSkiable dans le model Club
+         * Modifié le 07/03/2023
+         */
+        [InverseProperty("DomaineSkiableNavigation")]
+        public virtual ICollection<Club> ClubNavigation { get; set; } = new List<Club>();
 
+        //=======================================
 
-        [InverseProperty("DomaineSkiableNav")]
-        public virtual ICollection<Club> NavigationDomaineSkiable { get; set; } = new List<Club>();
     }
+    //------------------------------
 }

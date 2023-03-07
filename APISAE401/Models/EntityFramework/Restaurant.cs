@@ -26,22 +26,19 @@ namespace APISAE401.Models.EntityFramework
         [Column("rsn_descritpion")]
         public string DescriptionRestaurant { get; set; }
 
-        [InverseProperty("RestaurantNav")]
-        public virtual ICollection<Restaurant> NavigationRestaurant { get; set; } = new List<Restaurant>();
+        //=======================================
+        //ForeignKey => IdDomaineSkiable 
 
-        public override bool Equals(object? obj)
-        {
-            return obj is Restaurant restaurant &&
-                   this.IdRestaurant == restaurant.IdRestaurant &&
-                   this.IdClub == restaurant.IdClub &&
-                   this.NomRestaurant == restaurant.NomRestaurant &&
-                   this.DescriptionRestaurant == restaurant.DescriptionRestaurant &&
-                   EqualityComparer<ICollection<Restaurant>>.Default.Equals(this.NavigationRestaurant, restaurant.NavigationRestaurant);
-        }
+        /*----Jules---- => 
+         * ForeignKey permettant de recuperer l'IdClub dans le model Restaurant
+         * Modifié le 07/03/2023
+         */
+        [ForeignKey("IdClub")]
+        [InverseProperty("RestaurantNavigation")]
+        public virtual Club ClubNavigation { get; set; } = null!;
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(this.IdRestaurant, this.IdClub, this.NomRestaurant, this.DescriptionRestaurant, this.NavigationRestaurant);
-        }
+        //---------------------------------------------
+        //=======================================
+
     }
 }
