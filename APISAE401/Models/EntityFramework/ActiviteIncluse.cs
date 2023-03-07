@@ -8,7 +8,6 @@ namespace APISAE401.Models.EntityFramework
     {
         
         [Key]
-        [ForeignKey("IdActivite")]
         [Column("act_id")]
         public int IdActivite { get; set; }
 
@@ -50,8 +49,9 @@ namespace APISAE401.Models.EntityFramework
         [Column("aci_frequenceactivite")]
         public string? FrequenceActivite { get; set; }
 
-        [InverseProperty("ActiviteIncluseActivite")]
-        public virtual Activite ActiviteActiviteIncluse { get; set; } = null!;
+        [ForeignKey("IdActivite")]
+        [InverseProperty("ActiviteIncluseNavigation")]
+        public virtual Activite ActiviteNavigation { get; set; } = new Activite();
 
 
 

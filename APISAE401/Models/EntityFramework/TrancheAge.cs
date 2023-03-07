@@ -7,11 +7,7 @@ namespace APISAE401.Models.EntityFramework
     public partial class TrancheAge
     {
         
-        public TrancheAge()
-        {
-            ActiviteTrancheAge = new HashSet<Activite>();
 
-        }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -25,7 +21,7 @@ namespace APISAE401.Models.EntityFramework
 
 
 
-        [InverseProperty("TrancheAgeActivite")]
-        public virtual ICollection<Activite> ActiviteTrancheAge { get; set; } = null!;
+        [InverseProperty("TrancheAgeNavigation")]
+        public virtual ICollection<Activite> ActiviteNavigation { get; set; } = new List<Activite>();
     }
 }

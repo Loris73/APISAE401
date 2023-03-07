@@ -17,13 +17,11 @@ namespace APISAE401.Models.EntityFramework
         [Column("act_id")]
         public int IdActivite { get; set; }
 
-       
-        [ForeignKey("IdTrancheAge")]
+
         [Column("tca_id")]
         public int IdTrancheAge { get; set; }
 
-       
-        [ForeignKey("IdTypeActivite")]
+
         [Column("tra_id")]
         public int IdTypeActivite { get; set; }
 
@@ -51,21 +49,28 @@ namespace APISAE401.Models.EntityFramework
         public string? FrequenceActivite { get; set; }
 
 
-        [InverseProperty("ActiviteTypeActivite")]
-        public virtual TypeActivite TypeActiviteActivite { get; set; } = null!;
+        //=======================================
+        //ForeignKeys => IdTrancheAge,IDTypeActivite,Proposer
 
-        [InverseProperty("ActiviteTrancheAge")]
-        public virtual TrancheAge TrancheAgeActivite { get; set; } = null!;
+        [ForeignKey("IdTrancheAge")]
+        [InverseProperty("ActiviteNavigation")]
+        public virtual TrancheAge TrancheAgeNavigation { get; set; } = new TrancheAge();
 
-        [InverseProperty("ActiviteProposer")]
-        public virtual Proposer ProposerActivite { get; set; } = null!;
+        [ForeignKey("IdTypeActivite")]
+        [InverseProperty("ActiviteNavigation")]
+        public virtual TypeActivite TypeActiviteNavigation { get; set; } = new TypeActivite();
 
-        [InverseProperty("ActiviteActiviteIncluse")]
-        public virtual ICollection<ActiviteIncluse> ActiviteIncluseActivite { get; set; } = null!;
-
-        [InverseProperty("ActiviteActiviteALaCarte")]
-        public virtual ICollection<ActiviteALaCarte> ActiviteALaCarteActivite { get; set; } = null!;
+        [ForeignKey("IdActivite")]
+        [InverseProperty("ActiviteNavigation")]
+        public virtual Proposer ProposerNavigation { get; set; } = new Proposer();
 
 
+        //=======================================
+
+        [InverseProperty("ActiviteNavigation")]
+        public virtual ICollection<ActiviteIncluse> ActiviteIncluseNavigation { get; set; } = new List<ActiviteIncluse>();
+
+        [InverseProperty("ActiviteNavigation")]
+        public virtual ICollection<ActiviteALaCarte> ActiviteALaCarteNavigation { get; set; } = new List<ActiviteALaCarte>();
     }
 }

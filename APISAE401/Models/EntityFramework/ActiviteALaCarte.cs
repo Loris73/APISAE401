@@ -7,13 +7,8 @@ namespace APISAE401.Models.EntityFramework
     public class ActiviteALaCarte
     {
 
-        public ActiviteALaCarte()
-        {
-            PouvoirActiviteALaCarte = new HashSet<Pouvoir>();
-        }
 
         [Key]
-        [ForeignKey("IdActivite")]
         [Column("act_id")]
         public int IdActivite { get; set; }
 
@@ -25,7 +20,6 @@ namespace APISAE401.Models.EntityFramework
         public int IdTrancheAge { get; set; }
 
         
-        [ForeignKey("IdTypeActivite")]
         [Column("alc_id")]
         public int IdTypeActivite { get; set; }
 
@@ -56,10 +50,17 @@ namespace APISAE401.Models.EntityFramework
         [Column("alc_prixminactivite")]
         public int? PrixMinActivite { get; set; }
 
-        [InverseProperty("ActiviteALaCarteActivite")]
-        public virtual Activite ActiviteActiviteALacarte { get; set; } = null!;
+        //=======================================
+        //ForeignKeys => IdActivite
 
-        [InverseProperty("ActiviteALaCartePouvoir")]
-        public virtual ICollection<Pouvoir> PouvoirActiviteALaCarte { get; set; } = null!; 
+        [ForeignKey("IdActivite")]
+        [InverseProperty("ActiviteALaCarteNavigation")]
+        public virtual Activite ActiviteNavigation { get; set; } = new Activite();
+
+
+        //=======================================
+
+
+        [InverseProperty("PouvoirNavigation")]
+        public virtual ICollection<Pouvoir> PouvoirNavigation { get; set; } = new List<Pouvoir>();
     }
-}
