@@ -60,8 +60,17 @@ namespace APISAE401.Models.EntityFramework
 
         // Foreign Keys
 
+        /*----Jules---- => 
+         * InverseProperty permettant de Rrecuperer l'IdClub dans la table Reponse
+         * Modifié le 07/03/2023
+         */
+
         [InverseProperty("IdClub")]
         public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
+
+        //-----------------------------------
+
+
 
         //----a revoir----
 
@@ -83,5 +92,9 @@ namespace APISAE401.Models.EntityFramework
 
         [InverseProperty("ClubTarif")]
         public virtual PointFort TarifClub { get; set; }
+
+
+        [InverseProperty("LocNav")]
+        public virtual Club APourClub { get; set; } = null!;
     }
 }
