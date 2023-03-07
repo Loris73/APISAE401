@@ -8,7 +8,7 @@ namespace APISAE401.Models.EntityFramework
     {
         
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [ForeignKey("IdActivite")]
         [Column("act_id")]
         public int IdActivite { get; set; }
 
@@ -17,13 +17,13 @@ namespace APISAE401.Models.EntityFramework
         [Column("aci_id")]
         public int IdActiviteIncluse { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [ForeignKey("IdTrancheAge")]
+       
+    
         [Column("aci_idtrancheage")]
         public int IdTrancheAge { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [ForeignKey("IdTypeActivite")]
+        
+      
         [Column("aci_idtypeactivite")]
         public int IdTypeActivite { get; set; }
 
