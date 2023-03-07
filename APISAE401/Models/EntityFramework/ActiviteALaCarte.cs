@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace APISAE401.Models.EntityFramework
 {
-    [Table("t_e_activitealacarte_alc")]
+    [Table("t_e_activitealacarte")]
     public class ActiviteALaCarte
     {
 
@@ -13,23 +13,18 @@ namespace APISAE401.Models.EntityFramework
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [ForeignKey("IdActivite")]
         [Column("act_id")]
         public int IdActivite { get; set; }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("alc_id")]
         public int IdActiviteALaCarte { get; set; }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [ForeignKey("IdTrancheAge")]
         [Column("alc_id")]
         public int IdTrancheAge { get; set; }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        
         [ForeignKey("IdTypeActivite")]
         [Column("alc_id")]
         public int IdTypeActivite { get; set; }
