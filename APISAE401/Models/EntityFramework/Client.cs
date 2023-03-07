@@ -99,6 +99,16 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("IDClient")]
         public virtual ICollection<Reservation> ReservationsNavigation { get; set; } = new List<Reservation>();
 
+        /*----Jules---- => 
+         * InverseProperty permettant de Rrecuperer l'IdClient dans la table Reponse
+         * Modifié le 07/03/2023
+         */
+
+        [InverseProperty("IdClient")]
+        public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
+
+        //-----------------------------------
+
         public override bool Equals(object? obj)
         {
             return obj is Client client &&
