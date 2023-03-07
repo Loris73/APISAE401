@@ -73,7 +73,8 @@ namespace APISAE401.Models.EntityFramework
         [ForeignKey("IdDomaineSkiable")]
         [InverseProperty("ClubNavigation")]
         public virtual DomaineSkiable DomaineSkiableNavigation { get; set; } = null!;
-        //---------------
+
+        //---------------------------------------------
 
         [ForeignKey("IdBar")]
         [InverseProperty("NavigationBar")]
@@ -88,14 +89,16 @@ namespace APISAE401.Models.EntityFramework
         public virtual Disposer DisposerNav { get; set; } = null!;
 
         //=======================================
+        //InverseProperties => IdClub
 
-
-
+        /*----Mathéo---- => 
+         * InverseProperty permettant de Recuperer l'IdClub dans la table Reponse
+         * Modifié le 07/03/2023
+         */
         [InverseProperty("ClubTarif")]
         public virtual PointFort TarifClub { get; set; }
 
-
-        //InverseProperties => IdClub
+        //----------------------------------------------
 
         /*----Jules---- => 
          * InverseProperty permettant de Recuperer l'IdClub dans la table Reponse
@@ -107,7 +110,6 @@ namespace APISAE401.Models.EntityFramework
         //----------------------------------------------   
 
         /*----Loris---- => 
-         * InverseProperty permettant de Recuperer l'IdClub dans la table Reponse
          * Modifié le 07/03/2023
          */
         [InverseProperty("EstComptabilise")]
@@ -115,6 +117,8 @@ namespace APISAE401.Models.EntityFramework
 
         [InverseProperty("LocNav")]
         public virtual Club APourClub { get; set; } = null!;
+
+        //----------------------------------------------
         //=======================================
 
     }
