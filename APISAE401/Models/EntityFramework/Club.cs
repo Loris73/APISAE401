@@ -93,16 +93,16 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
         // InverseProperty permettant de recuperer l'IdClub dans la table Reponse
-        [InverseProperty("ClubNavigation")]
-        public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
+        [InverseProperty("ClubReponsesNavigation")]
+        public virtual ICollection<Reponse> ReponsesClubNavigation { get; set; } = new List<Reponse>();
 
         // InverseProperty permettant de recuperer l'IdClub dans la table Bar
-        [InverseProperty("ClubNavigation")]
-        public virtual ICollection<Bar> BarNavigation { get; set; } = new List<Bar>();
+        [InverseProperty("ClubBarNavigation")]
+        public virtual ICollection<Bar> BarClubNavigation { get; set; } = new List<Bar>();
 
         // InverseProperty permettant de recuperer l'IdClub dans la table Restaurant 
-        [InverseProperty("ClubNavigation")]
-        public virtual ICollection<Restaurant> RestaurantNavigation { get; set; } = new List<Restaurant>();
+        [InverseProperty("ClubRestaurantNavigation")]
+        public virtual ICollection<Restaurant> RestaurantClubNavigation { get; set; } = new List<Restaurant>();
         //-------------------------------------------------------------------------------   
 
 

@@ -38,8 +38,8 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
         [ForeignKey("IdClub")]
-        [InverseProperty("BarNavigation")]
-        public virtual Club ClubNavigation { get; set; } = null!;
+        [InverseProperty("BarClubNavigation")]
+        public virtual Club ClubBarNavigation { get; set; } = null!;
 
         //---------------------------------------------
         //=======================================
