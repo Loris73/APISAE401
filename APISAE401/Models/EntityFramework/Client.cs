@@ -82,14 +82,11 @@ namespace APISAE401.Models.EntityFramework
         public string? PasswordClient { get; set; }
 
         //A update
-        [Column("tpc_idtypeclient")]
-        [Required]
+        [ForeignKey("tpc_idtypeclient")]
+        [InverseProperty(nameof(TypeClient.ClientTypeClientNavigation))]
         public int IdTypeClient { get; set; }
 
 
-        [ForeignKey("IdTypeClient")]
-        [InverseProperty("ClientsNavigation")]
-        public virtual TypeClient TypeClientNavigation { get; set; } = null!;
 
         [InverseProperty("ClientCBNavigation")]
         public virtual Detient DetientClient { get; set; } = null!;
