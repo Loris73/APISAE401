@@ -60,7 +60,7 @@ namespace APISAE401.Models.EntityFramework
 
         // Foreign Keys
 
-        [InverseProperty("IdClient")]
+        [InverseProperty("IdClub")]
         public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
 
         //----a revoir----
