@@ -31,5 +31,8 @@ namespace APISAE401.Models.EntityFramework
 
         [InverseProperty("TransportNavigation")]
         public virtual ICollection<Deplacer> DeplacerTransport { get; set; } = new List<Deplacer>();
+
+        [InverseProperty("ReservationChambreNaviguation")] 
+        public virtual DesirReserve ReservationChambre { get; set; } = null!;
     }
 }
