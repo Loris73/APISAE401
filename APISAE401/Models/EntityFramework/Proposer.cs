@@ -8,22 +8,22 @@ namespace APISAE401.Models.EntityFramework
     public partial class Proposer
     {
         [Key]
-        [ForeignKey("IdClub")]
+        
         [Column("clb_id")]
         public int IdClub { get; set; }
 
-
         [Key]
-        [ForeignKey("IdActivite")]
         [Column("act_id")]
         public int IdActivite { get; set; }
 
-        [InverseProperty("ProposerClub")]
-        public virtual Club ClubProposer { get; set; } = null!;
 
+        [ForeignKey("IdClub")]
+        [InverseProperty("ProposerNavigation")]
+        public virtual Club ClubNavigation { get; set; } = new Club();
 
-        [InverseProperty("ProposerActivite")]
-        public virtual Activite ActiviteProposer { get; set; } = null!;
+        [ForeignKey("IdActivite")]
+        [InverseProperty("ProposerNavigation")]
+        public virtual Activite ActiviteNavigation { get; set; } = new Activite();
 
     }
 }

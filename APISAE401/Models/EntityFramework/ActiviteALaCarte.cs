@@ -19,7 +19,7 @@ namespace APISAE401.Models.EntityFramework
         [Column("alc_id")]
         public int IdTrancheAge { get; set; }
 
-        
+
         [Column("alc_id")]
         public int IdTypeActivite { get; set; }
 
@@ -64,3 +64,4 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("PouvoirNavigation")]
         public virtual ICollection<Pouvoir> PouvoirNavigation { get; set; } = new List<Pouvoir>();
     }
+}

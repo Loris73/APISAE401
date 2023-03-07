@@ -60,11 +60,6 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("ActiviteNavigation")]
         public virtual TypeActivite TypeActiviteNavigation { get; set; } = new TypeActivite();
 
-        [ForeignKey("IdActivite")]
-        [InverseProperty("ActiviteNavigation")]
-        public virtual Proposer ProposerNavigation { get; set; } = new Proposer();
-
-
         //=======================================
 
         [InverseProperty("ActiviteNavigation")]
@@ -72,5 +67,8 @@ namespace APISAE401.Models.EntityFramework
 
         [InverseProperty("ActiviteNavigation")]
         public virtual ICollection<ActiviteALaCarte> ActiviteALaCarteNavigation { get; set; } = new List<ActiviteALaCarte>();
+
+        [InverseProperty("ActiviteNavigation")]
+        public virtual ICollection<Proposer> ProposerNavigation { get; set; } = new List<Proposer>();
     }
 }
