@@ -13,7 +13,6 @@ namespace APISAE401.Models.EntityFramework
 
         [Key]
         [Column("act_id")]
-        [ForeignKey("IdActivite")]
         public int IdActivite { get; set; }
 
         [Key]
@@ -21,11 +20,37 @@ namespace APISAE401.Models.EntityFramework
         [Column("alc_id")]
         public int IdActiviteALaCarte { get; set; }
 
-        [InverseProperty("PouvoirReservation")]
-        public virtual Reservation ReservationPouvoir { get; set; } = null!;
+        //=======================================
+        //ForeignKeys => IdClient, IdClub, IdAvis
 
-        [InverseProperty("PouvoirActiviteALaCarte")]
-        public virtual ActiviteALaCarte ActiviteALaCartePouvoir { get; set; } = null!;
+        [ForeignKey("IdReservation")]
+        [InverseProperty("PouvoirNavigation")]
+        public virtual Reservation ReservationNavigation { get; set; } = new Reservation();
+
+        [ForeignKey("IdActivite")]
+        [InverseProperty("PouvoirNavigation")]
+        public virtual Activite ActiviteNavigation { get; set; } = new Activite();
+
+        [ForeignKey("IdActiviteALaCarte")]
+        [InverseProperty("PouvoirNavigation")]
+        public virtual ActiviteALaCarte ActiviteALaCarteNavigation { get; set; } = new ActiviteALaCarte();
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Pouvoir pouvoir &&
+                   IdReservation == pouvoir.IdReservation &&
+                   IdActivite == pouvoir.IdActivite &&
+                   IdActiviteALaCarte == pouvoir.IdActiviteALaCarte &&
+                   EqualityComparer<Reservation>.Default.Equals(ReservationNavigation, pouvoir.ReservationNavigation) &&
+                   EqualityComparer<Activite>.Default.Equals(ActiviteNavigation, pouvoir.ActiviteNavigation) &&
+                   EqualityComparer<ActiviteALaCarte>.Default.Equals(ActiviteALaCarteNavigation, pouvoir.ActiviteALaCarteNavigation);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(IdReservation, IdActivite, IdActiviteALaCarte, ReservationNavigation, ActiviteNavigation, ActiviteALaCarteNavigation);
+        }
+        //=======================================
 
     }
 }

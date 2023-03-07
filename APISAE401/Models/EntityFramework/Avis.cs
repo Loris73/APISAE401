@@ -9,14 +9,11 @@ namespace APISAE401.Models.EntityFramework
     public partial class Avis
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [ForeignKey("IdClient")]
         [Column("cli_id")]
         public int IdClient { get; set; }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [ForeignKey("IdClub")]
         [Column("clu_id")]
         public int IdClub { get; set;}
 
@@ -37,17 +34,20 @@ namespace APISAE401.Models.EntityFramework
         [Column("avi_commentaire")]
         public string commentaireAvis { get; set; }
 
-        [InverseProperty("AvisClient")]
-        public virtual Client ClientAvis { get; set; } = null!;
 
-        [InverseProperty("AvisClub")]
-        public virtual Club ClubAvis { get; set; } = null!;
+        //=======================================
+        //ForeignKeys => IdClient, IdClub
 
-        [InverseProperty("AvisSignalement")]
-        public virtual ICollection<Signalement> SignalementAvis { get; set; } = null!;
+        [ForeignKey("IdClient")]
+        [InverseProperty("AvisNavigation")]
+        public virtual Client ClientNavigation { get; set; } = new Client();
 
-        [InverseProperty("AvisReponse")]
-        public virtual ICollection<Signalement> ReponseAvis { get; set; } = null!;
+        [ForeignKey("IdClub")]
+        [InverseProperty("AvisNavigation")]
+        public virtual Club ClubNavigation { get; set; } = new Club();
+
+       
+        //=======================================
 
         /*----Jules---- => 
          * InverseProperty permettant de Recuperer l'IdAvis dans la table Reponse
@@ -55,6 +55,49 @@ namespace APISAE401.Models.EntityFramework
          */
         [InverseProperty("AvisNavigation")]
         public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
+
+        //----------------------------------------------
+
+        /*----Lucas---- => 
+         * InverseProperty permettant de Recuperer l'IdAvis dans la table Signalement
+         * Modifié le 07/03/2023
+         */
+
+        [InverseProperty("AvisNavigation")]
+        public virtual ICollection<Signalement> SignalementNavigation { get; set; } = new List<Signalement>();
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Avis avis &&
+                   IdClient == avis.IdClient &&
+                   IdClub == avis.IdClub &&
+                   IdAvis == avis.IdAvis &&
+                   titreAvis == avis.titreAvis &&
+                   noteAvis == avis.noteAvis &&
+                   commentaireAvis == avis.commentaireAvis &&
+                   EqualityComparer<Client>.Default.Equals(ClientNavigation, avis.ClientNavigation) &&
+                   EqualityComparer<Club>.Default.Equals(ClubNavigation, avis.ClubNavigation) &&
+                   EqualityComparer<ICollection<Reponse>>.Default.Equals(ReponsesNavigation, avis.ReponsesNavigation) &&
+                   EqualityComparer<ICollection<Signalement>>.Default.Equals(SignalementNavigation, avis.SignalementNavigation);
+        }
+
+        public override int GetHashCode()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(IdClient);
+            hash.Add(IdClub);
+            hash.Add(IdAvis);
+            hash.Add(titreAvis);
+            hash.Add(noteAvis);
+            hash.Add(commentaireAvis);
+            hash.Add(ClientNavigation);
+            hash.Add(ClubNavigation);
+            hash.Add(ReponsesNavigation);
+            hash.Add(SignalementNavigation);
+            return hash.ToHashCode();
+        }
+
+        //=======================================
 
         //----------------------------------------------
     }

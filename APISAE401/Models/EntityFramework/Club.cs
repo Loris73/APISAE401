@@ -7,7 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace APISAE401.Models.EntityFramework
 {
     /*----Jules---- => 
-    * Model Reponse
+    * Model Club
     * Modifié le 07/03/2023 par Jules
     */
 
@@ -21,7 +21,7 @@ namespace APISAE401.Models.EntityFramework
         public int IdClub { get; set; }
 
         [Key]
-        [Column("clb_id_domaine_skiable")]
+        [Column("clb_iddomaineskiable")]
         public int IdDomaineSkiable { get; set; }
 
         [Required]
@@ -64,49 +64,58 @@ namespace APISAE401.Models.EntityFramework
         public string DocumentationClub { get; set; }
 
         //=======================================
-        //ForeignKey
-
-        //----a revoir----
-
-        [ForeignKey("IdDomaineSkiable")]
-        [InverseProperty("NavigationDomaineSkiable")]
-        public virtual DomaineSkiable DomaineSkiableNav { get; set; } = null!;
-
-        [ForeignKey("IdBar")]
-        [InverseProperty("NavigationBar")]
-        public virtual Bar BarNav { get; set; } = null!;
-
-        [ForeignKey("IdRestaurant")]
-        [InverseProperty("NavigationRestaurant")]
-        public virtual Restaurant RestaurantNav { get; set; } = null!;
-
-        [ForeignKey("IdClub")]
-        [InverseProperty("NavigationDisposer")]
-        public virtual Disposer DisposerNav { get; set; } = null!;
-
-        [InverseProperty("ClubTarif")]
-        public virtual PointFort TarifClub { get; set; }
-
-        //=======================================
-
-        //InverseProperties => IdClub
+        //ForeignKey => IdDomaineSkiable 
 
         /*----Jules---- => 
-         * InverseProperty permettant de Recuperer l'IdClub dans la table Reponse
+         * InverseProperty permettant de Recuperer l'IdDomaineSkiable dans le model Club
          * Modifié le 07/03/2023
          */
+        [ForeignKey("IdDomaineSkiable")]
         [InverseProperty("ClubNavigation")]
-        public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
+        public virtual DomaineSkiable DomaineSkiableNavigation { get; set; } = null!;
 
-        //----------------------------------------------   
+        //---------------------------------------------
+
+        //=========================================================================================================================
+        //InverseProperties => IdClub
+
+        /*----------------------------------Mathéo------------------------------------- =>  
+         * InverseProperty permettant de recuperer l'IdClub dans la table Reponse
+         * Modifié le 07/03/2023
+         */
+        [InverseProperty("ClubTarif")]
+        public virtual PointFort TarifClub { get; set; }
+        //-------------------------------------------------------------------------------   
 
 
+        /*----------------------------------Jules------------------------------------- => 
+         * InverseProperty par Jules
+         * Modifié le 07/03/2023
+         */
+        // InverseProperty permettant de recuperer l'IdClub dans la table Reponse
+        [InverseProperty("ClubReponsesNavigation")]
+        public virtual ICollection<Reponse> ReponsesClubNavigation { get; set; } = new List<Reponse>();
+
+        // InverseProperty permettant de recuperer l'IdClub dans la table Bar
+        [InverseProperty("ClubBarNavigation")]
+        public virtual ICollection<Bar> BarClubNavigation { get; set; } = new List<Bar>();
+
+        // InverseProperty permettant de recuperer l'IdClub dans la table Restaurant 
+        [InverseProperty("ClubRestaurantNavigation")]
+        public virtual ICollection<Restaurant> RestaurantClubNavigation { get; set; } = new List<Restaurant>();
+        //-------------------------------------------------------------------------------   
+
+
+        /*----------------------------------Loris------------------------------------- =>  
+         * Modifié le 07/03/2023
+         */
         [InverseProperty("EstComptabilise")]
         public virtual Comptabiliser ComptabiliserNav { get; set; } = null!;
 
         [InverseProperty("LocNav")]
         public virtual Club APourClub { get; set; } = null!;
-        //=======================================
 
+        //-------------------------------------------------------------------------------
+        //=========================================================================================================================
     }
 }

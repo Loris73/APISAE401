@@ -4,6 +4,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace APISAE401.Models.EntityFramework
 {
+    /*----Jules---- => 
+    * Model Bar
+    * Modifié le 07/03/2023 par Jules
+    */
     [Table("t_e_bar_bar")]
     [Index(nameof(IdBar), IsUnique = true)]
 
@@ -26,22 +30,20 @@ namespace APISAE401.Models.EntityFramework
         [Column("bar_descritpion")]
         public string DescriptionBar { get; set; }
 
-        [InverseProperty("BarNav")]
-        public virtual ICollection<Bar> NavigationBar { get; set; } = new List<Bar>();
+        //=======================================
+        //ForeignKey => IdDomaineSkiable 
 
-        public override bool Equals(object? obj)
-        {
-            return obj is Bar bar &&
-                   this.IdBar == bar.IdBar &&
-                   this.IdClub == bar.IdClub &&
-                   this.NomBar == bar.NomBar &&
-                   this.DescriptionBar == bar.DescriptionBar &&
-                   EqualityComparer<ICollection<Bar>>.Default.Equals(this.NavigationBar, bar.NavigationBar);
-        }
+        /*----Jules---- => 
+         * ForeignKey permettant de recuperer l'IdClub dans le model Bar
+         * Modifié le 07/03/2023
+         */
+        [ForeignKey("IdClub")]
+        [InverseProperty("BarClubNavigation")]
+        public virtual Club ClubBarNavigation { get; set; } = null!;
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(this.IdBar, this.IdClub, this.NomBar, this.DescriptionBar, this.NavigationBar);
-        }
+        //---------------------------------------------
+        //=======================================
+        
+
     }
 }
