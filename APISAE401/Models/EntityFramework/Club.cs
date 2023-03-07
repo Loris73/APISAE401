@@ -7,7 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace APISAE401.Models.EntityFramework
 {
     /*----Jules---- => 
-    * Model Reponse
+    * Model Club
     * Modifié le 07/03/2023 par Jules
     */
 
@@ -92,7 +92,7 @@ namespace APISAE401.Models.EntityFramework
         //InverseProperties => IdClub
 
         /*----Mathéo---- => 
-         * InverseProperty permettant de Recuperer l'IdClub dans la table Reponse
+         * InverseProperty permettant de recuperer l'IdClub dans la table Reponse
          * Modifié le 07/03/2023
          */
         [InverseProperty("ClubTarif")]
@@ -101,12 +101,17 @@ namespace APISAE401.Models.EntityFramework
         //----------------------------------------------
 
         /*----Jules---- => 
-         * InverseProperty permettant de Recuperer l'IdClub dans la table Reponse
+         * InverseProperty permettant de recuperer l'IdClub dans la table Reponse
          * Modifié le 07/03/2023
          */
         [InverseProperty("ClubNavigation")]
         public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
 
+        /*
+         *InverseProperty permettant de recuperer l'IdClub dans la table Bar
+         */
+        [InverseProperty("ClubNavigation")]
+        public virtual ICollection<Bar> BarNavigation { get; set; } = new List<Bar>();
         //----------------------------------------------   
 
         /*----Loris---- => 
