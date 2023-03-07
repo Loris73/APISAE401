@@ -90,7 +90,6 @@ namespace APISAE401.Models.EntityFramework
         public virtual TypeClient TypeClientNavigation { get; set; }
 
 
-
         //==========================================================================================================
 
         /*----Matheo---- => 
@@ -99,7 +98,9 @@ namespace APISAE401.Models.EntityFramework
          */
 
         [InverseProperty("ClientNavigation")]
-        public virtual ICollection<Reservation> ReservationNavigation { get; set; } = new List<Reservation>();//==========================================================================================================
+        public virtual ICollection<Reservation> ReservationNavigation { get; set; } = new List<Reservation>();
+        
+        //==========================================================================================================
 
         /*----Matheo---- => 
          * InverseProperty permettant de Recuperer l'IdClient dans la table Detient
