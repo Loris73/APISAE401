@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace APISAE401.Models.EntityFramework
 {
     [System.ComponentModel.DataAnnotations.Schema.Table("t_j_pou_pouvoir")]
-    public class Pouvoir
+    public partial class Pouvoir
     {
         [Key]
         [ForeignKey("IdReservation")]
