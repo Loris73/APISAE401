@@ -101,8 +101,12 @@ namespace APISAE401.Models.EntityFramework
         //----------------------------------------------   
 
 
+        [InverseProperty("EstComptabilise")]
+        public virtual Comptabiliser ComptabiliserNav { get; set; } = null!;
+
         [InverseProperty("LocNav")]
         public virtual Club APourClub { get; set; } = null!;
         //=======================================
+
     }
 }

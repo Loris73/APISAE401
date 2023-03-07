@@ -24,5 +24,19 @@ namespace APISAE401.Models.EntityFramework
         [ForeignKey("loc_sousloc_id")]
         [InverseProperty("APourSousLoc")]
         public virtual Localisation SousLocalisationNavigation { get; set; } = null!;
+
+        public override bool Equals(object? obj)
+        {
+            return obj is SousLocalisation localisation &&
+                   IdLocalisation == localisation.IdLocalisation &&
+                   IdSousLocalisation == localisation.IdSousLocalisation &&
+                   EqualityComparer<Localisation>.Default.Equals(LocalisationNavigation, localisation.LocalisationNavigation) &&
+                   EqualityComparer<Localisation>.Default.Equals(SousLocalisationNavigation, localisation.SousLocalisationNavigation);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(IdLocalisation, IdSousLocalisation, LocalisationNavigation, SousLocalisationNavigation);
+        }
     }
 }
