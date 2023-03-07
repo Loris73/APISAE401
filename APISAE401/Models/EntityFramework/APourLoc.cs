@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace APISAE401.Models.EntityFramework
 {
+    [Table("t_j_apourloc_alc")]
     public partial class APourLoc
     {
         [Key]

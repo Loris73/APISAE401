@@ -37,5 +37,23 @@ namespace APISAE401.Models.EntityFramework
 
         [InverseProperty("ReservationChambreNaviguation")] 
         public virtual DesirReserve ReservationChambre { get; set; } = null!;
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Reservation reservation &&
+                   IdReservation == reservation.IdReservation &&
+                   IdCleint == reservation.IdCleint &&
+                   EqualityComparer<Client>.Default.Equals(ClientReservationNavigation, reservation.ClientReservationNavigation) &&
+                   DateReservation == reservation.DateReservation &&
+                   Montant == reservation.Montant &&
+                   EqualityComparer<ICollection<Participer>>.Default.Equals(ParticiperReservation, reservation.ParticiperReservation) &&
+                   EqualityComparer<ICollection<Deplacer>>.Default.Equals(DeplacerTransport, reservation.DeplacerTransport) &&
+                   EqualityComparer<DesirReserve>.Default.Equals(ReservationChambre, reservation.ReservationChambre);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(IdReservation, IdCleint, ClientReservationNavigation, DateReservation, Montant, ParticiperReservation, DeplacerTransport, ReservationChambre);
+        }
     }
 }
