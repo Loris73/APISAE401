@@ -83,7 +83,6 @@ namespace APISAE401.Models.EntityFramework
 
 
         //A update
-        [ForeignKey("IdTypeClient")]
         [Column("clt_idtypeclient")]
         [Required]
         public int IdTypeClient { get; set; }
