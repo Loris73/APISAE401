@@ -9,14 +9,11 @@ namespace APISAE401.Models.EntityFramework
     public partial class Avis
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [ForeignKey("IdClient")]
         [Column("cli_id")]
         public int IdClient { get; set; }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [ForeignKey("IdClub")]
         [Column("clu_id")]
         public int IdClub { get; set;}
 
@@ -37,17 +34,20 @@ namespace APISAE401.Models.EntityFramework
         [Column("avi_commentaire")]
         public string commentaireAvis { get; set; }
 
-        [InverseProperty("AvisClient")]
-        public virtual Client ClientAvis { get; set; } = null!;
 
-        [InverseProperty("AvisClub")]
-        public virtual Club ClubAvis { get; set; } = null!;
+        //=======================================
+        //ForeignKeys => IdClient, IdClub
 
-        [InverseProperty("AvisSignalement")]
-        public virtual ICollection<Signalement> SignalementAvis { get; set; } = null!;
+        [ForeignKey("IdClient")]
+        [InverseProperty("AvisNavigation")]
+        public virtual Client ClientNavigation { get; set; } = new Client();
 
-        [InverseProperty("AvisReponse")]
-        public virtual ICollection<Signalement> ReponseAvis { get; set; } = null!;
+        [ForeignKey("IdClub")]
+        [InverseProperty("AvisNavigation")]
+        public virtual Club ClubNavigation { get; set; } = new Club();
+
+       
+        //=======================================
 
         /*----Jules---- => 
          * InverseProperty permettant de Recuperer l'IdAvis dans la table Reponse
@@ -55,6 +55,10 @@ namespace APISAE401.Models.EntityFramework
          */
         [InverseProperty("AvisNavigation")]
         public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
+
+        // InverseProperty permettant de Recuperer l'IdAvis dans la table Signalement
+        [InverseProperty("AvisNavigation")]
+        public virtual ICollection<Signalement> SignalementNavigation { get; set; } = new List<Signalement>();
 
         //----------------------------------------------
     }

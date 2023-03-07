@@ -7,11 +7,6 @@ namespace APISAE401.Models.EntityFramework
     public partial class TypeSignalement
     {
 
-        public TypeSignalement() 
-        {
-            SignalementTypeSignalement = new HashSet<Signalement>();
-        
-        }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,10 +18,10 @@ namespace APISAE401.Models.EntityFramework
         [Column("tsi_titretype")]
         public string? TitreTypeSignalement { get; set; }
 
+        [InverseProperty("TypeSignalementNavigation")]
+        public virtual ICollection<Signalement> SignalementNavigation { get; set; } = new List<Signalement>();
 
 
-        [InverseProperty("TypeSignalementSignalement")]
-        public virtual ICollection<Signalement> SignalementTypeSignalement { get; set; } = null!;
     }
 
 

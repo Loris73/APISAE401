@@ -36,12 +36,26 @@ namespace APISAE401.Models.EntityFramework
         public string? DescriptionSignalement { get; set; }
 
 
-        [InverseProperty("SignalementAvis")]
-        public virtual Avis AvisSignalement { get; set; } = null!;
+        //=======================================
+        //ForeignKeys => IdClient, IdClub, IdAvis, IdTypeSignalement
 
-        [InverseProperty("SignalementTypeSignalement")]
-        public virtual TypeSignalement TypeSignalementSignalement{ get; set;} = null!;
+        [ForeignKey("IdClient")]
+        [InverseProperty("SignalementNavigation")]
+        public virtual Client ClientNavigation { get; set; } = new Client();
 
+        [ForeignKey("IdClub")]
+        [InverseProperty("SignalementNavigation")]
+        public virtual Club ClubNavigation { get; set; } = new Club();
+
+        [ForeignKey("IdAvis")]
+        [InverseProperty("SignalementNavigation")]
+        public virtual Avis AvisNavigation { get; set; } = new Avis();
+
+        [ForeignKey("IdTypeSignalement")]
+        [InverseProperty("SignalementNavigation")]
+        public virtual TypeSignalement TypeSignalementNavigation { get; set; } = new TypeSignalement();
+
+        //=======================================
     }
 
 
