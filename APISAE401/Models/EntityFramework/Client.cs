@@ -86,8 +86,8 @@ namespace APISAE401.Models.EntityFramework
         public int IdTypeClient { get; set; }
 
         [ForeignKey("IdTypeClient")]
-        [InverseProperty("TypeClientClientNavigation")]
-        public virtual TypeClient ClientTypeClientNavigation { get; set; }
+        [InverseProperty("ClientNavigation")]
+        public virtual TypeClient TypeclientNavigation { get; set; }
 
 
         //==========================================================================================================
@@ -97,28 +97,16 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
 
-        [InverseProperty("ReservationClientNavigation")]
-        public virtual ICollection<Reservation> ClientReservationNavigation { get; set; } = new List<Reservation>();
+        [InverseProperty("ClientNavigation")]
+        public virtual ICollection<Reservation> ReservationNavigation { get; set; } = new List<Reservation>();
 
-        //==========================================================================================================
 
-        /*----Matheo---- => 
-         * InverseProperty permettant de Recuperer l'IdClient dans la table Reservation
-         * Modifié le 07/03/2023
-         */
+        [InverseProperty("ClientNavigation")]
+        public virtual ICollection<Avi> AviNavigation { get; set; } = new List<Avi>();
 
-        [InverseProperty("AvisClientNavigation")]
-        public virtual ICollection<Avis> ClientAvisNavigation { get; set; } = new List<Avis>();
-        
-        //==========================================================================================================
 
-        /*----Matheo---- => 
-         * InverseProperty permettant de Recuperer l'IdClient dans la table Detient
-         * Modifié le 07/03/2023
-         */
-
-        [InverseProperty("CarteBancaireClientNavigation")]
-        public virtual Detient ClientDetientNavigation { get; set; }
+        [InverseProperty("ClientNavigation")]
+        public virtual Detient DetientNavigation { get; set; }
         
         //==========================================================================================================
 
@@ -126,48 +114,11 @@ namespace APISAE401.Models.EntityFramework
          * InverseProperty permettant de Recuperer l'IdClient dans la table Reponse
          * Modifié le 07/03/2023
          */
-        [InverseProperty("ClientReponsesNavigation")]
-        public virtual ICollection<Reponse> ReponsesClientNavigation { get; set; } = new List<Reponse>();
+        [InverseProperty("ClientNavigation")]
+        public virtual ICollection<Reponse> ReponseNavigation { get; set; } = new List<Reponse>();
 
         //----------------------------------------------  
 
         //==========================================================================================================
-
-        public override bool Equals(object? obj)
-        {
-            return obj is Client client &&
-                   IdClient == client.IdClient &&
-                   GenreClient == client.GenreClient &&
-                   NomClient == client.NomClient &&
-                   PrenomClient == client.PrenomClient &&
-                   DateNaissanceClient == client.DateNaissanceClient &&
-                   MailClient == client.MailClient &&
-                   TelClient == client.TelClient &&
-                   AdresseClient == client.AdresseClient &&
-                   CodePostalClient == client.CodePostalClient &&
-                   VilleCleint == client.VilleCleint &&
-                   PaysClient == client.PaysClient &&
-                   LoginClient == client.LoginClient &&
-                   PasswordClient == client.PasswordClient;
-        }
-
-        public override int GetHashCode()
-        {
-            HashCode hash = new HashCode();
-            hash.Add(IdClient);
-            hash.Add(GenreClient);
-            hash.Add(NomClient);
-            hash.Add(PrenomClient);
-            hash.Add(DateNaissanceClient);
-            hash.Add(MailClient);
-            hash.Add(TelClient);
-            hash.Add(AdresseClient);
-            hash.Add(CodePostalClient);
-            hash.Add(VilleCleint);
-            hash.Add(PaysClient);
-            hash.Add(LoginClient);
-            hash.Add(PasswordClient);
-            return hash.ToHashCode();
-        }
     }
 }

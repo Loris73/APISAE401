@@ -20,8 +20,8 @@ namespace APISAE401.Models.EntityFramework
         public int IdClient { get; set; }
 
         [ForeignKey("IdClient")]
-        [InverseProperty("ClientReservationNavigation")]
-        public virtual Client ReservationClientNavigation { get; set; }
+        [InverseProperty("ReservationNavigation")]
+        public virtual Client ClientNavigation { get; set; }
 
         // Id Club
         [Column("clb_id")]

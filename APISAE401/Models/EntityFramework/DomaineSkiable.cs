@@ -59,7 +59,7 @@ namespace APISAE401.Models.EntityFramework
          * InverseProperty permettant de Recuperer l'IdDomaineSkiable dans le model Club
          * Modifié le 07/03/2023
          */
-        [InverseProperty("DomaineSkiableNavigation")]
+        [InverseProperty("DomaineskiableNavigation")]
         public virtual ICollection<Club> ClubNavigation { get; set; } = new List<Club>();
 
         // InverseProperty permettant de recuperer l'IdDomaineSkiable dans la table Photo

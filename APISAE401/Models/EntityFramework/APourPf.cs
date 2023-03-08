@@ -12,19 +12,19 @@ namespace APISAE401.Models.EntityFramework
     {        
         [Key]
         [Column("ptf_id")]
-        public int PointFortId { get; set; }
+        public int IdPointFort { get; set; }
 
         [Key]
         [Column("tpc_id")]
         public int TypeChambreId { get; set; }
 
         //ForeignKey
-        [ForeignKey("PointFortId")]
-        [InverseProperty("APourPointFort")]
-        public virtual PointFort PointfortNaviguation { get; set; } = null!;
+        [ForeignKey("IdPointFort")]
+        [InverseProperty("ApourpfNavigation")]
+        public virtual PointFort PointFortNaviguation { get; set; } = null!;
 
         [ForeignKey("TypeChambreId")]
-        [InverseProperty("APourTypeChambre")]
+        [InverseProperty("ApourpfNavigation")]
         public virtual TypeChambre TypeChambreNavigation { get; set; } = null!;
     }
 }

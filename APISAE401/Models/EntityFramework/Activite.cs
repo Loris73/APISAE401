@@ -59,10 +59,10 @@ namespace APISAE401.Models.EntityFramework
         //InverseProperty => IdTrancheAge,IDTypeActivite,Proposer
 
         [InverseProperty("ActiviteNavigation")]
-        public virtual ICollection<ActiviteIncluse> ActiviteIncluseNavigation { get; set; } = new List<ActiviteIncluse>();
+        public virtual ICollection<ActiviteIncluse> ActiviteincluseNavigation { get; set; } = new List<ActiviteIncluse>();
 
         [InverseProperty("ActiviteNavigation")]
-        public virtual ICollection<ActiviteALaCarte> ActiviteALaCarteNavigation { get; set; } = new List<ActiviteALaCarte>();
+        public virtual ICollection<ActiviteALaCarte> ActivitealacarteNavigation { get; set; } = new List<ActiviteALaCarte>();
 
         [InverseProperty("ActiviteNavigation")]
         public virtual ICollection<Proposer> ProposerNavigation { get; set; } = new List<Proposer>();
