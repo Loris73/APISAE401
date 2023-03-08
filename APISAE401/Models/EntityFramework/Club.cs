@@ -37,7 +37,7 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("clb_description")]
-        public string DescritpionClub { get; set; }
+        public string DescriptionClub { get; set; }
 
         [Required]
         [Column("clb_adresse")]
