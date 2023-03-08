@@ -51,23 +51,35 @@ namespace APISAE401.Models.EntityFramework
         //=======================================
 
         //=======================================
-        // ForeignKeys => IdClient, IdClub, IdAvis
+        // ForeignKeys => IdBar, IdTypeActivite, IdRestaurant, IdDomaineSkiable, IdClub, IdTypeChambre
 
-        [ForeignKey("IdClient")]
-        [InverseProperty("ReponsesClientNavigation")]
-        public virtual Client ClientReponsesNavigation { get; set; } = new Client();
+        [ForeignKey("IdBar")]
+        [InverseProperty("PhotoBarNavigation")]
+        public virtual Bar BarPhotoNavigation { get; set; } = new Bar();
+
+        [ForeignKey("IdTypeActivite")]
+        [InverseProperty("PhotoTypeActiviteNavigation")]
+        public virtual TypeActivite TypeActivitePhotoNavigation { get; set; } = new TypeActivite();
+
+        [ForeignKey("IdRestaurant")]
+        [InverseProperty("PhotoRestaurantNavigation")]
+        public virtual Restaurant RestaurantPhotoNavigation { get; set; } = new Restaurant();
+
+        [ForeignKey("IdDomaineSkiable")]
+        [InverseProperty("PhotoDomaineSkiableNavigation")]
+        public virtual DomaineSkiable DomaineSkiablePhotoNavigation { get; set; } = new DomaineSkiable();
 
         [ForeignKey("IdClub")]
-        [InverseProperty("ReponsesClubNavigation")]
-        public virtual Club ClubReponsesNavigation { get; set; } = new Club();
+        [InverseProperty("PhotoClubNavigation")]
+        public virtual Club ClubPhotoNavigation { get; set; } = new Club();
 
-        [ForeignKey("IdAvis")]
-        [InverseProperty("ReponsesNavigation")]
-        public virtual Avis AvisNavigation { get; set; } = new Avis();
+        [ForeignKey("IdTypeChambre")]
+        [InverseProperty("PhotoTypeChambreNavigation")]
+        public virtual TypeChambre TypeChambrePhotoNavigation { get; set; } = new TypeChambre();
         //=======================================
 
         //=======================================
-        // InverseProperty => IdClient, IdClub, IdAvis
+        // InverseProperty =>
 
         //=======================================
     }

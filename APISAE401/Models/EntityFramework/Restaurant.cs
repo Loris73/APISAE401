@@ -39,6 +39,9 @@ namespace APISAE401.Models.EntityFramework
 
         //---------------------------------------------
         //=======================================
+        // InverseProperty permettant de recuperer l'IdRestaurant dans la table Photo
+        [InverseProperty("PhotoRestaurantNavigation")]
+        public virtual ICollection<Restaurant> RestaurantPhotoNavigation { get; set; } = new List<Restaurant>();
 
     }
 }

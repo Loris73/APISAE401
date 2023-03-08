@@ -51,6 +51,10 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("ChambreReservationNavigation")] 
         public virtual DesirReserve ChambreReserve { get; set; } = null!;
 
+        // InverseProperty permettant de recuperer l'IdTypeChambre dans la table Photo
+        [InverseProperty("PhotoTypeChambreNavigation")]
+        public virtual ICollection<TypeChambre> TypeChambrePhotoNavigation { get; set; } = new List<TypeChambre>();
+
         public override bool Equals(object? obj)
         {
             return obj is TypeChambre chambre &&
