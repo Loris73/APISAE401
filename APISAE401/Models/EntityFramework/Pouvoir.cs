@@ -7,7 +7,6 @@ namespace APISAE401.Models.EntityFramework
     public partial class Pouvoir
     {
         [Key]
-        [ForeignKey("IdReservation")]
         [Column("rsv_idreservation")]
         public int IdReservation { get; set; }
 
@@ -20,8 +19,7 @@ namespace APISAE401.Models.EntityFramework
         [Column("alc_id")]
         public int IdActiviteALaCarte { get; set; }
 
-        //=======================================
-        //ForeignKeys => IdClient, IdClub, IdAvis
+
 
         [ForeignKey("IdReservation")]
         [InverseProperty("PouvoirNavigation")]
