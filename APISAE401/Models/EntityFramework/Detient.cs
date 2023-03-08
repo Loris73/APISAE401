@@ -7,7 +7,7 @@ namespace APISAE401.Models.EntityFramework
     public partial class Detient
     {
         [Key]
-        [Column("cc_idcartebancaire")]
+        [Column("cc_id")]
         public int IdCarteBancaire { get; set; }
 
         [Key]
