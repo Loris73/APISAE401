@@ -19,6 +19,9 @@ namespace APISAE401.Models.EntityFramework
         [Column("clt_id")]
         public int IdClient { get; set; }
 
+        [Column("fk_tpc_idtypeclient")]
+        public int IdTypeClient { get; set; }
+
         // Genre du Client
         [Column("clt_genre", TypeName = "varchar")]
         [StringLength(255)]
@@ -50,7 +53,12 @@ namespace APISAE401.Models.EntityFramework
         [MaxLength(10)]
         public string? TelClient { get; set; }
 
-        // Addresse(rue) du Client
+        // Adresse(numero) du Client
+        [Column("clt_numeroadresse", TypeName = "varchar")]
+        [StringLength(255)]
+        public string? AdresseClient { get; set; }
+
+        // Adresse(rue) du Client
         [Column("clt_adresse", TypeName = "varchar")]
         [StringLength(255)]
         public string? AdresseClient { get; set; }
@@ -82,9 +90,6 @@ namespace APISAE401.Models.EntityFramework
         public string? PasswordClient { get; set; }
 
         // Clé étrangère : IdTypeClient
-        [Column("tpc_idtypeclient")]
-        public int IdTypeClient { get; set; }
-
         [ForeignKey("IdTypeClient")]
         [InverseProperty("ClientNavigation")]
         public virtual TypeClient TypeclientNavigation { get; set; }

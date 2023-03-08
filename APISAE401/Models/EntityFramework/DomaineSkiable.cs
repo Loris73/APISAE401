@@ -46,6 +46,7 @@ namespace APISAE401.Models.EntityFramework
         public double longueurPisteDomaineSkiable { get; set; }
 
         [Required]
+        [StringLength(3)]
         [Column("skb_nb_pistes")]
         public string nbPistesDomaineSkiable { get; set; }
 

@@ -49,11 +49,11 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdTrancheAge")]
         [InverseProperty("ActiviteNavigation")]
-        public virtual TrancheAge TrancheAgeNavigation { get; set; } = new TrancheAge();
+        public virtual TrancheAge TrancheageNavigation { get; set; } = new TrancheAge();
 
         [ForeignKey("IdTypeActivite")]
         [InverseProperty("ActiviteNavigation")]
-        public virtual TypeActivite TypeActiviteNavigation { get; set; } = new TypeActivite();
+        public virtual TypeActivite TypeactiviteNavigation { get; set; } = new TypeActivite();
 
         //=======================================
         //InverseProperty => IdTrancheAge,IDTypeActivite,Proposer

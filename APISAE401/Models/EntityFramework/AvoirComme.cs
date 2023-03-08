@@ -18,11 +18,11 @@ namespace APISAE401.Models.EntityFramework
         // ForeignKey
         [ForeignKey("IdServiceCommodite")]
         [InverseProperty("AvoircommeNavigation")]
-        public virtual ServiceCommodite ServiceCommoditeNaviguation { get; set; } = null!;
+        public virtual ServiceCommodite ServicecommoditeNaviguation { get; set; } = null!;
 
         [ForeignKey("IdTypeChambre")]
         [InverseProperty("AvoircommeNavigation")]
-        public virtual TypeChambre TypeChambreNavigation { get; set; } = null!;
+        public virtual TypeChambre TypechambreNavigation { get; set; } = null!;
 
         //-----------------------
         // InverseProperty
