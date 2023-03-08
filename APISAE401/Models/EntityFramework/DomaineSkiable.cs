@@ -36,11 +36,6 @@ namespace APISAE401.Models.EntityFramework
         public string AltitudeDomaineSkiable { get; set; }
 
         [Required]
-        [Column("skb_altitude_club_domaine_skiable")]
-        [StringLength(50)]
-        public double AltitudeClubDomaineSkiable { get; set; }
-
-        [Required]
         [Column("skb_longueur_piste")]
         [StringLength(50)]
         public double longueurPisteDomaineSkiable { get; set; }
@@ -66,6 +61,10 @@ namespace APISAE401.Models.EntityFramework
         // InverseProperty permettant de recuperer l'IdDomaineSkiable dans la table Photo
         [InverseProperty("DomaineskiableNavigation")]
         public virtual ICollection<Photo> PhotoNavigation { get; set; } = new List<Photo>();
+
+        // InverseProperty permettant de recuperer l'IdClub dans la table Appartient
+        [InverseProperty("DomaineskiableNavigation")]
+        public virtual ICollection<Appartient> AppartientNavigation { get; set; } = new List<Appartient>();
 
         //=======================================
 
