@@ -36,20 +36,5 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("DeplacerReservation")]
         public virtual Reservation ReservationNavigation { get; set; }
 
-        public override bool Equals(object? obj)
-        {
-            return obj is Deplacer deplacer &&
-                   IdTransport == deplacer.IdTransport &&
-                   IdReservation == deplacer.IdReservation &&
-                   DeplacerLieu == deplacer.DeplacerLieu &&
-                   DeplacerMontant == deplacer.DeplacerMontant &&
-                   EqualityComparer<Transport>.Default.Equals(TransportNavigation, deplacer.TransportNavigation) &&
-                   EqualityComparer<Reservation>.Default.Equals(ReservationNavigation, deplacer.ReservationNavigation);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(IdTransport, IdReservation, DeplacerLieu, DeplacerMontant, TransportNavigation, ReservationNavigation);
-        }
     }
 }

@@ -45,7 +45,7 @@ namespace APISAE401.Models.EntityFramework
         //=======================================
         // InverseProperty permettant de recuperer l'IdBar dans la table Photo
         [InverseProperty("PhotoBarNavigation")]
-        public virtual ICollection<Bar> BarPhotoNavigation { get; set; } = new List<Bar>();
+        public virtual ICollection<Photo> BarPhotoNavigation { get; set; } = new List<Photo>();
 
 
     }

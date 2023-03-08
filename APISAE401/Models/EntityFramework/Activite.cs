@@ -13,11 +13,11 @@ namespace APISAE401.Models.EntityFramework
         public int IdActivite { get; set; }
 
 
-        [Column("tca_id")]
+        [Column("tra_id")]
         public int IdTrancheAge { get; set; }
 
 
-        [Column("tra_id")]
+        [Column("tat_id")]
         public int IdTypeActivite { get; set; }
 
         [Required]

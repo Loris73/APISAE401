@@ -64,7 +64,7 @@ namespace APISAE401.Models.EntityFramework
 
         // InverseProperty permettant de recuperer l'IdDomaineSkiable dans la table Photo
         [InverseProperty("PhotoDomaineSkiableNavigation")]
-        public virtual ICollection<DomaineSkiable> DomaineSkiablePhotoNavigation { get; set; } = new List<DomaineSkiable>();
+        public virtual ICollection<Photo> DomaineSkiablePhotoNavigation { get; set; } = new List<Photo>();
 
         //=======================================
 
