@@ -29,11 +29,11 @@ namespace APISAE401.Models.EntityFramework
         //==========================================================================================================
 
         //==========================================================================================================
-        //ForeignKeys => IdClient, IdClub, IdAvis
+        //ForeignKeys => IdCommodite
 
         [ForeignKey("IdCommodite")]
         [InverseProperty("ServiceCommoditeCommoditeNavigation")]
-        public virtual Commodite ServiceCommoditeCommoditeNavigation { get; set; } = new Commodite();
+        public virtual Commodite CommoditeServiceCommoditeNavigation { get; set; } = new Commodite();
 
         //==========================================================================================================
 
