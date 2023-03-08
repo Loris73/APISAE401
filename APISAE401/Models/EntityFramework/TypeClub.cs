@@ -14,7 +14,7 @@ namespace APISAE401.Models.EntityFramework
         public int IdTypeClub { get; set; }
 
         [Required]
-        [Column("tcb_typeclub")]
+        [Column("tcb_nom")]
         [StringLength(255)]
         public string NomTypeClub { get; set; }
 

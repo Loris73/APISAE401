@@ -11,18 +11,18 @@ namespace APISAE401.Models.EntityFramework
     public partial class Disposer
     {
         [Key]
-        [Column("dps_idclub")]
+        [Column("clb_id")]
         public int IdClub { get; set; }
 
         [Key]
-        [Column("dps_idtypeclub")]
+        [Column("tcp_id")]
         public int IdTypeClub { get; set; }
 
-        [ForeignKey("dps_idclub")]
+        [ForeignKey("IdClub")]
         [InverseProperty("DisposerNavigation")]
         public virtual ICollection<Club> ClubNavigation { get; set; } = new List<Club>();
         
-        [ForeignKey("dps_idtypeclub")]
+        [ForeignKey("IdTypeClub")]
         [InverseProperty("DisposerNavigation")]
         public virtual ICollection<TypeClub> TypeclubNavigation { get; set; } = new List<TypeClub>();
     }
