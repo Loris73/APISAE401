@@ -54,8 +54,8 @@ namespace APISAE401.Models.EntityFramework
         // ForeignKeys => IdBar, IdTypeActivite, IdRestaurant, IdDomaineSkiable, IdClub, IdTypeChambre
 
         [ForeignKey("IdBar")]
-        [InverseProperty("PhotoBarNavigation")]
-        public virtual Bar BarPhotoNavigation { get; set; } = new Bar();
+        [InverseProperty("PhotoNavigation")]
+        public virtual Bar BarNavigation { get; set; } = new Bar();
 
         [ForeignKey("IdTypeActivite")]
         [InverseProperty("PhotoTypeActiviteNavigation")]

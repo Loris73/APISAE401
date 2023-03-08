@@ -19,8 +19,8 @@ namespace APISAE401.Models.EntityFramework
         public int NbChambre { get; set; }
 
         [ForeignKey("IdClub")]
-        [InverseProperty("ComptabiliserNav")]
-        public virtual Club EstComptabilise { get; set; } = null!;
+        [InverseProperty("ComptabiliserNavivation")]
+        public virtual Club ClubNavigation { get; set; } = null!;
 
         [ForeignKey("TypeChambreId")]
         [InverseProperty("ComptabiliserTypeChambreNav")]

@@ -6,7 +6,7 @@ namespace APISAE401.Models.EntityFramework
 {
     [Table("t_e_avis_avi")]
 
-    public partial class Avis
+    public partial class Avi
     {
         [Key]
         [Column("clt_id")]
@@ -18,30 +18,30 @@ namespace APISAE401.Models.EntityFramework
 
         [Key]
         [Column("avi_id")]
-        public int IdAvis { get; set; }
+        public int IdAvi { get; set; }
 
         [Required]
         [StringLength(255)]
         [Column("avi_titre")]
-        public string titreAvis { get; set;}
+        public string titreAvi { get; set;}
 
         [Required]
         [Column("avi_note")]
-        public int noteAvis { get; set; }
+        public int noteAvi { get; set; }
 
         [Column("avi_commentaire")]
-        public string commentaireAvis { get; set; }
+        public string commentaireAvi { get; set; }
 
 
         //=======================================
         //ForeignKeys => IdClient, IdClub
 
         [ForeignKey("IdClient")]
-        [InverseProperty("AvisNavigation")]
+        [InverseProperty("AviNavigation")]
         public virtual Client ClientNavigation { get; set; } = new Client();
 
         [ForeignKey("IdClub")]
-        [InverseProperty("AvisNavigation")]
+        [InverseProperty("AviNavigation")]
         public virtual Club ClubNavigation { get; set; } = new Club();
 
        
@@ -51,7 +51,7 @@ namespace APISAE401.Models.EntityFramework
          * InverseProperty permettant de Recuperer l'IdAvis dans la table Reponse
          * Modifié le 07/03/2023
          */
-        [InverseProperty("AvisNavigation")]
+        [InverseProperty("AviNavigation")]
         public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
 
         //----------------------------------------------
@@ -61,7 +61,7 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
 
-        [InverseProperty("AvisNavigation")]
+        [InverseProperty("AviNavigation")]
         public virtual ICollection<Signalement> SignalementNavigation { get; set; } = new List<Signalement>();
         //=======================================
     }
