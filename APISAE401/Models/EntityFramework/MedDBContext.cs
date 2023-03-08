@@ -28,7 +28,7 @@ namespace APISAE401.Models.EntityFramework
         public virtual DbSet<CarteBancaire> CarteBancaires { get; set; } = null!;
         public virtual DbSet<Client> Clients { get; set; } = null!;
         public virtual DbSet<Club> Club { get; set; } = null!;
-        public virtual DbSet<Commodites> Commodites { get; set; } = null!;
+        public virtual DbSet<Commodites> CommoditesSet { get; set; } = null!;
         public virtual DbSet<Comptabiliser> Comptabilisers { get; set; } = null!;
         public virtual DbSet<Deplacer> Deplacers { get; set; } = null!;
         public virtual DbSet<DesirReserve> DesirReserves { get; set; } = null!;
@@ -45,9 +45,8 @@ namespace APISAE401.Models.EntityFramework
         public virtual DbSet<Regrouper> Regroupers { get; set; } = null!;
         public virtual DbSet<Reponse> Reponses { get; set; } = null!;
         public virtual DbSet<Reservation> Reservations { get; set; } = null!;
-        public virtual DbSet<Reservation> Reservations { get; set; } = null!;
         public virtual DbSet<Restaurant> Restaurants { get; set; } = null!;
-        public virtual DbSet<ServiceCommodite> ServiceCommodites { get; set; } = null!;
+        public virtual DbSet<ServiceCommodites> ServiceCommoditesSet { get; set; } = null!;
         public virtual DbSet<Signalement> Signalements { get; set; } = null!;
         public virtual DbSet<SousLocalisation> SousLocalisations { get; set; } = null!;
         public virtual DbSet<Tarif> Tarifs { get; set; } = null!;
@@ -56,12 +55,15 @@ namespace APISAE401.Models.EntityFramework
         public virtual DbSet<TypeActivite> TypeActivites { get; set; } = null!;
         public virtual DbSet<TypeChambre> TypeChambres { get; set; } = null!;
         public virtual DbSet<TypeClient> TypeClients { get; set; } = null!;
-        public virtual DbSet<TypeClient> TypeClients { get; set; } = null!;
         public virtual DbSet<TypeClub> TypeClubs { get; set; } = null!;
         public virtual DbSet<TypeSignalement> TypeSignalements { get; set; } = null!;
         
         
         
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql("Server=localhost;port=5432;Database=SAEMed; uid=postgres; password=postgres;");
+        }
 
         
 
