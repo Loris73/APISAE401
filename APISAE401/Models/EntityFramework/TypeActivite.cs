@@ -21,5 +21,17 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         [Column("tat_description")]
         public string DescriptionTypeActivite { get; set; }
+
+        //=======================================
+
+        /*----Lucas---- => 
+         * InverseProperty permettant de Recuperer l'IdTypeActivite dans la table Activite
+         * Modifié le 08/03/2023
+         */
+
+        [InverseProperty("TypeActiviteNavigation")]
+       public virtual ICollection<Activite> ActiviteNavigation { get; set; } = new List<Activite>();
+
+
     }
 }
