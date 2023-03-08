@@ -7,34 +7,25 @@ namespace APISAE401.Models.EntityFramework
     public class AvoirComme
     {
         [Key]
-        [Column("ace_idservicecommodites")]
+        [Column("sct_id")]
         public int IdServiceCommodites { get; set; }
 
         [Key]
-        [Column("ace_idtypechambre")]
+        [Column("tpc_id")]
         public int IdTypeChambre { get; set; }
 
-
-        [ForeignKey("IdServiceCommodites")]
-        [InverseProperty("AvoirCommeServiceCommodites")]
-        public virtual ServiceCommodites ServiceCommoditesNaviguation { get; set; } = null!;
+        //-----------------------
+        [ForeignKey("IdServiceCommodite")]
+        [InverseProperty("AvoirCommeServiceCommodite")]
+        public virtual ServiceCommodite ServiceCommoditeNaviguation { get; set; } = null!;
 
         [ForeignKey("IdTypeChambre")]
         [InverseProperty("AvoirCommeTypeChambre")]
         public virtual TypeChambre TypeChambreNavigation { get; set; } = null!;
+        //-----------------------
 
-        public override bool Equals(object? obj)
-        {
-            return obj is AvoirComme comme &&
-                   this.IdServiceCommodites == comme.IdServiceCommodites &&
-                   this.IdTypeChambre == comme.IdTypeChambre &&
-                   EqualityComparer<ServiceCommodites>.Default.Equals(this.ServiceCommoditesNaviguation, comme.ServiceCommoditesNaviguation) &&
-                   EqualityComparer<TypeChambre>.Default.Equals(this.TypeChambreNavigation, comme.TypeChambreNavigation);
-        }
+        [InverseProperty("CommoditeAvoirCommeNavigation")]
+        public virtual ICollection<Commodite> AvoirCommeCommoditeNavigation { get; set; } = new List<Commodite>();
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(this.IdServiceCommodites, this.IdTypeChambre, this.ServiceCommoditesNaviguation, this.TypeChambreNavigation);
-        }
     }
 }

@@ -26,17 +26,5 @@ namespace APISAE401.Models.EntityFramework
             [InverseProperty("PointFortNaviguation")]
             public virtual ICollection<APourPf> APourPointFort { get; set; } = new List<APourPf>();
 
-        public override bool Equals(object? obj)
-        {
-            return obj is PointFort fort &&
-                   PointFortId == fort.PointFortId &&
-                   PointFortNom == fort.PointFortNom &&
-                   EqualityComparer<ICollection<APourPf>>.Default.Equals(APourPointFort, fort.APourPointFort);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(PointFortId, PointFortNom, APourPointFort);
-        }
     }
 }

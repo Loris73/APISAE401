@@ -18,12 +18,14 @@ namespace APISAE401.Models.EntityFramework
         [Column("loc_id")]
         public int IdLocalisation { get; set; }
 
-        [ForeignKey("clb_id")]
-        [InverseProperty("APourLoc")]
-        public virtual Localisation LocalisationNav { get; set; } = null!;
+        //ForeignKey
 
-        [ForeignKey("loc_id")]
-        [InverseProperty("APourClub")]
-        public virtual Club LocNav { get; set; } = null!;
+        [ForeignKey("IdLocalisation")]
+        [InverseProperty("APourLocNavigation")]
+        public virtual Localisation LocalisationNavigation { get; set; } = null!;
+
+        [ForeignKey("IdClub")]
+        [InverseProperty("APourLocNavigation")]
+        public virtual Club ClubNavigation { get; set; } = null!;
     }
 }

@@ -55,37 +55,6 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("SignalementNavigation")]
         public virtual TypeSignalement TypeSignalementNavigation { get; set; } = new TypeSignalement();
 
-        public override bool Equals(object? obj)
-        {
-            return obj is Signalement signalement &&
-                   IdSignalement == signalement.IdSignalement &&
-                   IdClient == signalement.IdClient &&
-                   IdClub == signalement.IdClub &&
-                   IdAvis == signalement.IdAvis &&
-                   IdTypeSignalement == signalement.IdTypeSignalement &&
-                   DescriptionSignalement == signalement.DescriptionSignalement &&
-                   EqualityComparer<Client>.Default.Equals(ClientNavigation, signalement.ClientNavigation) &&
-                   EqualityComparer<Club>.Default.Equals(ClubNavigation, signalement.ClubNavigation) &&
-                   EqualityComparer<Avis>.Default.Equals(AvisNavigation, signalement.AvisNavigation) &&
-                   EqualityComparer<TypeSignalement>.Default.Equals(TypeSignalementNavigation, signalement.TypeSignalementNavigation);
-        }
-
-        public override int GetHashCode()
-        {
-            HashCode hash = new HashCode();
-            hash.Add(IdSignalement);
-            hash.Add(IdClient);
-            hash.Add(IdClub);
-            hash.Add(IdAvis);
-            hash.Add(IdTypeSignalement);
-            hash.Add(DescriptionSignalement);
-            hash.Add(ClientNavigation);
-            hash.Add(ClubNavigation);
-            hash.Add(AvisNavigation);
-            hash.Add(TypeSignalementNavigation);
-            return hash.ToHashCode();
-        }
-
         //=======================================
     }
 

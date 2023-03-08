@@ -17,18 +17,17 @@ namespace APISAE401.Models.EntityFramework
         public int IdClub { get; set;}
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("avi_id")]
         public int IdAvis { get; set; }
 
         [Required]
         [StringLength(255)]
         [Column("avi_titre")]
-        public string? titreAvis { get; set;}
+        public string titreAvis { get; set;}
 
         [Required]
         [Column("avi_note")]
-        public int? noteAvis { get; set; }
+        public int noteAvis { get; set; }
 
         [Column("avi_commentaire")]
         public string commentaireAvis { get; set; }
@@ -38,8 +37,8 @@ namespace APISAE401.Models.EntityFramework
         //ForeignKeys => IdClient, IdClub
 
         [ForeignKey("IdClient")]
-        [InverseProperty("ClientAvisNavigation")]
-        public virtual Client AvisClientNavigation { get; set; } = new Client();
+        [InverseProperty("AvisNavigation")]
+        public virtual Client ClientNavigation { get; set; } = new Client();
 
         [ForeignKey("IdClub")]
         [InverseProperty("AvisNavigation")]
@@ -64,40 +63,7 @@ namespace APISAE401.Models.EntityFramework
 
         [InverseProperty("AvisNavigation")]
         public virtual ICollection<Signalement> SignalementNavigation { get; set; } = new List<Signalement>();
-
-        public override bool Equals(object? obj)
-        {
-            return obj is Avis avis &&
-                   IdClient == avis.IdClient &&
-                   IdClub == avis.IdClub &&
-                   IdAvis == avis.IdAvis &&
-                   titreAvis == avis.titreAvis &&
-                   noteAvis == avis.noteAvis &&
-                   commentaireAvis == avis.commentaireAvis &&
-                   EqualityComparer<Client>.Default.Equals(ClientNavigation, avis.ClientNavigation) &&
-                   EqualityComparer<Club>.Default.Equals(ClubNavigation, avis.ClubNavigation) &&
-                   EqualityComparer<ICollection<Reponse>>.Default.Equals(ReponsesNavigation, avis.ReponsesNavigation) &&
-                   EqualityComparer<ICollection<Signalement>>.Default.Equals(SignalementNavigation, avis.SignalementNavigation);
-        }
-
-        public override int GetHashCode()
-        {
-            HashCode hash = new HashCode();
-            hash.Add(IdClient);
-            hash.Add(IdClub);
-            hash.Add(IdAvis);
-            hash.Add(titreAvis);
-            hash.Add(noteAvis);
-            hash.Add(commentaireAvis);
-            hash.Add(ClientNavigation);
-            hash.Add(ClubNavigation);
-            hash.Add(ReponsesNavigation);
-            hash.Add(SignalementNavigation);
-            return hash.ToHashCode();
-        }
-
         //=======================================
-
-        //----------------------------------------------
     }
+    //----------------------------------------------
 }

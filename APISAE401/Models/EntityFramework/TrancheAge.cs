@@ -24,17 +24,5 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("TrancheAgeNavigation")]
         public virtual ICollection<Activite> ActiviteNavigation { get; set; } = new List<Activite>();
 
-        public override bool Equals(object? obj)
-        {
-            return obj is TrancheAge age &&
-                   IdTrancheAge == age.IdTrancheAge &&
-                   DetailTrancheAge == age.DetailTrancheAge &&
-                   EqualityComparer<ICollection<Activite>>.Default.Equals(ActiviteNavigation, age.ActiviteNavigation);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(IdTrancheAge, DetailTrancheAge, ActiviteNavigation);
-        }
     }
 }

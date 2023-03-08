@@ -5,35 +5,35 @@ using System.ComponentModel.DataAnnotations;
 namespace APISAE401.Models.EntityFramework
 {
     /*----Jules---- => 
-    * Model Reponse
-    * Modifié le 07/03/2023 par Jules
+    * Model ServiceCommodites
+    * Modifié le 08/03/2023 par Jules
     */
 
-    [Table("t_e_servicecommodites_sct")]
-    [Index(nameof(IdServiceCommodites), IsUnique = true)]
+    [Table("t_e_servicecommodite_sct")]
+    [Index(nameof(IdServiceCommodite), IsUnique = true)]
 
-    public partial class ServiceCommodites
+    public partial class ServiceCommodite
     {
         [Key]
         [Column("sct_id")]
-        public int IdServiceCommodites { get; set; }
+        public int IdServiceCommodite { get; set; }
 
         [Required]
         [Column("cmd_id")]
-        public int IdCommodites { get; set; }
+        public int IdCommodite { get; set; }
 
         [Required]
         [Column("sct_nom")]
         [StringLength(255)]
-        public string NomServiceCommodites { get; set; }
+        public string NomServiceCommodite { get; set; }
         //==========================================================================================================
 
         //==========================================================================================================
-        //ForeignKeys => IdClient, IdClub, IdAvis
+        //ForeignKeys => IdCommodite
 
-        [ForeignKey("IdCommodites")]
-        [InverseProperty("ServiceCommoditesNavigation")]
-        public virtual Commodites CommoditesNavigation { get; set; } = new Commodites();
+        [ForeignKey("IdCommodite")]
+        [InverseProperty("CommoditeNavigation")]
+        public virtual Commodite ServiceCommoditeNavigation { get; set; } = new Commodite();
 
         //==========================================================================================================
 

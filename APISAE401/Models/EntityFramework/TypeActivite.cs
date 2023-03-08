@@ -34,7 +34,9 @@ namespace APISAE401.Models.EntityFramework
 
         // InverseProperty permettant de recuperer l'IdTypeActivite dans la table Photo
         [InverseProperty("PhotoTypeActiviteNavigation")]
-        public virtual ICollection<TypeActivite> TypeActivitePhotoNavigation { get; set; } = new List<TypeActivite>();
+        public virtual ICollection<Photo> TypeActivitePhotoNavigation { get; set; } = new List<Photo>();
+
+        
 
 
     }
