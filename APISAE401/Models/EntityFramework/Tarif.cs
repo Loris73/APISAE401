@@ -31,16 +31,16 @@ namespace APISAE401.Models.EntityFramework
             public int Note { get; set; }
 
             [ForeignKey("TypeChambreId")]
-            [InverseProperty("TarifChambre")]
-            public virtual TypeChambre TypeChambreTarif { get; set; } = null!;
+            [InverseProperty("TarifNavigation")]
+            public virtual TypeChambre TypeChambreNavigation { get; set; } = null!;
 
             [ForeignKey("IdClub")]
-            [InverseProperty("TarifClub")]
-            public virtual Club ClubTarif { get; set; } = null!;
+            [InverseProperty("TarifNavigation")]
+            public virtual Club ClubNavigation { get; set; } = null!;
 
             [ForeignKey("DateCal")]
-            [InverseProperty("TarifDate")]
-            public virtual Calendrier CalendrierTarif { get; set; } = null!;
+            [InverseProperty("TarifNavigation")]
+            public virtual Calendrier CalendrierNavigation { get; set; } = null!;
         }
     }
 }
