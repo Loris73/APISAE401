@@ -83,8 +83,8 @@ namespace APISAE401.Models.EntityFramework
          * InverseProperty permettant de recuperer l'IdClub dans la table Reponse
          * Modifié le 07/03/2023
          */
-        [InverseProperty("ClubTarif")]
-        public virtual PointFort TarifClub { get; set; }
+        [InverseProperty("ClubNavigation")]
+        public virtual Tarif TarifNavigation { get; set; }
 
         [InverseProperty("ClubNavigation")]
         public virtual ICollection<Reservation> ReservationNavigation { get; set; } = new List<Reservation>();

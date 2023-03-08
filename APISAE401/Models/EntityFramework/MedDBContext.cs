@@ -74,7 +74,7 @@ namespace APISAE401.Models.EntityFramework
             // ========= Activite ===============
              modelBuilder.Entity<Activite>(entity =>
             {
-                entity.HasKey(e => e.IdActivite).HasName("act_id");
+                entity.HasKey(e => e.IdActivite).HasName("pk_activite");
                 entity.HasOne(d => d.TrancheAgeNavigation).WithMany(p => p.ActiviteNavigation)
                     .HasConstraintName("IdTrancheAge");
 
@@ -193,6 +193,12 @@ namespace APISAE401.Models.EntityFramework
                     .HasConstraintName("IdClub");
             });
 
+
+            //=========== Transport =================
+            modelBuilder.Entity<Transport>(entity =>
+            {
+                entity.HasKey(e => e.IdTransport).HasName("pk_transport");
+            });
 
             // ========= Type Activite ===============
              modelBuilder.Entity<TypeActivite>(entity =>

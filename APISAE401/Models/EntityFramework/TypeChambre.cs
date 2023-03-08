@@ -39,14 +39,14 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("TypeChambreNavigation")]
         public virtual ICollection<APourPf> APourTypeChambre { get; set; } = new List<APourPf>();
 
-        [InverseProperty("ServiceCommoditesNaviguation")]
+        [InverseProperty("TypeChambreNavigation")]
         public virtual ICollection<AvoirComme> AvoirCommeServiceCommodites { get; set; } = new List<AvoirComme>();
 
-        [InverseProperty("TypeChambreEstComptabilise")] 
+        [InverseProperty("TypeChambreNavigation")] 
         public virtual Comptabiliser ComptabiliserTypeChambreNav { get; set; } = null!;
 
-        [InverseProperty("TypeChambreTarif")]
-        public virtual TypeChambre TarifChambre { get; set; } = null!;
+        [InverseProperty("TypeChambreNavigation")]
+        public virtual Tarif TarifNavigation { get; set; } = null!;
 
         [InverseProperty("ChambreReservationNavigation")] 
         public virtual DesirReserve ChambreReserve { get; set; } = null!;
