@@ -16,7 +16,7 @@ namespace APISAE401.Models.EntityFramework
         [Column("tsi_titretype")]
         public string? TitreTypeSignalement { get; set; }
 
-        [InverseProperty("TypeSignalementNavigation")]
+        [InverseProperty("TypesignalementNavigation")]
         public virtual ICollection<Signalement> SignalementNavigation { get; set; } = new List<Signalement>();
     }
 }

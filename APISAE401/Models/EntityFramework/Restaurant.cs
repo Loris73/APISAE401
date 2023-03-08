@@ -34,14 +34,14 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
         [ForeignKey("IdClub")]
-        [InverseProperty("RestaurantClubNavigation")]
-        public virtual Club ClubRestaurantNavigation { get; set; } = null!;
+        [InverseProperty("RestaurantNavigation")]
+        public virtual Club ClubNavigation { get; set; } = null!;
 
         //---------------------------------------------
         //=======================================
         // InverseProperty permettant de recuperer l'IdRestaurant dans la table Photo
-        [InverseProperty("PhotoRestaurantNavigation")]
-        public virtual ICollection<Photo> RestaurantPhotoNavigation { get; set; } = new List<Photo>();
+        [InverseProperty("RestaurantNavigation")]
+        public virtual ICollection<Photo> PhotoNavigation { get; set; } = new List<Photo>();
 
     }
 }

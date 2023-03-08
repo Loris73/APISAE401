@@ -46,13 +46,13 @@ namespace APISAE401.Models.EntityFramework
         [Column("rsv_montant")]
         public decimal Montant { get; set; }
 
-        [InverseProperty("ParticiperReservationNavigation")]
-        public virtual ICollection<Participer> ReservationParticiperNavigation { get; set;} = new List<Participer>();
+        [InverseProperty("ReservationNavigation")]
+        public virtual ICollection<Participer> ParticiperNavigation { get; set;} = new List<Participer>();
 
-        [InverseProperty("TransportNavigation")]
-        public virtual ICollection<Deplacer> DeplacerTransport { get; set; } = new List<Deplacer>();
+        [InverseProperty("ReservationNavigation")]
+        public virtual ICollection<Deplacer> DeplacerNavigation { get; set; } = new List<Deplacer>();
 
-        [InverseProperty("ReservationChambreNaviguation")] 
-        public virtual DesirReserve ReservationChambre { get; set; } = null!;
+        [InverseProperty("ReservationNavigation")] 
+        public virtual DesirReserve DesirereserveNavigation { get; set; } = null!;
     }
 }

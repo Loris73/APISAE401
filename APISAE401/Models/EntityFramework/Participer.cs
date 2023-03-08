@@ -15,11 +15,11 @@ namespace APISAE401.Models.EntityFramework
         public int IdReservation { get; set; }
 
         [ForeignKey("IdParticipant")]
-        [InverseProperty("ParticipantParticiperNavigation")]
-        public virtual ICollection<Participant> ParticiperParticipantNaviguation { get; set; } = new List<Participant>();
+        [InverseProperty("ParticiperNavigation")]
+        public virtual ICollection<Participant> ParticipantNaviguation { get; set; } = new List<Participant>();
 
         [ForeignKey("IdReservation")]
-        [InverseProperty("ReservationParticiperNavigation")]
-        public virtual Reservation ParticiperReservationNavigation { get; set; } = null!;
+        [InverseProperty("ParticiperNavigation")]
+        public virtual Reservation ReservationNavigation { get; set; } = null!;
     }
 }

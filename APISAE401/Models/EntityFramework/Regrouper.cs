@@ -15,11 +15,11 @@ namespace APISAE401.Models.EntityFramework
         public int IdClub { get; set; }
 
         [ForeignKey("RegroupementId")]
-        [InverseProperty("RegroupementNav")]
-        public virtual ICollection<Regroupement> APourRegroupement { get; set; } = new List<Regroupement>();
+        [InverseProperty("RegrouperNavigation")]
+        public virtual ICollection<Regroupement> RegroupementNavigation { get; set; } = new List<Regroupement>();
 
         [ForeignKey("IdClub")]
-        [InverseProperty("RegroupementNav")]
-        public virtual ICollection<Club> APourClub { get; set; } = new List<Club>();
+        [InverseProperty("RegrouperNavigation")]
+        public virtual ICollection<Club> ClubNavigation { get; set; } = new List<Club>();
     }
 }

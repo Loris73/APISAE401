@@ -23,8 +23,8 @@ namespace APISAE401.Models.EntityFramework
             public string? RegroupementNom { get; set; }
 
 
-            [InverseProperty("RegroupementNav")]
-            public virtual ICollection<Regrouper> APourRegroupement { get; set; } = new List<Regrouper>();
+            [InverseProperty("RegroupementNavigation")]
+            public virtual ICollection<Regrouper> RegrouperNavigation { get; set; } = new List<Regrouper>();
 
         }
     }

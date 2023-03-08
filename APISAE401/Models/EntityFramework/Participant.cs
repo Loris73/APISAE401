@@ -37,8 +37,8 @@ namespace APISAE401.Models.EntityFramework
 
 
 
-        [InverseProperty("ParticiperParticipantNaviguation")]
-        public virtual ICollection<Participer> ParticipantParticiperNavigation { get; set; } = new List<Participer>();
+        [InverseProperty("ParticipantNaviguation")]
+        public virtual ICollection<Participer> ParticiperNavigation { get; set; } = new List<Participer>();
 
     }
 }

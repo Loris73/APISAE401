@@ -18,12 +18,12 @@ namespace APISAE401.Models.EntityFramework
         public int IdSousLocalisation { get; set; }
 
         [ForeignKey("loc_id")]
-        [InverseProperty("APourLoc")]
+        [InverseProperty("SouslocalisationNavigation")]
         public virtual Localisation LocalisationNavigation { get; set; } = null!;
 
         [ForeignKey("loc_sousloc_id")]
-        [InverseProperty("APourSousLoc")]
-        public virtual Localisation SousLocalisationNavigation { get; set; } = null!;
+        [InverseProperty("SouslocalisationNavigation")]
+        public virtual Localisation SouslocalisationNavigation { get; set; } = null!;
 
     }
 }

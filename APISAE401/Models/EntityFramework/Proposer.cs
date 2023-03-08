@@ -21,8 +21,8 @@ namespace APISAE401.Models.EntityFramework
         //=======================================
         // ForeignKeys => IdClub, IdActivite
         [ForeignKey("IdClub")]
-        [InverseProperty("ProposerClubNavigation")]
-        public virtual Club ClubProposerNavigation { get; set; } = new Club();
+        [InverseProperty("ProposerNavigation")]
+        public virtual Club ClubNavigation { get; set; } = new Club();
 
         [ForeignKey("IdActivite")]
         [InverseProperty("ProposerNavigation")]

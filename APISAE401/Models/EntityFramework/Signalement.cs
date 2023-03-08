@@ -49,11 +49,11 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdAvis")]
         [InverseProperty("SignalementNavigation")]
-        public virtual Avis AvisNavigation { get; set; } = new Avis();
+        public virtual Avi AviNavigation { get; set; } = new Avi();
 
         [ForeignKey("IdTypeSignalement")]
         [InverseProperty("SignalementNavigation")]
-        public virtual TypeSignalement TypeSignalementNavigation { get; set; } = new TypeSignalement();
+        public virtual TypeSignalement TypesignalementNavigation { get; set; } = new TypeSignalement();
 
         //=======================================
     }

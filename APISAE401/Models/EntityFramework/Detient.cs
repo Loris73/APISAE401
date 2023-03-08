@@ -16,10 +16,10 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdCarteBancaire")]
         [InverseProperty("DetientNavigation")]
-        public virtual ICollection<CarteBancaire> CarteBancaireNaviguation { get; set; } = new List<CarteBancaire>();
+        public virtual ICollection<CarteBancaire> CartebancaireNavigation { get; set; } = new List<CarteBancaire>();
 
         [ForeignKey("IdClient")]
         [InverseProperty("DetientNavigation")]
-        public virtual Client DetientNavigation { get; set; } = null!;
+        public virtual Client ClientNavigation { get; set; } = null!;
     }
 }

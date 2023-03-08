@@ -15,7 +15,7 @@ namespace APISAE401.Models.EntityFramework
         {
             [Key]
             [Column("tpc_id")]
-            public int TypeChambreId { get; set; }
+            public int IdTypeChambre { get; set; }
 
             [Key]
             [Column("clb_id")]
@@ -30,9 +30,9 @@ namespace APISAE401.Models.EntityFramework
             [Required]
             public int Note { get; set; }
 
-            [ForeignKey("TypeChambreId")]
+            [ForeignKey("IdTypeChambre")]
             [InverseProperty("TarifNavigation")]
-            public virtual TypeChambre TypeChambreNavigation { get; set; } = null!;
+            public virtual TypeChambre TypechambreNavigation { get; set; } = null!;
 
             [ForeignKey("IdClub")]
             [InverseProperty("TarifNavigation")]

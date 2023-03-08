@@ -21,7 +21,7 @@ namespace APISAE401.Models.EntityFramework
 
 
 
-        [InverseProperty("TrancheAgeNavigation")]
+        [InverseProperty("TrancheageNavigation")]
         public virtual ICollection<Activite> ActiviteNavigation { get; set; } = new List<Activite>();
 
     }

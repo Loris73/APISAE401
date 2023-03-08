@@ -47,14 +47,14 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdClient")]
         [InverseProperty("ReponseNavigation")]
-        public virtual Client ReponseNavigation { get; set; } = new Client();
+        public virtual Client ClientNavigation { get; set; } = new Client();
 
         [ForeignKey("IdClub")]
-        [InverseProperty("ReponsesClubNavigation")]
-        public virtual Club ClubReponsesNavigation { get; set; } = new Club();
+        [InverseProperty("ReponseClubNavigation")]
+        public virtual Club ClubNavigation { get; set; } = new Club();
 
         [ForeignKey("IdAvis")]
-        [InverseProperty("ReponsesNavigation")]
+        [InverseProperty("ReponseNavigation")]
         public virtual Avi AviNavigation { get; set; } = new Avi();
         //=======================================
     }

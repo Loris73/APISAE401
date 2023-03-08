@@ -16,10 +16,10 @@ namespace APISAE401.Models.EntityFramework
         public DateTime DateCal { get; set; }
 
 
-        [InverseProperty("CalendrierNavigation")]
+        [InverseProperty("CalendrierNaviagtion")]
         public virtual Tarif TarifNavigation { get; set; } = null!;
 
         [InverseProperty("CalendrierNavigation")]
-        public virtual ICollection<Reservation> Navigation { get; set; } = new List<Reservation>();
+        public virtual ICollection<Reservation> ReservationNavigation { get; set; } = new List<Reservation>();
     }
 }

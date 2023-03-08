@@ -68,3 +68,4 @@ namespace APISAE401.Models.EntityFramework
         public virtual ICollection<Proposer> ProposerNavigation { get; set; } = new List<Proposer>();
     }
 }
+}

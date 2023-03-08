@@ -58,24 +58,24 @@ namespace APISAE401.Models.EntityFramework
         public virtual Bar BarNavigation { get; set; } = new Bar();
 
         [ForeignKey("IdTypeActivite")]
-        [InverseProperty("PhotoTypeActiviteNavigation")]
-        public virtual TypeActivite TypeActivitePhotoNavigation { get; set; } = new TypeActivite();
+        [InverseProperty("PhotoNavigation")]
+        public virtual TypeActivite TypeActiviteNavigation { get; set; } = new TypeActivite();
 
         [ForeignKey("IdRestaurant")]
-        [InverseProperty("PhotoRestaurantNavigation")]
-        public virtual Restaurant RestaurantPhotoNavigation { get; set; } = new Restaurant();
+        [InverseProperty("PhotoNavigation")]
+        public virtual Restaurant RestaurantNavigation { get; set; } = new Restaurant();
 
         [ForeignKey("IdDomaineSkiable")]
-        [InverseProperty("PhotoDomaineSkiableNavigation")]
-        public virtual DomaineSkiable DomaineSkiablePhotoNavigation { get; set; } = new DomaineSkiable();
+        [InverseProperty("PhotoNavigation")]
+        public virtual DomaineSkiable DomaineSkiableNavigation { get; set; } = new DomaineSkiable();
 
         [ForeignKey("IdClub")]
-        [InverseProperty("PhotoClubNavigation")]
-        public virtual Club ClubPhotoNavigation { get; set; } = new Club();
+        [InverseProperty("PhotoNavigation")]
+        public virtual Club ClubNavigation { get; set; } = new Club();
 
         [ForeignKey("IdTypeChambre")]
-        [InverseProperty("PhotoTypeChambreNavigation")]
-        public virtual TypeChambre TypeChambrePhotoNavigation { get; set; } = new TypeChambre();
+        [InverseProperty("PhotoNavigation")]
+        public virtual TypeChambre TypeChambreNavigation { get; set; } = new TypeChambre();
         //=======================================
 
         //=======================================

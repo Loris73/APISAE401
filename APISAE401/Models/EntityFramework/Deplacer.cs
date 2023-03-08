@@ -29,11 +29,11 @@ namespace APISAE401.Models.EntityFramework
         public int DeplacerMontant { get; set; }
 
         [ForeignKey("IdTransport")]
-        [InverseProperty("DeplacerTransport")]
+        [InverseProperty("DeplacerNavigation")]
         public virtual Transport TransportNavigation { get; set; }
 
         [ForeignKey("IdReservation")]
-        [InverseProperty("DeplacerReservation")]
+        [InverseProperty("DeplacerNavigation")]
         public virtual Reservation ReservationNavigation { get; set; }
 
     }

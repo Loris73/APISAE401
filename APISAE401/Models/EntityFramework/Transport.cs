@@ -18,8 +18,8 @@ namespace APISAE401.Models.EntityFramework
         [StringLength(255)]
         public string? TransportNom { get; set; }
 
-        [InverseProperty("TransportNaviguation")]
-        public virtual ICollection<Deplacer> DeplacerTransport { get; set; } = new List<Deplacer>();
+        [InverseProperty("TransportNavigation")]
+        public virtual ICollection<Deplacer> DeplacerNavigation { get; set; } = new List<Deplacer>();
 
     }
 }

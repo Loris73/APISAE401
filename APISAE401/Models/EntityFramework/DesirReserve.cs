@@ -12,7 +12,7 @@ namespace APISAE401.Models.EntityFramework
 
         [Key]
         [Column("tpc_id")]
-        public int TypeChambreId { get; set; }
+        public int IdTypeChambre { get; set; }
 
         [Required]
         [Column("drv_nbparticipants", TypeName = "char") ]
@@ -21,12 +21,12 @@ namespace APISAE401.Models.EntityFramework
 
 
         [ForeignKey("IdReservation")]
-        [InverseProperty("ReservationChambre")]
-        public virtual Reservation ReservationChambreNaviguation { get; set; } = null!;
+        [InverseProperty("DesirereserveNavigation")]
+        public virtual Reservation ReservationNaviguation { get; set; } = null!;
 
-        [ForeignKey("TypeChambreId")]
-        [InverseProperty("ChambreReserve")]
-        public virtual TypeChambre ChambreReservationNavigation { get; set; } = null!;
+        [ForeignKey("IdTypeChambre")]
+        [InverseProperty("DesirereserveNavigation")]
+        public virtual TypeChambre TypechambreNavigation { get; set; } = null!;
 
     }
 }

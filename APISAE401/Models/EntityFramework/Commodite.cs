@@ -32,8 +32,8 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
 
-        [InverseProperty("ServiceCommoditeNavigation")]
-        public virtual ICollection<ServiceCommodite> CommoditeNavigation { get; set; } = new List<ServiceCommodite>();
+        [InverseProperty("CommoditeNavigation")]
+        public virtual ICollection<ServiceCommodite> ServicecommoditeNavigation { get; set; } = new List<ServiceCommodite>();
 
         //----------------------------------------------
     }

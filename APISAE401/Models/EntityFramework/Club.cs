@@ -85,9 +85,6 @@ namespace APISAE401.Models.EntityFramework
          */
         [InverseProperty("ClubNavigation")]
         public virtual Tarif TarifNavigation { get; set; }
-
-        [InverseProperty("ClubNavigation")]
-        public virtual Tarif TarifNavigation { get; set; }
         //-------------------------------------------------------------------------------   
 
 
@@ -129,10 +126,10 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
         [InverseProperty("ClubNavigation")]
-        public virtual Comptabiliser ComptabiliserNavivation { get; set; } = null!;
+        public virtual Comptabiliser ComptabiliserNavigation { get; set; } = null!;
 
-        [InverseProperty("LocNav")]
-        public virtual Club APourClub { get; set; } = null!;
+        [InverseProperty("ClubNavigation")]
+        public virtual APourLoc ApourlocNavigation { get; set; } = null!;
 
         //-------------------------------------------------------------------------------
         //=========================================================================================================================

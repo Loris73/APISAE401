@@ -12,7 +12,7 @@ namespace APISAE401.Models.EntityFramework
 
         [Key]
         [Column("tpc_id")]
-        public int TypeChambreId { get; set; }
+        public int IdTypeChambre { get; set; }
 
         [Required]
         [Column("cpt_nbchambre")]
@@ -22,8 +22,8 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("ComptabiliserNavivation")]
         public virtual Club ClubNavigation { get; set; } = null!;
 
-        [ForeignKey("TypeChambreId")]
-        [InverseProperty("ComptabiliserTypeChambreNav")]
-        public virtual ICollection<TypeChambre> TypeChambreEstComptabilise { get; set; } = new List<TypeChambre>();
+        [ForeignKey("IdTypeChambre")]
+        [InverseProperty("ComptabiliserNavivation")]
+        public virtual ICollection<TypeChambre> TypechambreComptabiliser { get; set; } = new List<TypeChambre>();
     }
 }
