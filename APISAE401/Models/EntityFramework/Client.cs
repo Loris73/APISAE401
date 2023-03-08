@@ -86,8 +86,8 @@ namespace APISAE401.Models.EntityFramework
         public int IdTypeClient { get; set; }
 
         [ForeignKey("IdTypeClient")]
-        [InverseProperty("TypeClientClientNavigation")]
-        public virtual TypeClient ClientTypeClientNavigation { get; set; }
+        [InverseProperty("ClientNavigation")]
+        public virtual TypeClient TypeClientNavigation { get; set; }
 
 
         //==========================================================================================================
@@ -97,8 +97,8 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
 
-        [InverseProperty("ReservationClientNavigation")]
-        public virtual ICollection<Reservation> ClientReservationNavigation { get; set; } = new List<Reservation>();
+        [InverseProperty("ReservationNavigation")]
+        public virtual ICollection<Reservation> ReservationNavigation { get; set; } = new List<Reservation>();
 
         //==========================================================================================================
 
