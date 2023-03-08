@@ -65,36 +65,6 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("AvisNavigation")]
         public virtual ICollection<Signalement> SignalementNavigation { get; set; } = new List<Signalement>();
 
-        public override bool Equals(object? obj)
-        {
-            return obj is Avis avis &&
-                   IdClient == avis.IdClient &&
-                   IdClub == avis.IdClub &&
-                   IdAvis == avis.IdAvis &&
-                   titreAvis == avis.titreAvis &&
-                   noteAvis == avis.noteAvis &&
-                   commentaireAvis == avis.commentaireAvis &&
-                   EqualityComparer<Client>.Default.Equals(ClientNavigation, avis.ClientNavigation) &&
-                   EqualityComparer<Club>.Default.Equals(ClubNavigation, avis.ClubNavigation) &&
-                   EqualityComparer<ICollection<Reponse>>.Default.Equals(ReponsesNavigation, avis.ReponsesNavigation) &&
-                   EqualityComparer<ICollection<Signalement>>.Default.Equals(SignalementNavigation, avis.SignalementNavigation);
-        }
-
-        public override int GetHashCode()
-        {
-            HashCode hash = new HashCode();
-            hash.Add(IdClient);
-            hash.Add(IdClub);
-            hash.Add(IdAvis);
-            hash.Add(titreAvis);
-            hash.Add(noteAvis);
-            hash.Add(commentaireAvis);
-            hash.Add(ClientNavigation);
-            hash.Add(ClubNavigation);
-            hash.Add(ReponsesNavigation);
-            hash.Add(SignalementNavigation);
-            return hash.ToHashCode();
-        }
 
         //=======================================
 

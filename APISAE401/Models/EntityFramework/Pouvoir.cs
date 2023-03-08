@@ -33,21 +33,6 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("PouvoirNavigation")]
         public virtual ActiviteALaCarte ActiviteALaCarteNavigation { get; set; } = new ActiviteALaCarte();
 
-        public override bool Equals(object? obj)
-        {
-            return obj is Pouvoir pouvoir &&
-                   IdReservation == pouvoir.IdReservation &&
-                   IdActivite == pouvoir.IdActivite &&
-                   IdActiviteALaCarte == pouvoir.IdActiviteALaCarte &&
-                   EqualityComparer<Reservation>.Default.Equals(ReservationNavigation, pouvoir.ReservationNavigation) &&
-                   EqualityComparer<Activite>.Default.Equals(ActiviteNavigation, pouvoir.ActiviteNavigation) &&
-                   EqualityComparer<ActiviteALaCarte>.Default.Equals(ActiviteALaCarteNavigation, pouvoir.ActiviteALaCarteNavigation);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(IdReservation, IdActivite, IdActiviteALaCarte, ReservationNavigation, ActiviteNavigation, ActiviteALaCarteNavigation);
-        }
         //=======================================
 
     }

@@ -26,18 +26,6 @@ namespace APISAE401.Models.EntityFramework
             [InverseProperty("RegroupementNav")]
             public virtual ICollection<Regrouper> APourRegroupement { get; set; } = new List<Regrouper>();
 
-            public override bool Equals(object? obj)
-            {
-                return obj is TypeChambre chambre &&
-                       RegroupementId == chambre.RegroupementId &&
-                       RegroupementNom == chambre.RegroupementNom &&
-                       EqualityComparer<ICollection<Regrouper>>.Default.Equals(APourRegroupement, chambre.APourRegroupement);
-            }
-
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(RegroupementId, RegroupementNom, APourRegroupement);
-            }
         }
     }
 }
