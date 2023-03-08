@@ -90,7 +90,7 @@ namespace APISAE401.Models.EntityFramework
 
         /*----------------------------------Jules------------------------------------- => 
          * InverseProperty par Jules
-         * Modifié le 07/03/2023
+         * Modifié le 08/03/2023
          */
         // InverseProperty permettant de recuperer l'IdClub dans la table Reponse
         [InverseProperty("ClubReponsesNavigation")]

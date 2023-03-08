@@ -6,7 +6,7 @@ namespace APISAE401.Models.EntityFramework
 {
     /*----Jules---- => 
     * Model Reponse
-    * Modifié le 07/03/2023 par Jules
+    * Modifié le 08/03/2023 par Jules
     */
 
     [Table("t_e_photo_pht")]
@@ -15,7 +15,7 @@ namespace APISAE401.Models.EntityFramework
     public partial class Photo
     {
         //=======================================
-        //Properties du model Reponse
+        //Properties du model Photo
         [Key]
         [Column("pht_id")]
         public int IdPhoto { get; set; }
