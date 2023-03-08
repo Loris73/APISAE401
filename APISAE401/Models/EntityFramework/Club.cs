@@ -26,12 +26,12 @@ namespace APISAE401.Models.EntityFramework
         public string NomClub { get; set; }
 
         [Required]
-        [Column("clb_latitude_localisation")]
+        [Column("clb_latitude")]
         [MaxLength(10)]
         public double LongitudeLocalisationClub { get; set; }
 
         [Required]
-        [Column("clb_longitude_localisation")]
+        [Column("clb_longitude")]
         [MaxLength(10)]
         public double LatitudeLocalisationClub { get; set; }
 
@@ -54,10 +54,6 @@ namespace APISAE401.Models.EntityFramework
         [EmailAddress]
         [StringLength(100, MinimumLength = 6, ErrorMessage = "La longueur d’un email doit être comprise entre 6 et 100 caractères.")]
         public string MailClub { get; set; }
-
-        [Required]
-        [Column("clb_documentation")]
-        public string DocumentationClub { get; set; }
 
         //InverseProperties => IdClub
 
@@ -113,9 +109,6 @@ namespace APISAE401.Models.EntityFramework
          */
         [InverseProperty("ClubNavigation")]
         public virtual Comptabiliser ComptabiliserNavigation { get; set; } = null!;
-
-        [InverseProperty("ClubNavigation")]
-        public virtual APourLoc ApourlocNavigation { get; set; } = null!;
 
         //-------------------------------------------------------------------------------
         //=========================================================================================================================
