@@ -14,7 +14,7 @@ namespace APISAE401.Models.EntityFramework
         public int IdRestaurant { get; set; }
 
         [Key]
-        [Column("rsn_idclub")]
+        [Column("clb_id")]
         public int IdClub { get; set; }
 
         [Required]
@@ -23,7 +23,7 @@ namespace APISAE401.Models.EntityFramework
         public string NomRestaurant { get; set; }
 
         [Required]
-        [Column("rsn_descritpion")]
+        [Column("rsn_description")]
         public string DescriptionRestaurant { get; set; }
 
         //=======================================
