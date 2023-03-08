@@ -36,6 +36,8 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("PhotoTypeActiviteNavigation")]
         public virtual ICollection<TypeActivite> TypeActivitePhotoNavigation { get; set; } = new List<TypeActivite>();
 
+        
+
 
     }
 }

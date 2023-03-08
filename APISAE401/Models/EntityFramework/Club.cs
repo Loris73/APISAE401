@@ -106,7 +106,11 @@ namespace APISAE401.Models.EntityFramework
 
         // InverseProperty permettant de recuperer l'IdClub dans la table Photo
         [InverseProperty("PhotoClubNavigation")]
-        public virtual ICollection<Club> ClubPhotoNavigation { get; set; } = new List<Club>();
+        public virtual ICollection<Photo> ClubPhotoNavigation { get; set; } = new List<Photo>();
+
+        // InverseProperty permettant de recuperer l'IdClub dans la table Proposer
+        [InverseProperty("ProposerClubNavigation")]
+        public virtual ICollection<Proposer> Proposer { get; set; } = new List<Proposer>();
         //-------------------------------------------------------------------------------   
 
 

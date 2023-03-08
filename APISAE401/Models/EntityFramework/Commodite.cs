@@ -6,22 +6,22 @@ namespace APISAE401.Models.EntityFramework
 {
     /*----Jules---- => 
     * Model Commodites
-    * Modifié le 07/03/2023 par Jules
+    * Modifié le 08/03/2023 par Jules
     */
 
     [Table("t_e_commodites_cmd")]
-    [Index(nameof(IdCommodites), IsUnique = true)]
+    [Index(nameof(IdCommodite), IsUnique = true)]
 
-    public partial class Commodites
+    public partial class Commodite
     {
         [Key]
         [Column("cmd_id")]
-        public int IdCommodites { get; set; }
+        public int IdCommodite { get; set; }
 
         [Required]
-        [Column("cmd_typecommodites")]
+        [Column("cmd_typecommodite")]
         [StringLength(255)]
-        public string TypeCommodites { get; set; }
+        public string TypeCommodite { get; set; }
         //=======================================
 
         //=======================================
@@ -32,8 +32,8 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
 
-        [InverseProperty("CommoditesNavigation")]
-        public virtual ICollection<Commodites> ServiceCommoditesNavigation { get; set; } = new List<Commodites>();
+        [InverseProperty("CommoditeNavigation")]
+        public virtual ICollection<Commodite> ServiceCommoditeNavigation { get; set; } = new List<Commodite>();
 
         //----------------------------------------------
     }
