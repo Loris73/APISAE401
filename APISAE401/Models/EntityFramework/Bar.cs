@@ -27,7 +27,7 @@ namespace APISAE401.Models.EntityFramework
         public string NomBar { get; set; }
 
         [Required]
-        [Column("bar_descritpion")]
+        [Column("bar_description")]
         public string DescriptionBar { get; set; }
 
         //=======================================
