@@ -20,10 +20,6 @@ namespace APISAE401.Models.EntityFramework
         [Column("clb_id")]
         public int IdClub { get; set; }
 
-        [Key]
-        [Column("clb_iddomaineskiable")]
-        public int IdDomaineSkiable { get; set; }
-
         [Required]
         [Column("clb_nom")]
         [StringLength(50)]
@@ -63,20 +59,6 @@ namespace APISAE401.Models.EntityFramework
         [Column("clb_documentation")]
         public string DocumentationClub { get; set; }
 
-        //=======================================
-        //ForeignKey => IdDomaineSkiable 
-
-        /*----Jules---- => 
-         * InverseProperty permettant de Recuperer l'IdDomaineSkiable dans le model Club
-         * Modifié le 07/03/2023
-         */
-        [ForeignKey("IdDomaineSkiable")]
-        [InverseProperty("ClubNavigation")]
-        public virtual DomaineSkiable DomaineskiableNavigation { get; set; } = null!;
-
-        //---------------------------------------------
-
-        //=========================================================================================================================
         //InverseProperties => IdClub
 
         /*----------------------------------Mathéo------------------------------------- =>  
