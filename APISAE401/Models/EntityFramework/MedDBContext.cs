@@ -159,7 +159,7 @@ namespace APISAE401.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdClub).HasName("pk_club");
                 
-                entity.HasOne(e => e.DomaineSkiableNavigation).WithMany(p => p.ClubNavigation)
+                entity.HasOne(e => e.DomaineskiableNavigation).WithMany(p => p.ClubNavigation)
                     .HasConstraintName("fk_club_domaineskiable");
             });
 
