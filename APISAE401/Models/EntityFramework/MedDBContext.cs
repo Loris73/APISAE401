@@ -69,6 +69,140 @@ namespace APISAE401.Models.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            // ========= Activite ===============
+             modelBuilder.Entity<Activite>(entity =>
+            {
+                entity.HasKey(e => e.IdActivite).HasName("act_id");
+                entity.HasOne(d => d.TrancheAgeNavigation).WithMany(p => p.ActiviteNavigation)
+                    .HasConstraintName("IdTrancheAge");
+
+                entity.HasOne(d => d.TypeActiviteNavigation).WithMany(p => p.ActiviteNavigation)
+                    .HasConstraintName("IdTypeActivite");
+            });
+
+
+            // ========= A Pour Point Fort ===============
+             modelBuilder.Entity<APourPf>(entity =>
+            {
+                entity.HasOne(d => d.PointfortNaviguation).WithMany(p => p.APourPointFort
+                    .HasConstraintName("PointFortId");
+            });
+
+
+            // ========= Client ===============
+            modelBuilder.Entity<Client>(entity =>
+            {
+                entity.HasKey(e => e.IdClient).HasName("pk_client");
+                entity.HasOne(e => e.ClientTypeClientNavigation).WithMany(t => t.TypeClientClientNavigation)
+                .HasConstraintName("fk_client_typeclient");
+            });
+
+            // ========= TypeClient ===============
+            modelBuilder.Entity<Client>(entity =>
+            {
+                entity.HasKey(e => e.IdTypeClient).HasName("pk_typeclient");
+            });
+
+            // ========= Participant ===============
+            modelBuilder.Entity<Participant>(entity =>
+            {
+                entity.HasKey(e => e.IdParticipant).HasName("pk_participant");
+            });
+
+            // ========= CarteBancaire ===============
+            modelBuilder.Entity<CarteBancaire>(entity =>
+            {
+                entity.HasKey(e => e.IdCarteBancaire).HasName("pk_cartebancaire");
+            });
+            
+            // ========= Reservation ===============
+            modelBuilder.Entity<Reservation>(entity =>
+            {
+                entity.HasKey(e => e.IdReservation).HasName("pk_reservation");
+
+                entity.HasOne(e => e.ReservationCalendrierNavigation).WithMany(p => p.CalendrierReservationNavigation)
+                    .HasConstraintName("fk_reservation_calendrier");
+
+                entity.HasOne(e => e.ReservationClubNavigation).WithMany(p => p.ClubReservationNavigation)
+                    .HasConstraintName("fk_reservation_club");
+            });
+            
+
+
+            // // ========= Club ===============
+            //  modelBuilder.Entity<Club>(entity =>
+            // {
+            //     entity.HasKey(e => e.).HasName("pk_utilisateur");
+            //     entity.Property(e => e.Pays).HasDefaultValue("France");
+            //     entity.Property(e => e.DateCreation).HasDefaultValueSql("now()");
+            // });
+
+            // ========= Point Fort ===============
+             modelBuilder.Entity<PointFort>(entity =>
+            {
+                entity.HasKey(e => e.PointFortId).HasName("ptf_id");
+
+            });
+
+
+            // ========= Activite ===============
+             modelBuilder.Entity<Tarif>(entity =>
+            {
+                entity.HasOne(d => d.TypeChambreTarif).WithMany(p => p.TarifChambre)
+                    .HasConstraintName("TypeChambreId");
+
+                entity.HasOne(d => d.ClubTarif).WithMany(p => p.TarifClub)
+                    .HasConstraintName("IdClub");
+
+                entity.HasOne(d => d.ClubTarif).WithMany(p => p.TarifClub)
+                    .HasConstraintName("IdClub");
+            });
+
+            // ========= Type Chambre ===============
+             modelBuilder.Entity<TypeChambre>(entity =>
+            {
+                entity.HasKey(e => e.TypeChambreId).HasName("tpc_id");
+                entity.HasCheckConstraint("ck_tpc_capacite", "tpc_capacite min 0");
+            });
+
+            
+            // ========= Type Signalement ===============
+            modelBuilder.Entity<TypeSignalement>(entity =>
+            {
+                entity.HasKey(e => e.IdTypeSignalement).HasName("tsi_id");
+                
+            })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             OnModelCreatingPartial(modelBuilder);
         }
 

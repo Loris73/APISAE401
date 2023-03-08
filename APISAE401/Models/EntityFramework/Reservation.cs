@@ -29,7 +29,7 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdClub")]
         [InverseProperty("")]
-        public virtual Club ClubReservationNavigation { get; set; }//navigation dans club à faire
+        public virtual Club ReservationClubNavigation { get; set; }//navigation dans club à faire
 
         // Date Calendrier
         [Column("cld_date")]
@@ -37,7 +37,7 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("DateCal")]
         [InverseProperty("")]
-        public virtual Calendrier CalendrierReservationNavigation { get; set; }
+        public virtual Calendrier ReservationCalendrierNavigation { get; set; }
 
 
         [Column("rsv_datereservation", TypeName = "date")]
