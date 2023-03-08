@@ -7,11 +7,11 @@ namespace APISAE401.Models.EntityFramework
     public class AvoirComme
     {
         [Key]
-        [Column("ace_idservicecommodite")]
+        [Column("sct_id")]
         public int IdServiceCommodites { get; set; }
 
         [Key]
-        [Column("ace_idtypechambre")]
+        [Column("tpc_id")]
         public int IdTypeChambre { get; set; }
 
         //-----------------------
