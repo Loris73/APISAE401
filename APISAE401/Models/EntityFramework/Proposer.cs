@@ -16,27 +16,24 @@ namespace APISAE401.Models.EntityFramework
         [Column("act_id")]
         public int IdActivite { get; set; }
 
+        //=======================================
 
+        //=======================================
+        // ForeignKeys => IdClub, IdActivite
         [ForeignKey("IdClub")]
-        [InverseProperty("ProposerNavigation")]
-        public virtual Club ClubNavigation { get; set; } = new Club();
+        [InverseProperty("ProposerClubNavigation")]
+        public virtual Club ClubProposerNavigation { get; set; } = new Club();
 
         [ForeignKey("IdActivite")]
-        [InverseProperty("ProposerNavigation")]
-        public virtual Activite ActiviteNavigation { get; set; } = new Activite();
+        [InverseProperty("ProposerActiviteNavigation")]
+        public virtual Activite ActiviteProposerNavigation { get; set; } = new Activite();
+        //=======================================
 
-        public override bool Equals(object? obj)
-        {
-            return obj is Proposer proposer &&
-                   IdClub == proposer.IdClub &&
-                   IdActivite == proposer.IdActivite &&
-                   EqualityComparer<Club>.Default.Equals(ClubNavigation, proposer.ClubNavigation) &&
-                   EqualityComparer<Activite>.Default.Equals(ActiviteNavigation, proposer.ActiviteNavigation);
-        }
+        //=======================================
+        // InverseProperty => IdBar, IdTypeActivite, IdRestaurant, IdDomaineSkiable, IdClub, IdTypeChambre
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(IdClub, IdActivite, ClubNavigation, ActiviteNavigation);
-        }
+
+        //=======================================
+
     }
 }
