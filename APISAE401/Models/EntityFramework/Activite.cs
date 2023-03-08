@@ -23,25 +23,25 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         [StringLength(255)]
         [Column("act_titre")]
-        public string? TitreActivite { get; set; }
+        public string TitreActivite { get; set; }
 
         [Required]
         [StringLength(255)]
         [Column("act_duree")]
-        public string? DureeActivite { get; set; }
+        public string DureeActivite { get; set; }
 
         [Required]
         [Column("act_description")]
-        public string? DescriptionActivite { get; set; }
+        public string DescriptionActivite { get; set; }
 
         [Required]
-        [Column("act_ageminactivite")]
-        public int? AgeMinActivite { get; set; }
+        [Column("act_agemin")]
+        public int AgeMinActivite { get; set; }
 
         [Required]
         [StringLength(255)]
-        [Column("act_frequenceactivite")]
-        public string? FrequenceActivite { get; set; }
+        [Column("act_frequence")]
+        public string FrequenceActivite { get; set; }
 
 
         //=======================================
@@ -56,6 +56,7 @@ namespace APISAE401.Models.EntityFramework
         public virtual TypeActivite TypeActiviteNavigation { get; set; } = new TypeActivite();
 
         //=======================================
+        //InverseProperty => IdTrancheAge,IDTypeActivite,Proposer
 
         [InverseProperty("ActiviteNavigation")]
         public virtual ICollection<ActiviteIncluse> ActiviteIncluseNavigation { get; set; } = new List<ActiviteIncluse>();

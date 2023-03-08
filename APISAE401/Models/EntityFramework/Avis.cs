@@ -17,18 +17,17 @@ namespace APISAE401.Models.EntityFramework
         public int IdClub { get; set;}
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("avi_id")]
         public int IdAvis { get; set; }
 
         [Required]
         [StringLength(255)]
         [Column("avi_titre")]
-        public string? titreAvis { get; set;}
+        public string titreAvis { get; set;}
 
         [Required]
         [Column("avi_note")]
-        public int? noteAvis { get; set; }
+        public int noteAvis { get; set; }
 
         [Column("avi_commentaire")]
         public string commentaireAvis { get; set; }
@@ -64,10 +63,7 @@ namespace APISAE401.Models.EntityFramework
 
         [InverseProperty("AvisNavigation")]
         public virtual ICollection<Signalement> SignalementNavigation { get; set; } = new List<Signalement>();
-
-
         //=======================================
-
-        //----------------------------------------------
     }
+    //----------------------------------------------
 }
