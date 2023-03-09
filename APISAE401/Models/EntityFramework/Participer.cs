@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace APISAE401.Models.EntityFramework
 {
-    [Table("t_j_participer_ptce")]
+    [Table("t_j_participer_pte")]
     public partial class Participer
     {
         [Key]
-        [Column("ptca_idparticipant")]
+        [Column("pte_idparticipant")]
         public int IdParticipant { get; set; }
 
         [Key]
