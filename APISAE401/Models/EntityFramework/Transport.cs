@@ -14,7 +14,7 @@ namespace APISAE401.Models.EntityFramework
         public int IdTransport { get; set; }
 
         [Required]
-        [Column("tpc_nom")]
+        [Column("tsp_nom")]
         [StringLength(255)]
         public string? TransportNom { get; set; }
 
