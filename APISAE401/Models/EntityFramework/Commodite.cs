@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 namespace APISAE401.Models.EntityFramework
 {
     /*----Jules---- => 
-    * Model Commodites
+    * Model Commodite
     * Modifié le 08/03/2023 par Jules
     */
 
