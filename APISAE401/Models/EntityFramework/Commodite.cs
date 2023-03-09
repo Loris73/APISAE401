@@ -9,7 +9,7 @@ namespace APISAE401.Models.EntityFramework
     * Modifié le 08/03/2023 par Jules
     */
 
-    [Table("t_e_commodites_cmd")]
+    [Table("t_e_commodite_cmd")]
     [Index(nameof(IdCommodite), IsUnique = true)]
 
     public partial class Commodite
@@ -19,7 +19,7 @@ namespace APISAE401.Models.EntityFramework
         public int IdCommodite { get; set; }
 
         [Required]
-        [Column("cmd_typecommodite")]
+        [Column("cmd_type")]
         [StringLength(255)]
         public string TypeCommodite { get; set; }
         //=======================================
