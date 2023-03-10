@@ -40,7 +40,7 @@ namespace APISAE401.Controllers
             {
                 return NotFound();
             }
-            
+
             if (client.Value == null)
             {
                 return NotFound();
@@ -63,7 +63,7 @@ namespace APISAE401.Controllers
             {
                 return NotFound();
             }
-            
+
             if (client.Value == null)
             {
                 return NotFound();
@@ -154,4 +154,5 @@ namespace APISAE401.Controllers
 
             return NoContent();
         }
+    }
 }

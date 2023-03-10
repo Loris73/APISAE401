@@ -115,6 +115,19 @@ namespace APISAE401.Models.EntityFramework
                         .HasConstraintName("fk_apourpf_typechambre");
                 });
 
+                // ========= A Pour Sous Localisation ===============
+             modelBuilder.Entity<APourSousLoc>(entity =>
+             {
+                entity.HasKey(e => new {e.IdClub, e.IdSousLocalisation}).HasName("pk_APourSousLoc");
+
+                entity.HasOne(d => d.SousLocalisationNavigation).WithMany(p => p.ApoursouslocNavigation)
+                    .HasConstraintName("fk_apoursousloc_souslocalisation");
+
+
+                entity.HasOne(d => d.ClubNavigation).WithMany(p => p.ApoursouslocNavigation)
+                    .HasConstraintName("fk_apoursousloc_club");
+             });
+
 
             // ========= Appartient ===============
                 modelBuilder.Entity<Appartient>(entity =>
@@ -128,27 +141,13 @@ namespace APISAE401.Models.EntityFramework
                     .HasConstraintName("fk_appartient_domaineskiable");
             });
 
-
-
-            // ========= A Pour Localisation ===============
-             modelBuilder.Entity<APourSousLoc>(entity =>
-            {
-                entity.HasKey(e => new {e.IdClub, e.IdLocalisation}).HasName("pk_APourPF");// pas sure
-
-                entity.HasOne(d => d.LocalisationNavigation).WithMany(p => p.ApourlocNavigation)
-                    .HasConstraintName("fk_apourloc_localisation");
-
-
-                entity.HasOne(d => d.ClubNavigation).WithMany(p => p.ApourlocNavigation)
-                    .HasConstraintName("fk_apourloc_club");
-            });
-
-           
-
             //=================Avis==================
             modelBuilder.Entity<Avi>(entity =>
             {
-                entity.HasKey(e => e.IdAvi).HasName("pk_avi");
+                entity.HasKey(e => new{e.IdAvi,e.IdClub, e.IdClient}).HasName("pk_avi");
+
+                entity.HasOne(d => d.)
+
             });
 
             // ============ Bar ===============
