@@ -21,11 +21,11 @@ namespace APISAE401.Models.EntityFramework
 
 
         [ForeignKey("IdReservation")]
-        [InverseProperty("DesireReserveNavigation")]
+        [InverseProperty("DesirereserveNavigation")]
         public virtual Reservation ReservationNavigation { get; set; } = null!;
 
         [ForeignKey("IdTypeChambre")]
-        [InverseProperty("DesireReserveNavigation")]
+        [InverseProperty("DesirereserveNavigation")]
         public virtual TypeChambre TypechambreNavigation { get; set; } = null!;
 
     }

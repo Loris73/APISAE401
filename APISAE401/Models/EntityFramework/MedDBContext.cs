@@ -237,10 +237,10 @@ namespace APISAE401.Models.EntityFramework
             {
                 entity.HasKey(e => new {e.IdReservation, e.IdTypeChambre}).HasName("pk_desirereserver");// pas sure
 
-                entity.HasOne(e => e.ReservationNavigation).WithMany(p => p.DesireReserveNavigation)
+                entity.HasOne(e => e.ReservationNavigation).WithMany(p => p.DesirereserveNavigation)
                     .HasConstraintName("fk_desirereserver_reservation");
 
-                entity.HasOne(e => e.TypechambreNavigation).WithMany(p => p.DesireReserveNavigation)
+                entity.HasOne(e => e.TypechambreNavigation).WithMany(p => p.DesirereserveNavigation)
                     .HasConstraintName("fk_desirereserve_typechambre");
             });
 

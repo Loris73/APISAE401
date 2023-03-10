@@ -49,7 +49,7 @@ namespace APISAE401.Models.EntityFramework
         public virtual ICollection<Tarif> TarifNavigation { get; set; } = new List<Tarif>();
 
         [InverseProperty("TypeChambreNavigation")] 
-        public virtual DesirReserve DesireReserveNavigation { get; set; } = null!;
+        public virtual DesirReserve DesirereserveNavigation { get; set; } = null!;
 
         // InverseProperty permettant de recuperer l'IdTypeChambre dans la table Photo
         [InverseProperty("TypeChambreNavigation")]
