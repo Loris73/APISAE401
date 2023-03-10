@@ -62,7 +62,16 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
         [InverseProperty("ClubNavigation")]
-        public virtual Tarif TarifNavigation { get; set; }
+        public virtual ICollection<Tarif> TarifNavigation { get; set; } = new List<Tarif>();
+
+        [InverseProperty("ClubNavigation")]
+        public virtual ICollection<Reservation> ReservationNavigation { get; set; } = new List<Reservation>();
+
+        [InverseProperty("ClubNavigation")]
+        public virtual ICollection<Disposer> DisposerNavigation { get; set; } = new List<Disposer>();
+
+        [InverseProperty("ClubNavigation")]
+        public virtual ICollection<Regrouper> RegrouperNavigation { get; set; } = new List<Regrouper>();
         //-------------------------------------------------------------------------------   
 
 

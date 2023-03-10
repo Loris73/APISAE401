@@ -76,10 +76,10 @@ namespace APISAE401.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdActivite).HasName("pk_activite");
                 entity.HasOne(d => d.TrancheageNavigation).WithMany(p => p.ActiviteNavigation)
-                    .HasConstraintName("IdTrancheAge");
+                    .HasConstraintName("fk_activite_trancheage");
 
                 entity.HasOne(d => d.TypeactiviteNavigation).WithMany(p => p.ActiviteNavigation)
-                    .HasConstraintName("IdTypeActivite");
+                    .HasConstraintName("fk_activite_typeactivite");
             });
 
             // ========= Activite A La Carte ===============
@@ -95,30 +95,44 @@ namespace APISAE401.Models.EntityFramework
                 entity.HasKey(e => e.IdActiviteIncluse).HasName("pk_activiteincluse");
             });
 
-            // ========= A Pour Point Fort ===============
-             modelBuilder.Entity<APourPf>(entity =>
+            // ========= Appartient ===============
+                modelBuilder.Entity<Appartient>(entity =>
             {
-                entity.HasKey(e => new {e.IdPointFort, e.IdTypeChambre}).HasName("pk_APourPF");// pas sure
+                entity.HasKey(e => new {e.IdClub, e.IdDommaineSkiable}).HasName("pk_appartient");
 
-                entity.HasOne(d => d.LocalisationNavigation).WithMany(p => p.ApourlocNavigation)
-                    .HasConstraintName("IdLocalisation");
+                entity.HasOne(d => d.ClubNaviguation).WithMany(p => p.AppartientNavigation)
+                    .HasConstraintName("fk_appartient_club");
 
-
-                entity.HasOne(d => d.ClubNavigation).WithMany(p => p.ApourlocNavigation)
-                    .HasConstraintName("IdClub");
+                entity.HasOne(d => d.DomaineskiableNavigation).WithMany(p => p.AppartientNavigation)
+                    .HasConstraintName("fk_appartient_domaineskiable");
             });
+
+
 
             // ========= A Pour Localisation ===============
              modelBuilder.Entity<APourLoc>(entity =>
             {
-                entity.HasKey(e => new {e.IdClub, e.IdLocalisation}).HasName("pk_APourLoc");// pas sure
+                entity.HasKey(e => new {e.IdClub, e.IdLocalisation}).HasName("pk_APourPF");// pas sure
+
+                entity.HasOne(d => d.LocalisationNavigation).WithMany(p => p.ApourlocNavigation)
+                    .HasConstraintName("fk_apourloc_localisation");
+
+
+                entity.HasOne(d => d.ClubNavigation).WithMany(p => p.ApourlocNavigation)
+                    .HasConstraintName("fk_apourloc_club");
+            });
+
+            // ========= A Pour Point Fort ===============
+             modelBuilder.Entity<APourPf>(entity =>
+            {
+                entity.HasKey(e => new {e.IdPointFort, e.IdTypeChambre}).HasName("pk_APourLoc");// pas sure
 
                 entity.HasOne(d => d.PointfortNaviguation).WithMany(p => p.ApourpfNavigation)
-                    .HasConstraintName("PointFortId");
+                    .HasConstraintName("fk_apourpf_pointfort");
 
 
-                entity.HasOne(d => d.TypeChambreNavigation).WithMany(p => p.ApourpfNavigation)
-                    .HasConstraintName("TypeChambreId");
+                entity.HasOne(d => d.TypechambreNavigation).WithMany(p => p.ApourpfNavigation)
+                    .HasConstraintName("fk_apourloc_typechambre");
             });
 
             //=================Avis==================
@@ -145,7 +159,7 @@ namespace APISAE401.Models.EntityFramework
             // ========= Calendrier ===============
             modelBuilder.Entity<Calendrier>(entity =>
             {
-                entity.HasKey(e => e.DateCal).HasName("cld_date");
+                entity.HasKey(e => e.DateCal).HasName("pk_calendrier");
             });
 
             // ========= CarteBancaire ===============
@@ -158,9 +172,6 @@ namespace APISAE401.Models.EntityFramework
              modelBuilder.Entity<Club>(entity =>
             {
                 entity.HasKey(e => e.IdClub).HasName("pk_club");
-                
-                entity.HasOne(e => e.DomaineskiableNavigation).WithMany(p => p.ClubNavigation)
-                    .HasConstraintName("fk_club_domaineskiable");
             });
 
 
@@ -174,13 +185,13 @@ namespace APISAE401.Models.EntityFramework
             // ========= Deplacer ===============
             modelBuilder.Entity<Deplacer>(entity =>
             {
-                entity.HasKey(e => new {e.IdTransport, e.IdReservation}).HasName("pk_detient");// pas sure
+                entity.HasKey(e => new {e.IdTransport, e.IdReservation}).HasName("pk_deplacer");// pas sure
 
-                entity.HasOne(e => e.ClubNavigation).WithMany(p => p.DisposerNavigation)
-                    .HasConstraintName("dps_idclub");
+                entity.HasOne(e => e.TransportNavigation).WithMany(p => p.DeplacerNavigation)
+                    .HasConstraintName("fk_deplacer_transport");
 
-                entity.HasOne(e => e.TypeclubNavigation).WithMany(p => p.DisposerNavigation)
-                    .HasConstraintName("dps_idtypeclub");
+                entity.HasOne(e => e.ReservationNavigation).WithMany(p => p.DeplacerNavigation)
+                    .HasConstraintName("fk_deplacer_reservation");
             });
 
             // ========= Detient ===============
@@ -198,25 +209,25 @@ namespace APISAE401.Models.EntityFramework
             // ========= Disposer ===============
             modelBuilder.Entity<Disposer>(entity =>
             {
-                entity.HasKey(e => new {e.IdClub, e.IdTypeClub}).HasName("pk_detient");// pas sure
+                entity.HasKey(e => new {e.IdClub, e.IdTypeClub}).HasName("pk_disposer");
 
                 entity.HasOne(e => e.ClubNavigation).WithMany(p => p.DisposerNavigation)
-                    .HasConstraintName("dps_idclub");
+                    .HasConstraintName("fk_disposer_club");
 
                 entity.HasOne(e => e.TypeclubNavigation).WithMany(p => p.DisposerNavigation)
-                    .HasConstraintName("dps_idtypeclub");
+                    .HasConstraintName("fk_disposer_typeclub");
             });
 
             // ========== Domaine Skiable 
                 modelBuilder.Entity<DomaineSkiable>(entity =>
                 {
-                entity.HasKey(e => e.IdDomaineSkiable).HasName("pk_domaineSkiable");
+                entity.HasKey(e => e.IdDomaineSkiable).HasName("pk_domaineskiable");
                 });
 
             // ========= Localisation ===============
              modelBuilder.Entity<Localisation>(entity =>
             {
-                entity.HasKey(e => e.IdParticipant).HasName("pk_localisation");
+                entity.HasKey(e => e.IdLocalisation).HasName("pk_localisation");
             });
 
             // ========= Participant ===============
@@ -228,17 +239,17 @@ namespace APISAE401.Models.EntityFramework
             // ========= Point Fort ===============
              modelBuilder.Entity<PointFort>(entity =>
             {
-                entity.HasKey(e => e.PointFortId).HasName("pk_pointfort");
+                entity.HasKey(e => e.IdPointFort).HasName("pk_pointfort");
 
             });
 
             //============= Proposer ============
             modelBuilder.Entity<Proposer>(entity =>
             {
-                entity.HasKey( e => new {e.IdClub, e.IdActivite}.HasName("pd_proposer");) // pas sure
+                entity.HasKey( e => new {e.IdClub, e.IdActivite}).HasName("pk_proposer"); // pas sure
 
                 entity.HasOne(e => e.ClubNavigation).WithMany(p => p.ProposerNavigation)
-                    .HasConstraintName("pro_idclub");
+                    .HasConstraintName("fk_proposer_club");
                     
             });
 
@@ -254,11 +265,10 @@ namespace APISAE401.Models.EntityFramework
                 entity.HasKey(e => new {e.IdClub, e.RegroupementId}).HasName("pk_regrouper");// pas sure
 
                 entity.HasOne(d => d.RegroupementNavigation).WithMany(p => p.RegrouperNavigation)
-                    .HasConstraintName("RegroupementId");
-
+                    .HasConstraintName("fk_regrouper_regroupement");
 
                 entity.HasOne(d => d.ClubNavigation).WithMany(p => p.RegrouperNavigation)
-                    .HasConstraintName("IdClub");
+                    .HasConstraintName("fk_regrouper_club");
             });
 
             //============Reponse===================
@@ -276,10 +286,10 @@ namespace APISAE401.Models.EntityFramework
                     .HasConstraintName("fk_reservation_calendrier");
 
                 entity.HasOne(e => e.ClientNavigation).WithMany(p => p.ReservationNavigation)
-                    .HasConstraintName("fk_reservation_club");
+                    .HasConstraintName("fk_reservation_client");
 
                 entity.HasOne(e => e.ClubNavigation).WithMany(p => p.ReservationNavigation)
-                    .HasConstraintName("fk_reservation_client");
+                    .HasConstraintName("fk_reservation_club");
             });
             
             // ============ Restaurant ===============
@@ -289,7 +299,7 @@ namespace APISAE401.Models.EntityFramework
             });
             
             //================== Service Commodites ===================
-            modelBuilder.Entity<ServiceCommodites>(entity =>
+            modelBuilder.Entity<ServiceCommodite>(entity =>
             {
                 entity.HasKey(e => e.IdServiceCommodite).HasName("pk_servicecommodite");
             });
@@ -300,7 +310,7 @@ namespace APISAE401.Models.EntityFramework
                  entity.HasKey(e => e.IdSignalement).HasName("pk_signalement");
              });
             
-            // ========= Sous localisation ===============
+            // ========= Sous localisation ===============    Quelqu'un pour faire cette merde ?
              modelBuilder.Entity<SousLocalisation>(entity =>
             {
                 entity.HasKey(e => new {e.IdLocalisation, e.IdSousLocalisation}).HasName("pk_souslocalisation");// pas sure
@@ -317,14 +327,14 @@ namespace APISAE401.Models.EntityFramework
             // ========= Tarif ===============
              modelBuilder.Entity<Tarif>(entity =>
             {
-                entity.HasOne(d => d.TypeChambreTarif).WithMany(p => p.TarifNavigation)
-                    .HasConstraintName("TypeChambreId");
+                entity.HasOne(d => d.TypechambreNavigation).WithMany(p => p.TarifNavigation)
+                    .HasConstraintName("fk_tarif_typechambre");
 
-                entity.HasOne(d => d.ClubTarif).WithMany(p => p.TarifNavigation)
-                    .HasConstraintName("IdClub");
+                entity.HasOne(d => d.ClubNavigation).WithMany(p => p.TarifNavigation)
+                    .HasConstraintName("fk_tarif_club");
 
-                entity.HasOne(d => d.ClubTarif).WithMany(p => p.TarifNavigation)
-                    .HasConstraintName("IdClub");
+                entity.HasOne(d => d.CalendrierNavigation).WithMany(p => p.TarifNavigation)
+                    .HasConstraintName("fk_tarif_calendrier");
             });
 
 
@@ -351,7 +361,7 @@ namespace APISAE401.Models.EntityFramework
             // ========= Type Chambre ===============
              modelBuilder.Entity<TypeChambre>(entity =>
             {
-                entity.HasKey(e => e.TypeChambreId).HasName("tpc_id");
+                entity.HasKey(e => e.TypeChambreId).HasName("pk_typechambre");
                 entity.HasCheckConstraint("ck_tpc_capacite", "tpc_capacite > 0");
             });
 
@@ -373,39 +383,6 @@ namespace APISAE401.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdTypeSignalement).HasName("pk_typesignalement");
             });
-
-
-
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             OnModelCreatingPartial(modelBuilder);
         }

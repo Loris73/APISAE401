@@ -53,11 +53,6 @@ namespace APISAE401.Models.EntityFramework
         [MaxLength(10)]
         public string? TelClient { get; set; }
 
-        // Adresse(numero) du Client
-        [Column("clt_numeroadresse", TypeName = "varchar")]
-        [StringLength(255)]
-        public string? AdresseClient { get; set; }
-
         // Adresse(rue) du Client
         [Column("clt_adresse", TypeName = "varchar")]
         [StringLength(255)]
@@ -111,7 +106,7 @@ namespace APISAE401.Models.EntityFramework
 
 
         [InverseProperty("ClientNavigation")]
-        public virtual Detient DetientNavigation { get; set; }
+        public virtual ICollection<Detient> DetientNavigation { get; set; } = new List<Detient>();
         
         //==========================================================================================================
 
