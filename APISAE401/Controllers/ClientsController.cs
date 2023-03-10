@@ -103,7 +103,7 @@ namespace APISAE401.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PutClient(int id, Client client)
         {
-            if (id != client.ClientId)
+            if (id != client.IdClient)
             {
                 return BadRequest();
             }
