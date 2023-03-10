@@ -19,7 +19,7 @@ namespace APISAE401.Models.EntityFramework
         public virtual DbSet<Activite> Activites { get; set; } = null!;
         public virtual DbSet<ActiviteALaCarte> ActivitesALaCarte { get; set; } = null!;
         public virtual DbSet<ActiviteIncluse> ActivitesIncluses { get; set; } = null!;
-        public virtual DbSet<APourLoc> APourLocs { get; set; } = null!;
+        public virtual DbSet<APourSousLoc> APourLocs { get; set; } = null!;
         public virtual DbSet<APourPf> APourPfs { get; set; } = null!;
         public virtual DbSet<Avi> Avis { get; set; } = null!;
         public virtual DbSet<AvoirComme> AvoirCommes { get; set; } = null!;
@@ -109,7 +109,7 @@ namespace APISAE401.Models.EntityFramework
             });
 
             // ========= A Pour Localisation ===============
-             modelBuilder.Entity<APourLoc>(entity =>
+             modelBuilder.Entity<APourSousLoc>(entity =>
             {
                 entity.HasKey(e => new {e.IdClub, e.IdLocalisation}).HasName("pk_APourLoc");// pas sure
 

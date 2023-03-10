@@ -7,24 +7,24 @@ using Microsoft.EntityFrameworkCore;
 namespace APISAE401.Models.EntityFramework
 {
     [Table("t_j_apourloc_alc")]
-    public partial class APourLoc
+    public partial class APourSousLoc
     {
         [Key]
         [Column("clb_id")]
         public int IdClub { get; set; }
 
         [Key]
-        [Column("loc_id")]
-        public int IdLocalisation { get; set; }
+        [Column("slo_id")]
+        public int IdSousLocalisation { get; set; }
 
         //ForeignKey
 
-        [ForeignKey("IdLocalisation")]
-        [InverseProperty("ApourlocNavigation")]
-        public virtual Localisation LocalisationNavigation { get; set; } = null!;
+        [ForeignKey("IdSousLocalisation")]
+        [InverseProperty("ApoursouslocNavigation")]
+        public virtual SousLocalisation SousLocalisationNavigation { get; set; } = null!;
 
         [ForeignKey("IdClub")]
-        [InverseProperty("ApourlocNavigation")]
+        [InverseProperty("ApoursouslocNavigation")]
         public virtual Club ClubNavigation { get; set; } = null!;
     }
 }

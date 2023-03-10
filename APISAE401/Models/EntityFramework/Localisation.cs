@@ -16,10 +16,10 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         [Column("loc_nom")]
         [StringLength(255)]
-        public string? LocalisationNom { get; set; }
+        public string LocalisationNom { get; set; }
 
         [InverseProperty("LocalisationNavigation")]
-        public virtual APourLoc ApourlocNavigation { get; set; } = null!;
+        public virtual SousLocalisation SouslocalisationNavigation { get; set; } = null!;
 
     }
 }
