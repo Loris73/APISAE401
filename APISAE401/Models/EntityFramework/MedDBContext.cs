@@ -85,15 +85,36 @@ namespace APISAE401.Models.EntityFramework
             // ========= Activite A La Carte ===============
              modelBuilder.Entity<ActiviteALaCarte>(entity =>
             {
-                 entity.HasKey(e => e.IdActiviteALaCarte).HasName("pk_activitealacarte");
+                 entity.HasKey(e => new {e.IdActiviteALaCarte, e.IdActivite}).HasName("pk_activitealacarte");
+
+                entity.HasOne(d => d.ActiviteNavigation).WithMany(p => p.ActivitealacarteNavigation)
+                    .HasConstraintName("fk_activitealacarte_activite");
             });
                 
 
             // ========= Activite Incluse ===============
                 modelBuilder.Entity<ActiviteIncluse>(entity =>
             {
-                entity.HasKey(e => e.IdActiviteIncluse).HasName("pk_activiteincluse");
+                 entity.HasKey(e => new { e.IdActiviteIncluse, e.IdActivite }).HasName("pk_activiteincluse");
+
+
+                entity.HasOne(d => d.ActiviteNavigation).WithMany(p => p.ActiviteincluseNavigation)
+                    .HasConstraintName("fk_activiteincluse_activite");
             });
+
+            // ========= A Pour Point Fort ===============
+                 modelBuilder.Entity<APourPf>(entity =>
+                {
+                    entity.HasKey(e => new {e.IdPointFort, e.IdTypeChambre}).HasName("pk_APourpf");// pas sure
+    
+                    entity.HasOne(d => d.PointfortNaviguation).WithMany(p => p.ApourpfNavigation)
+                        .HasConstraintName("fk_apourpf_pointfort");
+    
+    
+                    entity.HasOne(d => d.TypechambreNavigation).WithMany(p => p.ApourpfNavigation)
+                        .HasConstraintName("fk_apourpf_typechambre");
+                });
+
 
             // ========= Appartient ===============
                 modelBuilder.Entity<Appartient>(entity =>
@@ -122,18 +143,7 @@ namespace APISAE401.Models.EntityFramework
                     .HasConstraintName("fk_apourloc_club");
             });
 
-            // ========= A Pour Point Fort ===============
-             modelBuilder.Entity<APourPf>(entity =>
-            {
-                entity.HasKey(e => new {e.IdPointFort, e.IdTypeChambre}).HasName("pk_APourLoc");// pas sure
-
-                entity.HasOne(d => d.PointfortNaviguation).WithMany(p => p.ApourpfNavigation)
-                    .HasConstraintName("fk_apourpf_pointfort");
-
-
-                entity.HasOne(d => d.TypechambreNavigation).WithMany(p => p.ApourpfNavigation)
-                    .HasConstraintName("fk_apourloc_typechambre");
-            });
+           
 
             //=================Avis==================
             modelBuilder.Entity<Avi>(entity =>

@@ -7,31 +7,41 @@ using System.Xml.Linq;
 
 namespace APISAE401.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/")]
     [ApiController]
-    public class ClientController : ControllerBase
+    public class ClientsController : ControllerBase
     {
-        private readonly MedDBContext _context;
+        private readonly IDataRepository<Client> dataRepository;
 
-        public ClientController(MedDBContext context)
+        public ClientsController(IDataRepository<Client> dataRepo)
         {
-            _context = context;
+            dataRepository = dataRepo;
         }
 
-        // GET: api/Client
+        // GET: api/Clients
         [HttpGet]
+        [ActionName("GetClients")]
         public async Task<ActionResult<IEnumerable<Client>>> GetClients()
         {
-            return await _context.Clients.ToListAsync();
+            return await dataRepository.GetAllAsync();
         }
 
-        // GET: api/Client/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Client>> GetClientById(int id)
+        // GET: api/Clients/toto@titi.fr
+        [HttpGet]
+        [Route("[action]/{email}")]
+        [ActionName("GetByEmail")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Client>> GetClientByEmail(string email)
         {
-            var client = await _context.Clients.FindAsync(id);
+            var client = await dataRepository.GetByStringAsync(email);
 
             if (client == null)
+            {
+                return NotFound();
+            }
+            
+            if (client.Value == null)
             {
                 return NotFound();
             }
@@ -39,66 +49,109 @@ namespace APISAE401.Controllers
             return client;
         }
 
-        // PUT: api/Utilisateurs/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutClient(int id, Client client)
+        // GET: api/Clients/lololamoto
+        [HttpGet]
+        [Route("[action]/{login}")]
+        [ActionName("GetByLogin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Client>> GetClientByLogin(string login)
         {
-            if (id != client.IdClient)
+            var client = await dataRepository.GetByStringAsync(login);
+
+            if (client == null)
             {
-                return BadRequest();
+                return NotFound();
             }
-
-            _context.Entry(client).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ClientExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Client
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Client>> PostUtilisateur(Client client)
-        {
-            _context.Clients.Add(client);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUtilisateur", new { id = utilisateur.UtilisateurId }, utilisateur);
-        }
-
-        // DELETE: api/Utilisateurs/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUtilisateur(int id)
-        {
-            var utilisateur = await _context.Utilisateurs.FindAsync(id);
-            if (utilisateur == null)
+            
+            if (client.Value == null)
             {
                 return NotFound();
             }
 
-            _context.Utilisateurs.Remove(utilisateur);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return client;
         }
 
-        private bool ClientExists(int id)
+
+        // GET: api/Clients/5
+        [HttpGet]
+        [Route("[action]/{id}")]
+        [ActionName("GetById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Client>> GetClientById(int id)
         {
-            return _context.Clients.Any(e => e.IdClient == id);
+            var client = await dataRepository.GetByIdAsync(id);
+
+            if (client == null)
+            {
+                return NotFound();
+            }
+            if (client.Value == null)
+            {
+                return NotFound();
+            }
+
+            return client;
+        }
+
+        // PUT: api/Clients/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> PutClient(int id, Client client)
+        {
+            if (id != client.ClientId)
+            {
+                return BadRequest();
+            }
+
+            var userToUpdate = await dataRepository.GetByIdAsync(id);
+            if (userToUpdate == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                await dataRepository.UpdateAsync(userToUpdate.Value, client);
+                return NoContent();
+            }
+        }
+
+        // POST: api/Clients
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<Client>> PostClient(Client client)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await dataRepository.AddAsync(client);
+
+            return CreatedAtAction("GetById", new { id = client.IdClient }, client); // GetById : nom de l’action
+        }
+
+        // DELETE: api/Clients/5
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteClient(int id)
+        {
+            var client = await dataRepository.GetByIdAsync(id);
+
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            await dataRepository.DeleteAsync(client.Value);
+
+            return NoContent();
         }
 }
