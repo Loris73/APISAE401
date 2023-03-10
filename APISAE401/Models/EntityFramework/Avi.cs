@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace APISAE401.Models.EntityFramework
 {
-    [Table("t_e_avis_avi")]
+    [Table("t_e_avi_avi")]
 
     public partial class Avi
     {

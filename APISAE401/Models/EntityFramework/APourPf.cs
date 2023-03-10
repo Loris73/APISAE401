@@ -9,14 +9,16 @@ namespace APISAE401.Models.EntityFramework
 {
     [Table("t_j_apourpf_apf")]
     public class APourPf
-    {        
+    {
+        [Key]
+        [Column("tpc_id")]
+        public int IdTypeChambre { get; set; }
+
         [Key]
         [Column("ptf_id")]
         public int IdPointFort { get; set; }
 
-        [Key]
-        [Column("tpc_id")]
-        public int IdTypeChambre { get; set; }
+        
 
         //ForeignKey
         [ForeignKey("IdPointFort")]
