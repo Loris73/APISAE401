@@ -19,7 +19,7 @@ namespace APISAE401.Models.EntityFramework
         public string LocalisationNom { get; set; }
 
         [InverseProperty("LocalisationNavigation")]
-        public virtual ICollection<APourLoc> ApourlocNavigation { get; set; } = new List<APourLoc>();
+        public virtual ICollection<APourSousLoc> ApoursouslocNavigation { get; set; } = new List<APourSousLoc>();
 
     }
 }
