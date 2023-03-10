@@ -9,11 +9,11 @@ namespace APISAE401.Controllers
 {
     [Route("api/[controller]/")]
     [ApiController]
-    public class ClientsController : ControllerBase
+    public class TypeClientsController : ControllerBase
     {
-        private readonly IDataRepository<Client> dataRepository;
+        private readonly IDataRepository<TypeClient> dataRepository;
 
-        public ClientsController(IDataRepository<Client> dataRepo)
+        public TypeClientsController(IDataRepository<TypeClient> dataRepo)
         {
             dataRepository = dataRepo;
         }
@@ -21,55 +21,32 @@ namespace APISAE401.Controllers
         // GET: api/Clients
         [HttpGet]
         [ActionName("GetClients")]
-        public async Task<ActionResult<IEnumerable<Client>>> GetClients()
+        public async Task<ActionResult<IEnumerable<TypeClient>>> GetTypeClients()
         {
             return await dataRepository.GetAllAsync();
         }
 
         // GET: api/Clients/toto@titi.fr
         [HttpGet]
-        [Route("[action]/{email}")]
+        [Route("[action]/{intitule}")]
         [ActionName("GetByEmail")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Client>> GetClientByEmail(string email)
+        public async Task<ActionResult<TypeClient>> GetTypeClientByIntitule(string intitule)
         {
-            var client = await dataRepository.GetByStringAsync(email);
+            var typeclient = await dataRepository.GetByStringAsync(intitule);
 
-            if (client == null)
+            if (typeclient == null)
             {
                 return NotFound();
             }
 
-            if (client.Value == null)
+            if (typeclient.Value == null)
             {
                 return NotFound();
             }
 
-            return client;
-        }
-
-        // GET: api/Clients/lololamoto
-        [HttpGet]
-        [Route("[action]/{login}")]
-        [ActionName("GetByLogin")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Client>> GetClientByLogin(string login)
-        {
-            var client = await dataRepository.GetByStringAsync(login);
-
-            if (client == null)
-            {
-                return NotFound();
-            }
-
-            if (client.Value == null)
-            {
-                return NotFound();
-            }
-
-            return client;
+            return typeclient;
         }
 
 
@@ -79,20 +56,20 @@ namespace APISAE401.Controllers
         [ActionName("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Client>> GetClientById(int id)
+        public async Task<ActionResult<TypeClient>> GetTypeClientById(int id)
         {
-            var client = await dataRepository.GetByIdAsync(id);
+            var typeclient = await dataRepository.GetByIdAsync(id);
 
-            if (client == null)
+            if (typeclient == null)
             {
                 return NotFound();
             }
-            if (client.Value == null)
+            if (typeclient.Value == null)
             {
                 return NotFound();
             }
 
-            return client;
+            return typeclient;
         }
 
         // PUT: api/Clients/5
@@ -101,21 +78,21 @@ namespace APISAE401.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutClient(int id, Client client)
+        public async Task<IActionResult> PutTypeClient(int id, TypeClient typeclient)
         {
-            if (id != client.ClientId)
+            if (id != typeclient.ClientId)
             {
                 return BadRequest();
             }
 
-            var clientToUpdate = await dataRepository.GetByIdAsync(id);
-            if (clientToUpdate == null)
+            var typeclientToUpdate = await dataRepository.GetByIdAsync(id);
+            if (typeclientToUpdate == null)
             {
                 return NotFound();
             }
             else
             {
-                await dataRepository.UpdateAsync(clientToUpdate.Value, client);
+                await dataRepository.UpdateAsync(typeclientToUpdate.Value, client);
                 return NoContent();
             }
         }
@@ -125,32 +102,32 @@ namespace APISAE401.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Client>> PostClient(Client client)
+        public async Task<ActionResult<TypeClient>> PostClient(TypeClient typeclient)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await dataRepository.AddAsync(client);
+            await dataRepository.AddAsync(typeclient);
 
-            return CreatedAtAction("GetById", new { id = client.IdClient }, client); // GetById : nom de l’action
+            return CreatedAtAction("GetById", new { id = typeclient.IdTypeClient }, typeclient); // GetById : nom de l’action
         }
 
         // DELETE: api/Clients/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteClient(int id)
+        public async Task<IActionResult> DeleteTypeClient(int id)
         {
-            var client = await dataRepository.GetByIdAsync(id);
+            var typeclient = await dataRepository.GetByIdAsync(id);
 
-            if (client == null)
+            if (typeclient == null)
             {
                 return NotFound();
             }
 
-            await dataRepository.DeleteAsync(client.Value);
+            await dataRepository.DeleteAsync(typeclient.Value);
 
             return NoContent();
         }

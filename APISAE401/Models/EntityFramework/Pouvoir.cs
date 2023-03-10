@@ -31,7 +31,7 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdActiviteALaCarte")]
         [InverseProperty("PouvoirNavigation")]
-        public virtual ActiviteALaCarte ActivitealacarteNavigation { get; set; } = new ActiviteALaCarte();
+        public virtual ActiviteALaCarte ActiviteALaCarteNavigation { get; set; } = new ActiviteALaCarte();
 
         //=======================================
 

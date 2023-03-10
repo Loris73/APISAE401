@@ -45,7 +45,7 @@ namespace APISAE401.Models.EntityFramework
         public int IdTypeChambre { get; set; }
 
         [Required]
-        [Column("pht_titre")]
+        [Column("pht_url")]
         public string photo { get; set; }
 
         //=======================================

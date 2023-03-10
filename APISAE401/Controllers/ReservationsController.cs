@@ -9,148 +9,146 @@ namespace APISAE401.Controllers
 {
     [Route("api/[controller]/")]
     [ApiController]
-    public class ClientsController : ControllerBase
+    public class ReservationsController : ControllerBase
     {
-        private readonly IDataRepository<Client> dataRepository;
+        private readonly IDataRepository<Reservation> dataRepository;
 
-        public ClientsController(IDataRepository<Client> dataRepo)
+        public ReservationsController(IDataRepository<Reservation> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/Clients
+        // GET: api/Reservations
         [HttpGet]
-        [ActionName("GetClients")]
-        public async Task<ActionResult<IEnumerable<Client>>> GetClients()
+        [ActionName("GetReservations")]
+        public async Task<ActionResult<IEnumerable<Reservation>>> GetReservations()
         {
             return await dataRepository.GetAllAsync();
         }
 
-        // GET: api/Clients/toto@titi.fr
+        // GET: api/Reservations/5
         [HttpGet]
-        [Route("[action]/{email}")]
-        [ActionName("GetByEmail")]
+        [Route("[action]/{idClub}")]
+        [ActionName("GetByIdClub")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Client>> GetClientByEmail(string email)
+        public async Task<ActionResult<Reservation>> GetReservationByIdClub(int idClub)
         {
-            var client = await dataRepository.GetByStringAsync(email);
+            var reservation = await dataRepository.GetByIdAsync(idClub);
 
-            if (client == null)
+            if (reservation == null)
+            {
+                return NotFound();
+            }
+            if (reservation.Value == null)
             {
                 return NotFound();
             }
 
-            if (client.Value == null)
-            {
-                return NotFound();
-            }
-
-            return client;
+            return reservation;
         }
 
-        // GET: api/Clients/lololamoto
+        // GET: api/Reservations/5
         [HttpGet]
-        [Route("[action]/{login}")]
-        [ActionName("GetByLogin")]
+        [Route("[action]/{idClient}")]
+        [ActionName("GetByIdClient")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Client>> GetClientByLogin(string login)
+        public async Task<ActionResult<Reservation>> GetReservationByIdClient(int idClient)
         {
-            var client = await dataRepository.GetByStringAsync(login);
+            var reservation = await dataRepository.GetByIdAsync(idClient);
 
-            if (client == null)
+            if (reservation == null)
+            {
+                return NotFound();
+            }
+            if (reservation.Value == null)
             {
                 return NotFound();
             }
 
-            if (client.Value == null)
-            {
-                return NotFound();
-            }
-
-            return client;
+            return reservation;
         }
 
 
-        // GET: api/Clients/5
+        // GET: api/Reservations/5
         [HttpGet]
         [Route("[action]/{id}")]
         [ActionName("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Client>> GetClientById(int id)
+        public async Task<ActionResult<Reservation>> GetReservationById(int id)
         {
-            var client = await dataRepository.GetByIdAsync(id);
+            var reservation = await dataRepository.GetByIdAsync(id);
 
-            if (client == null)
+            if (reservation == null)
             {
                 return NotFound();
             }
-            if (client.Value == null)
+            if (reservation.Value == null)
             {
                 return NotFound();
             }
 
-            return client;
+            return reservation;
         }
 
-        // PUT: api/Clients/5
+        // PUT: api/Reservations/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutClient(int id, Client client)
+        public async Task<IActionResult> PutReservation(int id, Reservation reservation)
         {
-            if (id != client.ClientId)
+            if (id != reservation.IdReservation)
             {
                 return BadRequest();
             }
 
-            var clientToUpdate = await dataRepository.GetByIdAsync(id);
-            if (clientToUpdate == null)
+            var reservationToUpdate = await dataRepository.GetByIdAsync(id);
+            if (reservationToUpdate == null)
             {
                 return NotFound();
             }
             else
             {
-                await dataRepository.UpdateAsync(clientToUpdate.Value, client);
+                await dataRepository.UpdateAsync(reservationToUpdate.Value, reservation);
                 return NoContent();
             }
         }
 
-        // POST: api/Clients
+        // POST: api/Reservations
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<Client>> PostClient(Client client)
+        public async Task<ActionResult<Reservation>> PostReservation(Reservation reservation)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await dataRepository.AddAsync(client);
+            await dataRepository.AddAsync(reservation);
 
-            return CreatedAtAction("GetById", new { id = client.IdClient }, client); // GetById : nom de l’action
+            return CreatedAtAction("GetById", new { id = reservation.IdReservation }, reservation); // GetById : nom de l’action
         }
 
-        // DELETE: api/Clients/5
+        // DELETE: api/Reservations/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteClient(int id)
+        public async Task<IActionResult> DeleteReservation(int id)
         {
-            var client = await dataRepository.GetByIdAsync(id);
+            var reservation = await dataRepository.GetByIdAsync(id);
 
-            if (client == null)
+            if (reservation == null)
             {
                 return NotFound();
             }
 
-            await dataRepository.DeleteAsync(client.Value);
+            await dataRepository.DeleteAsync(reservation.Value);
 
             return NoContent();
         }

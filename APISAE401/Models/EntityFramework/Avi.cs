@@ -52,7 +52,7 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
         [InverseProperty("AviNavigation")]
-        public virtual ICollection<Reponse> ReponsesNavigation { get; set; } = new List<Reponse>();
+        public virtual ICollection<Reponse> ReponseNavigation { get; set; } = new List<Reponse>();
 
         //----------------------------------------------
 

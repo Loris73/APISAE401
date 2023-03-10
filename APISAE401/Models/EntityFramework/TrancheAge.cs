@@ -6,9 +6,6 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_e_trancheage_tra")]
     public partial class TrancheAge
     {
-        
-
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("tra_id")]
@@ -16,13 +13,10 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [StringLength(255)]
-        [Column("tra_detailTrancheAge")]
-        public string? DetailTrancheAge { get; set; }
+        [Column("tra_detail")]
+        public string DetailTrancheAge { get; set; }
 
-
-
-        [InverseProperty("TrancheageNavigation")]
+        [InverseProperty("TrancheAgeNavigation")]
         public virtual ICollection<Activite> ActiviteNavigation { get; set; } = new List<Activite>();
-
     }
 }

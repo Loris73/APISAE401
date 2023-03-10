@@ -33,7 +33,7 @@ namespace API_Film.Models.DataManager
         {
             medDbContext.Entry(pointFort).State = EntityState.Modified;
             pointFort.IdPointFort = entity.IdPointFort;
-            pointFort.NomPointFort = entity.Nom;
+            pointFort.NomPointFort = entity.NomPointFort;
             pointFort.ApourpfNavigation = entity.ApourpfNavigation;
 
             await medDbContext.SaveChangesAsync();

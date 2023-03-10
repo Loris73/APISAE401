@@ -13,38 +13,44 @@ namespace APISAE401.Models.EntityFramework
     {
         [Key]
         [Column("rsv_idreservation")]
-        public int IdReservation { get; set; }
-
-        // Id Client
-        [Column("clt_id")]
-        public int IdClient { get; set; }
-
-        [ForeignKey("IdClient")]
-        [InverseProperty("ReservationNavigation")]
-        public virtual Client ClientNavigation { get; set; }
+        public int IdReservation { get; set; }              
 
         // Id Club
         [Column("clb_id")]
-        public int IdClub;
+        public int IdClub { get; set; };
 
-        [ForeignKey("IdClub")]
-        [InverseProperty("ReservationNavigation")]
-        public virtual Club ClubNavigation { get; set; }//navigation dans club à faire
+        // Id Client
+        [Column("clt_id")]
+        public int IdClient { get; set; }         
 
         // Date Calendrier
-        [Column("cld_date")]
-        public int DateCal { get; set; }
+        [Column("cld_datedebut")]
+        public int DateDebutCalendrier { get; set; }
 
-        [ForeignKey("DateCal")]
-        [InverseProperty("ReservationNavigation")]
-        public virtual Calendrier CalendrierNavigation { get; set; }
-
+        [Column("cld_datefin")]
+        public int DateFinCalendrier { get; set; }
 
         [Column("rsv_datereservation", TypeName = "date")]
         public DateTime DateReservation { get; set; }
 
         [Column("rsv_montant")]
         public decimal Montant { get; set; }
+
+        [ForeignKey("IdClub")]
+        [InverseProperty("ReservationNavigation")]
+        public virtual Club ClubNavigation { get; set; }//navigation dans club à faire
+
+        [ForeignKey("IdClient")]
+        [InverseProperty("ReservationNavigation")]
+        public virtual Client ClientNavigation { get; set; }
+
+        [ForeignKey("DateDebutCalendrier")]
+        [InverseProperty("ReservationdatedebutNavigation")]
+        public virtual Calendrier CalendrierNavigation { get; set; }   
+
+        [ForeignKey("DateFinCalendrier")]
+        [InverseProperty("ReservationdatefinNavigation")]
+        public virtual Calendrier CalendrierNavigation { get; set; }       
 
         [InverseProperty("ReservationNavigation")]
         public virtual ICollection<Participer> ParticiperNavigation { get; set;} = new List<Participer>();
@@ -53,6 +59,6 @@ namespace APISAE401.Models.EntityFramework
         public virtual ICollection<Deplacer> DeplacerNavigation { get; set; } = new List<Deplacer>();
 
         [InverseProperty("ReservationNavigation")] 
-        public virtual DesirReserve DesirereserveNavigation { get; set; } = null!;
+        public virtual DesirReserve DesireReserveNavigation { get; set; } = new List<DesirReserve>();
     }
 }

@@ -15,54 +15,54 @@ namespace APISAE401.Controllers
 
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class PointFortsController : ControllerBase
+    public class TypeChambresController : ControllerBase
     {
         
-        private readonly IDataRepository<PointFort> datatRepository;
+        private readonly IDataRepository<TypeChambre> datatRepository;
 
-        public PointFortsController(IDataRepository<PointFort> dataRepo)
+        public TypeChambresController(IDataRepository<TypeChambre> dataRepo)
         {
             datatRepository = dataRepo;
         }
 
-        // GET: api/PointForts
+        // GET: api/TypeChambres
         [HttpGet]
         [ActionName("GetAll")]
-        public async Task<ActionResult<IEnumerable<PointFort>>> GetPointForts()
+        public async Task<ActionResult<IEnumerable<TypeChambre>>> GetTypeChambres()
         {
             return await datatRepository.GetAll();
         }
 
-        // GET: api/PointForts/5
+        // GET: api/TypeChambres/5
         [HttpGet("{id}")]
         [ActionName("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<PointFort>> GetPointFortById(int id)
+        public async Task<ActionResult<TypeChambre>> GetTypeChambreById(int id)
         {
-            var pointFort = await datatRepository.GetByIdAsync(id);
+            var typeChambre = await datatRepository.GetByIdAsync(id);
 
-            if (pointFort == null || pointFort.Value == null)
+            if (typeChambre == null || typeChambre.Value == null)
             {
                 return NotFound();
             }
 
-            return pointFort;
+            return typeChambre;
         }
 
 
       
 
-        // PUT: api/PointForts/5
+        // PUT: api/TypeChambres/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [ActionName("Put")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutPointFort(int id, PointFort pointFort)
+        public async Task<IActionResult> PutTypeChambre(int id, TypeChambre typeChambre)
         {
-            if (id != pointFort.PointFortId)
+            if (id != typeChambre.TypeChambreId)
             {
                 return BadRequest();
             }
@@ -74,52 +74,52 @@ namespace APISAE401.Controllers
             }
             else
             {
-                await datatRepository.UpdateAsync(userToUpdate.Value, pointFort);
+                await datatRepository.UpdateAsync(userToUpdate.Value, typeChambre);
                 return NoContent();
             }
 
         }
 
-        // POST: api/PointForts
+        // POST: api/TypeChambres
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ActionName("Post")]
-        public async Task<ActionResult<PointFort>> PostPointFort(PointFort pointFort)
+        public async Task<ActionResult<TypeChambre>> PostTypeChambre(TypeChambre typeChambre)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await datatRepository.AddAsync(pointFort);
+            await datatRepository.AddAsync(typeChambre);
             
 
-            return CreatedAtAction("GetById", new { id = pointFort.PointFortId }, pointFort);
+            return CreatedAtAction("GetById", new { id = typeChambre.TypeChambreId }, typeChambre);
         }
 
-        // DELETE: api/PointForts/5
+        // DELETE: api/TypeChambres/5
         [HttpDelete("{id}")]
         [ActionName("Delete")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeletePointFort(int id)
+        public async Task<IActionResult> DeleteTypeChambre(int id)
         {
-            var pointFort =  await datatRepository.GetByIdAsync(id);
-            if (pointFort == null)
+            var typeChambre =  await datatRepository.GetByIdAsync(id);
+            if (typeChambre == null)
             {
                 return NotFound();
             }
 
-           await datatRepository.DeleteAsync(pointFort.Value);
+           await datatRepository.DeleteAsync(typeChambre.Value);
 
             return NoContent();
         }
 
-        /*private bool PointFortExists(int id)
+        /*private bool TypeChambreExists(int id)
         {
-            return _context.PointForts.Any(e => e.PointFortId == id);
+            return _context.TypeChambres.Any(e => e.TypeChambreId == id);
         }*/
     }
 }

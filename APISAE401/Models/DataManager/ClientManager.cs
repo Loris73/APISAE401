@@ -21,9 +21,9 @@ namespace APISAE401.Models.DataManager
         {
             return await medDBContext.Clients.FirstOrDefaultAsync(u => u.IdClient == id);
         }
-        public async Task<ActionResult<Client>> GetByStringAsync(string mail)
+        public async Task<ActionResult<Client>> GetByStringAsync(string emailOrLogin)
         {
-            return await medDBContext.Clients.FirstOrDefaultAsync(u => u.Mail.ToUpper() == mail.ToUpper());
+            return await medDBContext.Clients.FirstOrDefaultAsync(u => u.MailClient.ToUpper() == emailOrLogin.ToUpper() || u.LoginClient.ToUpper() == emailOrLogin.ToUpper());
         }
         public async Task AddAsync(Client entity)
         {

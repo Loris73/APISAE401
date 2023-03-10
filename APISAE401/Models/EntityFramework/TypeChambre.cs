@@ -36,23 +36,23 @@ namespace APISAE401.Models.EntityFramework
         public string? TypeChambreDescription { get; set; }
 
 
-        [InverseProperty("TypechambreNavigation")]
-        public virtual ICollection<APourPf> ApourpfNavigation { get; set; } = new List<APourPf>();
+        [InverseProperty("TypeChambreNavigation")]
+        public virtual ICollection<APourPf> ApourPFNavigation { get; set; } = new List<APourPf>();
 
-        [InverseProperty("TypechambreNavigation")]
-        public virtual ICollection<AvoirComme> AvoircommeNavigation { get; set; } = new List<AvoirComme>();
+        [InverseProperty("TypeChambreNavigation")]
+        public virtual ICollection<AvoirComme> AvoirCommeNavigation { get; set; } = new List<AvoirComme>();
 
-        [InverseProperty("TypechambreNavigation")] 
+        [InverseProperty("TypeChambreNavigation")] 
         public virtual Comptabiliser ComptabiliserNavigation { get; set; } = null!;
 
-        [InverseProperty("TypechambreNavigation")]
+        [InverseProperty("TypeChambreNavigation")]
         public virtual ICollection<Tarif> TarifNavigation { get; set; } = new List<Tarif>();
 
-        [InverseProperty("TypechambreNavigation")] 
-        public virtual DesirReserve DesirereserveNavigation { get; set; } = null!;
+        [InverseProperty("TypeChambreNavigation")] 
+        public virtual DesirReserve DesireReserveNavigation { get; set; } = null!;
 
         // InverseProperty permettant de recuperer l'IdTypeChambre dans la table Photo
-        [InverseProperty("TypechambreNavigation")]
+        [InverseProperty("TypeChambreNavigation")]
         public virtual ICollection<Photo> PhotoNavigation { get; set; } = new List<Photo>();
     }
 }

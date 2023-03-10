@@ -22,11 +22,11 @@ namespace APISAE401.Models.EntityFramework
 
         //ForeignKey
         [ForeignKey("IdPointFort")]
-        [InverseProperty("ApourpfNavigation")]
-        public virtual PointFort PointfortNaviguation { get; set; } = null!;
+        [InverseProperty("APourPFNavigation")]
+        public virtual PointFort PointFortNavigation { get; set; } = null!;
 
         [ForeignKey("IdTypeChambre")]
-        [InverseProperty("ApourpfNavigation")]
-        public virtual TypeChambre TypechambreNavigation { get; set; } = null!;
+        [InverseProperty("ApourPFNavigation")]
+        public virtual TypeChambre TypeChambreNavigation { get; set; } = null!;
     }
 }

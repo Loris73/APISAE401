@@ -44,21 +44,21 @@ namespace APISAE401.Models.EntityFramework
         public string FrequenceActivite { get; set; }
 
         [Required]
-        [Column("alc_prixminactivite")]
+        [Column("alc_prixmin")]
         public int PrixMinActivite { get; set; }
 
         //=======================================
         //ForeignKeys => IdActivite
 
         [ForeignKey("IdActivite")]
-        [InverseProperty("ActivitealacarteNavigation")]
+        [InverseProperty("ActiviteALacarteNavigation")]
         public virtual Activite ActiviteNavigation { get; set; } = new Activite();
 
 
         //=======================================
         //InverseProperty
 
-        [InverseProperty("ActivitealacarteNavigation")]
+        [InverseProperty("ActiviteALaCarteNavigation")]
         public virtual ICollection<Pouvoir> PouvoirNavigation { get; set; } = new List<Pouvoir>();
 
     }

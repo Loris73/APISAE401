@@ -17,16 +17,16 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         [Column("drv_nbparticipants", TypeName = "char") ]
         [StringLength(3)]
-        public string? NbParicipants { get; set; }
+        public string? NbParticipants { get; set; }
 
 
         [ForeignKey("IdReservation")]
-        [InverseProperty("DesirereserveNavigation")]
-        public virtual Reservation ReservationNaviguation { get; set; } = null!;
+        [InverseProperty("DesireReserveNavigation")]
+        public virtual Reservation ReservationNavigation { get; set; } = null!;
 
         [ForeignKey("IdTypeChambre")]
-        [InverseProperty("DesirereserveNavigation")]
-        public virtual TypeChambre TypechambreNavigation { get; set; } = null!;
+        [InverseProperty("DesireReserveNavigation")]
+        public virtual TypeChambre TypeChambreNavigation { get; set; } = null!;
 
     }
 }

@@ -46,7 +46,7 @@ namespace APISAE401.Models.EntityFramework
         //ForeignKey
 
         [ForeignKey("IdActivite")]
-        [InverseProperty("ActiviteincluseNavigation")]
+        [InverseProperty("ActiviteIncluseNavigation")]
         public virtual Activite ActiviteNavigation { get; set; } = new Activite();
     }
 }

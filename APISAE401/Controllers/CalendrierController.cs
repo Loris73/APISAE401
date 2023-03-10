@@ -15,54 +15,54 @@ namespace APISAE401.Controllers
 
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class PointFortsController : ControllerBase
+    public class CalendriersController : ControllerBase
     {
         
-        private readonly IDataRepository<PointFort> datatRepository;
+        private readonly IDataRepository<Calendrier> datatRepository;
 
-        public PointFortsController(IDataRepository<PointFort> dataRepo)
+        public CalendriersController(IDataRepository<Calendrier> dataRepo)
         {
             datatRepository = dataRepo;
         }
 
-        // GET: api/PointForts
+        // GET: api/Calendriers
         [HttpGet]
         [ActionName("GetAll")]
-        public async Task<ActionResult<IEnumerable<PointFort>>> GetPointForts()
+        public async Task<ActionResult<IEnumerable<Calendrier>>> GetCalendriers()
         {
             return await datatRepository.GetAll();
         }
 
-        // GET: api/PointForts/5
+        // GET: api/Calendriers/5
         [HttpGet("{id}")]
         [ActionName("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<PointFort>> GetPointFortById(int id)
+        public async Task<ActionResult<Calendrier>> GetCalendrierById(int id)
         {
-            var pointFort = await datatRepository.GetByIdAsync(id);
+            var calendrier = await datatRepository.GetByIdAsync(id);
 
-            if (pointFort == null || pointFort.Value == null)
+            if (calendrier == null || calendrier.Value == null)
             {
                 return NotFound();
             }
 
-            return pointFort;
+            return calendrier;
         }
 
 
       
 
-        // PUT: api/PointForts/5
+        // PUT: api/Calendriers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [ActionName("Put")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutPointFort(int id, PointFort pointFort)
+        public async Task<IActionResult> PutCalendrier(int id, Calendrier calendrier)
         {
-            if (id != pointFort.PointFortId)
+            if (id != calendrier.CalendrierId)
             {
                 return BadRequest();
             }
@@ -74,52 +74,52 @@ namespace APISAE401.Controllers
             }
             else
             {
-                await datatRepository.UpdateAsync(userToUpdate.Value, pointFort);
+                await datatRepository.UpdateAsync(userToUpdate.Value, calendrier);
                 return NoContent();
             }
 
         }
 
-        // POST: api/PointForts
+        // POST: api/Calendriers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ActionName("Post")]
-        public async Task<ActionResult<PointFort>> PostPointFort(PointFort pointFort)
+        public async Task<ActionResult<Calendrier>> PostCalendrier(Calendrier calendrier)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await datatRepository.AddAsync(pointFort);
+            await datatRepository.AddAsync(calendrier);
             
 
-            return CreatedAtAction("GetById", new { id = pointFort.PointFortId }, pointFort);
+            return CreatedAtAction("GetById", new { id = calendrier.DateCal }, calendrier);
         }
 
-        // DELETE: api/PointForts/5
+        // DELETE: api/Calendriers/5
         [HttpDelete("{id}")]
         [ActionName("Delete")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeletePointFort(int id)
+        public async Task<IActionResult> DeleteCalendrier(int id)
         {
-            var pointFort =  await datatRepository.GetByIdAsync(id);
-            if (pointFort == null)
+            var calendrier =  await datatRepository.GetByIdAsync(id);
+            if (calendrier == null)
             {
                 return NotFound();
             }
 
-           await datatRepository.DeleteAsync(pointFort.Value);
+           await datatRepository.DeleteAsync(calendrier.Value);
 
             return NoContent();
         }
 
-        /*private bool PointFortExists(int id)
+        /*private bool CalendrierExists(int id)
         {
-            return _context.PointForts.Any(e => e.PointFortId == id);
+            return _context.Calendriers.Any(e => e.CalendrierId == id);
         }*/
     }
 }

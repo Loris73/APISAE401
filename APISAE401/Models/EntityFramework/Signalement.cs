@@ -53,7 +53,7 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdTypeSignalement")]
         [InverseProperty("SignalementNavigation")]
-        public virtual TypeSignalement TypesignalementNavigation { get; set; } = new TypeSignalement();
+        public virtual TypeSignalement TypeSignalementNavigation { get; set; } = new TypeSignalement();
 
         //=======================================
     }
