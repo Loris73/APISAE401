@@ -75,10 +75,10 @@ namespace APISAE401.Models.EntityFramework
              modelBuilder.Entity<Activite>(entity =>
             {
                 entity.HasKey(e => e.IdActivite).HasName("pk_activite");
-                entity.HasOne(d => d.TrancheAgeNavigation).WithMany(p => p.ActiviteNavigation)
+                entity.HasOne(d => d.TrancheageNavigation).WithMany(p => p.ActiviteNavigation)
                     .HasConstraintName("fk_activite_trancheage");
 
-                entity.HasOne(d => d.TypeActiviteNavigation).WithMany(p => p.ActiviteNavigation)
+                entity.HasOne(d => d.TypeactiviteNavigation).WithMany(p => p.ActiviteNavigation)
                     .HasConstraintName("fk_activite_typeactivite");
             });
 
@@ -87,7 +87,7 @@ namespace APISAE401.Models.EntityFramework
             {
                  entity.HasKey(e => new {e.IdActiviteALaCarte, e.IdActivite}).HasName("pk_activitealacarte");
 
-                entity.HasOne(d => d.ActiviteNavigation).WithMany(p => p.ActiviteALacarteNavigation)
+                entity.HasOne(d => d.ActiviteNavigation).WithMany(p => p.ActivitealacarteNavigation)
                     .HasConstraintName("fk_activitealacarte_activite");
             });
                 
@@ -98,7 +98,7 @@ namespace APISAE401.Models.EntityFramework
                  entity.HasKey(e => new { e.IdActiviteIncluse, e.IdActivite }).HasName("pk_activiteincluse");
 
 
-                entity.HasOne(d => d.ActiviteNavigation).WithMany(p => p.ActiviteIncluseNavigation)
+                entity.HasOne(d => d.ActiviteNavigation).WithMany(p => p.ActiviteincluseNavigation)
                     .HasConstraintName("fk_activiteincluse_activite");
             });
 
@@ -107,11 +107,11 @@ namespace APISAE401.Models.EntityFramework
                 {
                     entity.HasKey(e => new {e.IdPointFort, e.IdTypeChambre}).HasName("pk_APourpf");// pas sure
     
-                    entity.HasOne(d => d.PointFortNavigation).WithMany(p => p.APourPFNavigation)
+                    entity.HasOne(d => d.PointfortNavigation).WithMany(p => p.ApourpfNavigation)
                         .HasConstraintName("fk_apourpf_pointfort");
     
     
-                    entity.HasOne(d => d.TypeChambreNavigation).WithMany(p => p.APourPFNavigation)
+                    entity.HasOne(d => d.TypechambreNavigation).WithMany(p => p.ApourpfNavigation)
                         .HasConstraintName("fk_apourpf_typechambre");
                 });
 

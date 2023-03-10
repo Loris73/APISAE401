@@ -8,7 +8,7 @@ namespace APISAE401.Models.EntityFramework
     {
         [Key]
         [Column("sct_id")]
-        public int IdServiceCommodites { get; set; }
+        public int IdServiceCommodite { get; set; }
 
         [Key]
         [Column("tpc_id")]
@@ -18,11 +18,11 @@ namespace APISAE401.Models.EntityFramework
         // ForeignKey
         [ForeignKey("IdServiceCommodite")]
         [InverseProperty("AvoirCommeNavigation")]
-        public virtual ServiceCommodite ServiceCommoditeNavigation { get; set; } = null!;
+        public virtual ServiceCommodite ServicecommoditeNavigation { get; set; } = null!;
 
         [ForeignKey("IdTypeChambre")]
         [InverseProperty("AvoirCommeNavigation")]
-        public virtual TypeChambre TypeChambreNavigation { get; set; } = null!;
+        public virtual TypeChambre TypechambreNavigation { get; set; } = null!;
 
     }
 }

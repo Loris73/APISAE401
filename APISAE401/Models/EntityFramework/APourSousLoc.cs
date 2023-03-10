@@ -20,11 +20,11 @@ namespace APISAE401.Models.EntityFramework
         //ForeignKey
 
         [ForeignKey("IdSousLocalisation")]
-        [InverseProperty("APourSousLocNavigation")]
+        [InverseProperty("ApoursouslocNavigation")]
         public virtual SousLocalisation SousLocalisationNavigation { get; set; } = null!;
 
         [ForeignKey("IdClub")]
-        [InverseProperty("APourSousLocNavigation")]
+        [InverseProperty("ApoursouslocNavigation")]
         public virtual Club ClubNavigation { get; set; } = null!;
     }
 }
