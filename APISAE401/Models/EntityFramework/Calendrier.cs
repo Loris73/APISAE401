@@ -17,7 +17,7 @@ namespace APISAE401.Models.EntityFramework
 
 
         [InverseProperty("CalendrierNaviagtion")]
-        public virtual Tarif TarifNavigation { get; set; } = null!;
+        public virtual ICollection<Tarif> TarifNavigation { get; set; } = new List<Tarif>();
 
         [InverseProperty("CalendrierNavigation")]
         public virtual ICollection<Reservation> ReservationNavigation { get; set; } = new List<Reservation>();

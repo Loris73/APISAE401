@@ -46,7 +46,7 @@ namespace APISAE401.Models.EntityFramework
         public virtual Comptabiliser ComptabiliserNavigation { get; set; } = null!;
 
         [InverseProperty("TypechambreNavigation")]
-        public virtual TypeChambre TarifchambreNavigation { get; set; } = null!;
+        public virtual ICollection<Tarif> TarifNavigation { get; set; } = new List<Tarif>();
 
         [InverseProperty("TypechambreNavigation")] 
         public virtual DesirReserve DesirereserveNavigation { get; set; } = null!;

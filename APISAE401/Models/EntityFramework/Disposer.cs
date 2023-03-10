@@ -20,10 +20,10 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdClub")]
         [InverseProperty("DisposerNavigation")]
-        public virtual ICollection<Club> ClubNavigation { get; set; } = new List<Club>();
+        public virtual Club ClubNavigation { get; set; } = null!;
         
         [ForeignKey("IdTypeClub")]
         [InverseProperty("DisposerNavigation")]
-        public virtual ICollection<TypeClub> TypeclubNavigation { get; set; } = new List<TypeClub>();
+        public virtual TypeClub TypeclubNavigation { get; set; } = null!;
     }
 }

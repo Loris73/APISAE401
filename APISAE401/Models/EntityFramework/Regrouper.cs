@@ -16,10 +16,10 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("RegroupementId")]
         [InverseProperty("RegrouperNavigation")]
-        public virtual ICollection<Regroupement> RegroupementNavigation { get; set; } = new List<Regroupement>();
+        public virtual Regroupement RegroupementNavigation { get; set; } = null!;
 
         [ForeignKey("IdClub")]
         [InverseProperty("RegrouperNavigation")]
-        public virtual ICollection<Club> ClubNavigation { get; set; } = new List<Club>();
+        public virtual Club ClubNavigation { get; set; } = null!;
     }
 }
