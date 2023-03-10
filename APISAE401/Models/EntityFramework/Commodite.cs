@@ -33,7 +33,7 @@ namespace APISAE401.Models.EntityFramework
          */
 
         [InverseProperty("CommoditeNavigation")]
-        public virtual ICollection<ServiceCommodite> ServiceCommoditeNavigation { get; set; } = new List<ServiceCommodite>();
+        public virtual ICollection<ServiceCommodite> ServicecommoditeNavigation { get; set; } = new List<ServiceCommodite>();
 
         //----------------------------------------------
     }

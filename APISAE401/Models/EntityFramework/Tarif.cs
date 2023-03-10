@@ -29,7 +29,7 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdTypeChambre")]
         [InverseProperty("TarifNavigation")]
-        public virtual TypeChambre TypeChambreNavigation { get; set; } = null!;
+        public virtual TypeChambre TypechambreNavigation { get; set; } = null!;
 
         [ForeignKey("IdClub")]
         [InverseProperty("TarifNavigation")]

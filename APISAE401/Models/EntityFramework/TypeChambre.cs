@@ -37,10 +37,10 @@ namespace APISAE401.Models.EntityFramework
 
 
         [InverseProperty("TypeChambreNavigation")]
-        public virtual ICollection<APourPf> ApourPFNavigation { get; set; } = new List<APourPf>();
+        public virtual ICollection<APourPf> ApourpfNavigation { get; set; } = new List<APourPf>();
 
         [InverseProperty("TypeChambreNavigation")]
-        public virtual ICollection<AvoirComme> AvoirCommeNavigation { get; set; } = new List<AvoirComme>();
+        public virtual ICollection<AvoirComme> AvoircommeNavigation { get; set; } = new List<AvoirComme>();
 
         [InverseProperty("TypechambreNavigation")] 
         public virtual Comptabiliser ComptabiliserNavigation { get; set; } = null!;

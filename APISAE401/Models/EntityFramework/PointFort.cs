@@ -22,7 +22,7 @@ namespace APISAE401.Models.EntityFramework
             public string NomPointFort { get; set; }
 
             [InverseProperty("PointFortNavigation")]
-            public virtual ICollection<APourPf> APourPFNavigation { get; set; } = new List<APourPf>();
+            public virtual ICollection<APourPf> ApourpfNavigation { get; set; } = new List<APourPf>();
 
     }
 }

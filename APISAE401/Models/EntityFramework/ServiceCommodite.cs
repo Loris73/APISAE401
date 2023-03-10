@@ -38,7 +38,7 @@ namespace APISAE401.Models.EntityFramework
         //==========================================================================================================
         // InverseProperty
         [InverseProperty("ServiceCommoditeNavigation")]
-        public virtual ICollection<AvoirComme> AvoirCommeNavigation { get; set; } = new List<AvoirComme>();
+        public virtual ICollection<AvoirComme> AvoircommeNavigation { get; set; } = new List<AvoirComme>();
 
 
     }
