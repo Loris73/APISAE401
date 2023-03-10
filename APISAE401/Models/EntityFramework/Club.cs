@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿    using Microsoft.EntityFrameworkCore;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -72,6 +72,9 @@ namespace APISAE401.Models.EntityFramework
 
         [InverseProperty("ClubNavigation")]
         public virtual ICollection<Regrouper> RegrouperNavigation { get; set; } = new List<Regrouper>();
+
+        [InverseProperty("ClubNavigation")]
+        public virtual ICollection<Signalement> SignalementNavigation { get; set; } = new List<Signalement>();
         //-------------------------------------------------------------------------------   
 
 

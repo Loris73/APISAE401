@@ -65,6 +65,9 @@ namespace APISAE401.Models.EntityFramework
 
         [InverseProperty("ActiviteNavigation")]
         public virtual ICollection<Proposer> ProposerNavigation { get; set; } = new List<Proposer>();
+
+        [InverseProperty("PouvoirNavigation")]
+        public virtual ICollection<Pouvoir> PouvoirNavigation { get; set; } = new List<Pouvoir>();
     }
 }
 

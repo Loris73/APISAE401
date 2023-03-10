@@ -42,7 +42,7 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("TypeChambreNavigation")]
         public virtual ICollection<AvoirComme> AvoirCommeNavigation { get; set; } = new List<AvoirComme>();
 
-        [InverseProperty("TypeChambreNavigation")] 
+        [InverseProperty("TypechambreNavigation")] 
         public virtual Comptabiliser ComptabiliserNavigation { get; set; } = null!;
 
         [InverseProperty("TypeChambreNavigation")]

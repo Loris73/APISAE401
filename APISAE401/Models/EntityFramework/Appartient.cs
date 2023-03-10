@@ -28,6 +28,6 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdDommaineSkiable")]
         [InverseProperty("AppartientNavigation")]
-        public virtual DomaineSkiable DomaineSkiableNavigation { get; set; } = null!;
+        public virtual DomaineSkiable DomaineskiableNavigation { get; set; } = null!;
     }
 }

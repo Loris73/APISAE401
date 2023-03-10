@@ -26,7 +26,7 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdTypeChambre")]
         [InverseProperty("DesireReserveNavigation")]
-        public virtual TypeChambre TypeChambreNavigation { get; set; } = null!;
+        public virtual TypeChambre TypechambreNavigation { get; set; } = null!;
 
     }
 }

@@ -107,7 +107,10 @@ namespace APISAE401.Models.EntityFramework
 
         [InverseProperty("ClientNavigation")]
         public virtual ICollection<Detient> DetientNavigation { get; set; } = new List<Detient>();
-        
+
+        [InverseProperty("ClientNavigation")]
+        public virtual ICollection<Signalement> SignalementNavigation { get; set; } = new List<Signalement>();
+
         //==========================================================================================================
 
         /*----Jules---- => 

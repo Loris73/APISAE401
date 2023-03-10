@@ -17,7 +17,7 @@ namespace APISAE401.Models.EntityFramework
 
         // Id Club
         [Column("clb_id")]
-        public int IdClub { get; set; };
+        public int IdClub { get; set; }
 
         // Id Client
         [Column("clt_id")]
@@ -46,11 +46,11 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("DateDebutCalendrier")]
         [InverseProperty("ReservationdatedebutNavigation")]
-        public virtual Calendrier CalendrierNavigation { get; set; }   
+        public virtual Calendrier CalendrierdebutNavigation { get; set; }   
 
         [ForeignKey("DateFinCalendrier")]
         [InverseProperty("ReservationdatefinNavigation")]
-        public virtual Calendrier CalendrierNavigation { get; set; }       
+        public virtual Calendrier CalendrierfinNavigation { get; set; }       
 
         [InverseProperty("ReservationNavigation")]
         public virtual ICollection<Participer> ParticiperNavigation { get; set;} = new List<Participer>();
@@ -58,7 +58,10 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("ReservationNavigation")]
         public virtual ICollection<Deplacer> DeplacerNavigation { get; set; } = new List<Deplacer>();
 
+        [InverseProperty("PouvoirNavigation")]
+        public virtual ICollection<Pouvoir> PouvoirNavigation { get; set; } = new List<Pouvoir>();
+
         [InverseProperty("ReservationNavigation")] 
-        public virtual DesirReserve DesireReserveNavigation { get; set; } = new List<DesirReserve>();
+        public virtual DesirReserve DesireReserveNavigation { get; set; } = new DesirReserve();
     }
 }
