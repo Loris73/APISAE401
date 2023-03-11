@@ -132,7 +132,7 @@ namespace APISAE401.Models.EntityFramework
             // ========= Appartient ===============
                 modelBuilder.Entity<Appartient>(entity =>
             {
-                entity.HasKey(e => new {e.IdClub, e.IdDommaineSkiable}).HasName("pk_appartient");
+                entity.HasKey(e => new { e.IdClub, e.IdDommaineSkiable }).HasName("pk_appartient");
 
                 entity.HasOne(d => d.ClubNavigation).WithMany(p => p.AppartientNavigation)
                     .HasConstraintName("fk_appartient_club");
