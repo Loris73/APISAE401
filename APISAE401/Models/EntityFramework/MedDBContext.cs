@@ -61,10 +61,12 @@ namespace APISAE401.Models.EntityFramework
         
         
         
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //La connexion à été configurer dans Program.cs et appsettings.json
+
+        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Server=localhost;port=5432;Database=SAEMed; uid=postgres; password=postgres;");
-        }
+            optionsBuilder.UseNpgsql("Server=localhost;port=5432;Database=s213_clubmed_v2;uid=s213;password=NHfvV2;");
+        }*/
 
         
 
@@ -130,7 +132,7 @@ namespace APISAE401.Models.EntityFramework
 
 
             // ========= Appartient ===============
-                modelBuilder.Entity<Appartient>(entity =>
+            modelBuilder.Entity<Appartient>(entity =>
             {
                 entity.HasKey(e => new { e.IdClub, e.IdDommaineSkiable }).HasName("pk_appartient");
 
