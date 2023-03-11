@@ -66,7 +66,7 @@ namespace APISAE401.Models.EntityFramework
         // Ville du Client
         [Column("clt_ville", TypeName = "varchar")]
         [StringLength(255)]
-        public string? VilleCleint { get; set; }
+        public string? VilleClient { get; set; }
 
         // Pays du Client
         [Column("clt_pays", TypeName = "varchar")]
