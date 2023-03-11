@@ -112,7 +112,7 @@ namespace APISAE401.Models.EntityFramework
 
         // InverseProperty permettant de recuperer l'IdClub dans la table Appartient
         [InverseProperty("ClubNavigation")]
-        public virtual ICollection<Appartient> AppartientNavigation { get; set; } = new List<Appartient>();
+        public virtual Appartient AppartientNavigation { get; set; } = null!;
         //-------------------------------------------------------------------------------   
 
 
