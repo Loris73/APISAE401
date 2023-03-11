@@ -43,7 +43,7 @@ namespace APISAE401.Models.EntityFramework
         public virtual ICollection<AvoirComme> AvoircommeNavigation { get; set; } = new List<AvoirComme>();
 
         [InverseProperty("TypechambreNavigation")]
-        public virtual Comptabiliser ComptabiliserNavigation { get; set; } = null!;
+        public virtual ICollection<Comptabiliser> ComptabiliserNavigation { get; set; } = new List<Comptabiliser>();
 
         [InverseProperty("TypeChambreNavigation")]
         public virtual ICollection<Tarif> TarifNavigation { get; set; } = new List<Tarif>();
