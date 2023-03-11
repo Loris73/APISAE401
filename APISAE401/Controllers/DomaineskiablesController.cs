@@ -26,7 +26,7 @@ namespace APISAE401.Controllers
             return await dataRepository.GetAllAsync();
         }
 
-        // GET: api/DomaineSkiables/lololamoto
+        // GET: api/DomaineSkiables/La Rosière
         [HttpGet]
         [Route("[action]/{nom}")]
         [ActionName("GetByNom")]

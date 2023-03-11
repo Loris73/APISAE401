@@ -120,7 +120,7 @@ namespace APISAE401.Models.EntityFramework
          * Modifié le 07/03/2023
          */
         [InverseProperty("ClubNavigation")]
-        public virtual Comptabiliser ComptabiliserNavigation { get; set; } = null!;
+        public virtual ICollection<Comptabiliser> ComptabiliserNavigation { get; set; } = new List<Comptabiliser>();
 
         //-------------------------------------------------------------------------------
         //=========================================================================================================================

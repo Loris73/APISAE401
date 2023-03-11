@@ -196,11 +196,11 @@ namespace APISAE401.Models.EntityFramework
 
             // ========= Club ===============
              modelBuilder.Entity<Club>(entity =>
-            {
+             {
                 entity.HasKey(e => e.IdClub).HasName("pk_club");
-                entity.HasOne(e => e.DomaineskiableNavigation).WithMany(p => p.ClubNavigation)
+                entity.HasOne(e => e.AppartientNavigation).WithMany(p => p.ClubNavigation)
                 .HasConstraintName("fk_client_typeclient");
-            });
+             });
 
 
             //=============Commodite===================
@@ -400,10 +400,10 @@ namespace APISAE401.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdReservation).HasName("pk_reservation");
 
-                entity.HasOne(e => e.CalendrierdebutNavigation).WithMany(p => p.ReservationNavigation)
+                entity.HasOne(e => e.CalendrierdebutNavigation).WithMany(p => p.ReservationdatedebutNavigation)
                     .HasConstraintName("fk_reservation_calendrier");
 
-                entity.HasOne(e => e.CalendrierfinNavigation).WithMany(p => p.ReservationNavigation)
+                entity.HasOne(e => e.CalendrierfinNavigation).WithMany(p => p.ReservationdatefinNavigation)
                     .HasConstraintName("fk_reservation_calendrier");
 
                 entity.HasOne(e => e.ClientNavigation).WithMany(p => p.ReservationNavigation)

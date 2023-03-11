@@ -24,6 +24,6 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdTypeChambre")]
         [InverseProperty("ComptabiliserNavigation")]
-        public virtual ICollection<TypeChambre> TypechambreNavigation { get; set; } = new List<TypeChambre>();
+        public virtual TypeChambre TypechambreNavigation { get; set; } = null!;
     }
 }

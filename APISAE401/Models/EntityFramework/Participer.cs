@@ -16,7 +16,7 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdParticipant")]
         [InverseProperty("ParticiperNavigation")]
-        public virtual ICollection<Participant> ParticipantNavigation { get; set; } = new List<Participant>();
+        public virtual Participant ParticipantNavigation { get; set; } = null!;
 
         [ForeignKey("IdReservation")]
         [InverseProperty("ParticiperNavigation")]

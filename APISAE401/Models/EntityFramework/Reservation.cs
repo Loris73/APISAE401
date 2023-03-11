@@ -61,7 +61,7 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("ReservationNavigation")]
         public virtual ICollection<Pouvoir> PouvoirNavigation { get; set; } = new List<Pouvoir>();
 
-        [InverseProperty("ReservationNavigation")] 
-        public virtual DesirReserve DesirereserveNavigation { get; set; } = new DesirReserve();
+        [InverseProperty("ReservationNavigation")]
+        public virtual ICollection<DesirReserve> DesirereserveNavigation { get; set; } = new List<DesirReserve>();
     }
 }

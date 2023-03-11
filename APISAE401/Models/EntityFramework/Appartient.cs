@@ -24,7 +24,7 @@ namespace APISAE401.Models.EntityFramework
         //ForeignKey
         [ForeignKey("IdClub")]
         [InverseProperty("AppartientNavigation")]
-        public virtual Club ClubNavigation { get; set; } = null!;
+        public virtual ICollection<Club> ClubNavigation { get; set; } = new List<Club>();
 
         [ForeignKey("IdDommaineSkiable")]
         [InverseProperty("AppartientNavigation")]

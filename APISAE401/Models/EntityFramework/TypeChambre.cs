@@ -42,14 +42,14 @@ namespace APISAE401.Models.EntityFramework
         [InverseProperty("TypeChambreNavigation")]
         public virtual ICollection<AvoirComme> AvoircommeNavigation { get; set; } = new List<AvoirComme>();
 
-        [InverseProperty("TypechambreNavigation")] 
+        [InverseProperty("TypechambreNavigation")]
         public virtual Comptabiliser ComptabiliserNavigation { get; set; } = null!;
 
         [InverseProperty("TypeChambreNavigation")]
         public virtual ICollection<Tarif> TarifNavigation { get; set; } = new List<Tarif>();
 
         [InverseProperty("TypeChambreNavigation")] 
-        public virtual DesirReserve DesirereserveNavigation { get; set; } = null!;
+        public virtual ICollection<DesirReserve> DesirereserveNavigation { get; set; } = new List<DesirReserve>();
 
         // InverseProperty permettant de recuperer l'IdTypeChambre dans la table Photo
         [InverseProperty("TypeChambreNavigation")]
