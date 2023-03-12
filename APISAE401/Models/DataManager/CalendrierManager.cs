@@ -1,5 +1,5 @@
-using API_Film.Models.EntityFramework;
-using API_Film.Models.Repository;
+using APISAE401.Models.EntityFramework;
+using APISAE401.Models.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,11 +7,11 @@ namespace API_Film.Models.DataManager
 {
     public class CalendrierManager : IDataRepository<Calendrier>
     {
-        readonly FilmRatingContext? medDbContext;
+        readonly MedDBContext? medDbContext;
 
         public CalendrierManager() { }
 
-        public CalendrierManager(FilmRatingContext context)
+        public CalendrierManager(MedDBContext context)
         {
             medDbContext = context;
         }
@@ -21,7 +21,7 @@ namespace API_Film.Models.DataManager
         }
         public async Task<ActionResult<Calendrier>> GetByIdAsync(int id)
         {
-            return await medDbContext.Calendriers.FirstOrDefaultAsync(u => u.IdCalendrier == id);
+            return await medDbContext.Calendriers.FirstOrDefaultAsync(u => u.DateCal == id);
         }
         
         public async Task AddAsync(Calendrier entity)
@@ -34,7 +34,8 @@ namespace API_Film.Models.DataManager
             medDbContext.Entry(calendrier).State = EntityState.Modified;
             calendrier.DateCal = entity.DateCal;
             calendrier.TarifNavigation = entity.TarifNavigation;
-            calendrier.ReservationNavigation = entity.ReservationNavigation;
+            calendrier.ReservationdatedebutNavigation = entity.ReservationdatefinNavigation;
+            calendrier.ReservationdatefinNavigation = entity.ReservationdatefinNavigation;
 
 
             await medDbContext.SaveChangesAsync();

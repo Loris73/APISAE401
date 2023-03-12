@@ -49,7 +49,8 @@ namespace APISAE401.Models.DataManager
             reservation.Montant = entity.Montant;
             reservation.ClientNavigation = entity.ClientNavigation;
             reservation.ClubNavigation = entity.ClubNavigation;
-            reservation.CalendrierNavigation = entity.CalendrierNavigation;
+            reservation.CalendrierdebutNavigation = entity.CalendrierdebutNavigation;
+            reservation.CalendrierfinNavigation = entity.CalendrierfinNavigation;
             reservation.ParticiperNavigation = entity.ParticiperNavigation;
             reservation.DeplacerNavigation = entity.DeplacerNavigation;
             reservation.DesirereserveNavigation = entity.DesirereserveNavigation;

@@ -1,21 +1,21 @@
-using API_Film.Models.EntityFramework;
-using API_Film.Models.Repository;
+using APISAE401.Models.EntityFramework;
+using APISAE401.Models.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace API_Film.Models.DataManager
+namespace APISAE401.Models.DataManager
 {
     public class TarifManager : IDataRepository<Tarif>
     {
-        readonly FilmRatingContext? medDbContext;
+        readonly MedDBContext? medDbContext;
 
         public TarifManager() { }
 
-        public TarifManager(FilmRatingContext context)
+        public TarifManager(MedDBContext context)
         {
             medDbContext = context;
         }
-        public async Task<ActionResult<IEnumerable<Tarif>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Tarif>>> GetAllAsync()
         {
             return await medDbContext.Tarifs.ToListAsync();
         }
@@ -23,7 +23,11 @@ namespace API_Film.Models.DataManager
         {
             return await medDbContext.Tarifs.FirstOrDefaultAsync(u => u.IdTypeChambre == id);
         }
-        
+        public async Task<ActionResult<Tarif>> GetByStringAsync(string intitule)
+        {
+            return await medDbContext.Tarifs.FirstOrDefaultAsync(u => u.Prix.ToString() == intitule.ToUpper());
+        }
+
         public async Task AddAsync(Tarif entity)
         {
             await medDbContext.Tarifs.AddAsync(entity);
@@ -35,7 +39,7 @@ namespace API_Film.Models.DataManager
             tarif.IdTypeChambre = entity.IdTypeChambre;
             tarif.IdClub = entity.IdClub;
             tarif.DateCal = entity.DateCal;
-            tarif.Note = entity.Note;
+            tarif.Prix = entity.Prix;
             tarif.TypechambreNavigation = entity.TypechambreNavigation;
             tarif.ClubNavigation = entity.ClubNavigation;
             tarif.CalendrierNavigation = entity.CalendrierNavigation;

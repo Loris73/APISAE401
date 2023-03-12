@@ -1,21 +1,21 @@
-using API_Film.Models.EntityFramework;
-using API_Film.Models.Repository;
+using APISAE401.Models.EntityFramework;
+using APISAE401.Models.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace API_Film.Models.DataManager
+namespace APISAE401.Models.DataManager
 {
     public class TypeChambreManager : IDataRepository<TypeChambre>
     {
-        readonly FilmRatingContext? medDbContext;
+        readonly MedDBContext? medDbContext;
 
         public TypeChambreManager() { }
 
-        public TypeChambreManager(FilmRatingContext context)
+        public TypeChambreManager(MedDBContext context)
         {
             medDbContext = context;
         }
-        public async Task<ActionResult<IEnumerable<TypeChambre>>> GetAll()
+        public async Task<ActionResult<IEnumerable<TypeChambre>>> GetAllAsync()
         {
             return await medDbContext.TypeChambres.ToListAsync();
         }
@@ -23,25 +23,32 @@ namespace API_Film.Models.DataManager
         {
             return await medDbContext.TypeChambres.FirstOrDefaultAsync(u => u.TypeChambreId == id);
         }
-        
+
+        public async Task<ActionResult<TypeChambre>> GetByStringAsync(string intitule)
+        {
+            return await medDbContext.TypeChambres.FirstOrDefaultAsync(u => u.TypeChambreNom.ToUpper() == intitule.ToUpper());
+        }
+
         public async Task AddAsync(TypeChambre entity)
         {
             await medDbContext.TypeChambres.AddAsync(entity);
             await medDbContext.SaveChangesAsync();
         }
-        public async Task UpdateAsync(TypeChambre medtypeChambre, TypeChambre entity)
+        public async Task UpdateAsync(TypeChambre typeChambre, TypeChambre entity)
         {
-            medDbContext.Entry(medtypeChambre).State = EntityState.Modified;
+            medDbContext.Entry(typeChambre).State = EntityState.Modified;
             typeChambre.TypeChambreId = entity.TypeChambreId;
             typeChambre.TypeChambreNom = entity.TypeChambreNom;
+            typeChambre.TypeChambreDimension = entity.TypeChambreDimension;
             typeChambre.TypeChambreCapacite = entity.TypeChambreCapacite;
             typeChambre.TypeChambreDescription = entity.TypeChambreDescription;
+
             typeChambre.ApourpfNavigation = entity.ApourpfNavigation;
             typeChambre.AvoircommeNavigation = entity.AvoircommeNavigation;
             typeChambre.ComptabiliserNavigation = entity.ComptabiliserNavigation;
             typeChambre.TarifNavigation = entity.TarifNavigation;
             typeChambre.DesirereserveNavigation = entity.DesirereserveNavigation;
-            typeChambre.PhotoNavigation = entity.TypeChambrePhotoNavigationCapacite;
+            typeChambre.PhotoNavigation = entity.PhotoNavigation;
 
 
             await medDbContext.SaveChangesAsync();

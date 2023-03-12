@@ -27,7 +27,7 @@ namespace APISAE401.Models.EntityFramework
         public virtual DbSet<Calendrier> Calendriers { get; set; } = null!;
         public virtual DbSet<CarteBancaire> CarteBancaires { get; set; } = null!;
         public virtual DbSet<Client> Clients { get; set; } = null!;
-        public virtual DbSet<Club> Club { get; set; } = null!;
+        public virtual DbSet<Club> Clubs { get; set; } = null!;
         public virtual DbSet<Commodite> Commodites { get; set; } = null!;
         public virtual DbSet<Comptabiliser> Comptabilisers { get; set; } = null!;
         public virtual DbSet<Deplacer> Deplacers { get; set; } = null!;
@@ -152,6 +152,7 @@ namespace APISAE401.Models.EntityFramework
                     .HasConstraintName("fk_avi_client");
                 entity.HasOne(d => d.ClubNavigation).WithMany(p => p.AviNavigation)
                     .HasConstraintName("fk_avi_club");
+                e
             });
 
 
@@ -200,8 +201,7 @@ namespace APISAE401.Models.EntityFramework
             modelBuilder.Entity<Club>(entity =>
             {
                 entity.HasKey(e => e.IdClub).HasName("pk_club");
-                entity.HasOne(e => e.AppartientNavigation).WithMany(p => p.ClubNavigation)
-                .HasConstraintName("fk_client_typeclient");
+                
             });
 
 
@@ -281,6 +281,7 @@ namespace APISAE401.Models.EntityFramework
             modelBuilder.Entity<Localisation>(entity =>
             {
                 entity.HasKey(e => e.IdLocalisation).HasName("pk_localisation");
+
             });
 
             // ========= Participant ===============

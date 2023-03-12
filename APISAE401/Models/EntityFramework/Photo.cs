@@ -46,7 +46,7 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("pht_url")]
-        public string photo { get; set; }
+        public string Urlphoto { get; set; }
 
         //=======================================
 

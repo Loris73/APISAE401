@@ -18,9 +18,9 @@ namespace APISAE401.Controllers
     public class APourPFsController : ControllerBase
     {
         
-        private readonly IDataRepository<APourPF> datatRepository;
+        private readonly IDataRepository<APourPf> datatRepository;
 
-        public APourPFsController(IDataRepository<APourPF> dataRepo)
+        public APourPFsController(IDataRepository<APourPf> dataRepo)
         {
             datatRepository = dataRepo;
         }
@@ -28,7 +28,7 @@ namespace APISAE401.Controllers
         // GET: api/APourPFs
         [HttpGet]
         [ActionName("GetAll")]
-        public async Task<ActionResult<IEnumerable<APourPF>>> GetAPourPFs()
+        public async Task<ActionResult<IEnumerable<APourPf>>> GetAPourPFs()
         {
             return await datatRepository.GetAll();
         }

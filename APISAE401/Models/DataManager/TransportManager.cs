@@ -1,21 +1,21 @@
-using API_Film.Models.EntityFramework;
-using API_Film.Models.Repository;
+using APISAE401.Models.EntityFramework;
+using APISAE401.Models.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace API_Film.Models.DataManager
+namespace APISAE401.Models.DataManager
 {
     public class TransportManager : IDataRepository<Transport>
     {
-        readonly FilmRatingContext? medDbContext;
+        readonly MedDBContext? medDbContext;
 
         public TransportManager() { }
 
-        public TransportManager(FilmRatingContext context)
+        public TransportManager(MedDBContext context)
         {
             medDbContext = context;
         }
-        public async Task<ActionResult<IEnumerable<Transport>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Transport>>> GetAllAsync()
         {
             return await medDbContext.Transports.ToListAsync();
         }
@@ -23,7 +23,12 @@ namespace API_Film.Models.DataManager
         {
             return await medDbContext.Transports.FirstOrDefaultAsync(u => u.IdTransport == id);
         }
-        
+
+        public async Task<ActionResult<Transport>> GetByStringAsync(string intitule)
+        {
+            return await medDbContext.Transports.FirstOrDefaultAsync(u => u.TransportNom.ToUpper() == intitule.ToUpper());
+        }
+
         public async Task AddAsync(Transport entity)
         {
             await medDbContext.Transports.AddAsync(entity);

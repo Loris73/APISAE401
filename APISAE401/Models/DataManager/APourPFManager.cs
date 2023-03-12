@@ -1,49 +1,49 @@
-using API_Film.Models.EntityFramework;
-using API_Film.Models.Repository;
+using APISAE401.Models.EntityFramework;
+using APISAE401.Models.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace API_Film.Models.DataManager
+namespace APISAE401.Models.DataManager
 {
-    public class APourPFManager : IDataRepository<APourPF>
+    public class APourPFManager : IDataRepository<APourPf>
     {
-        readonly FilmRatingContext? medDbContext;
+        readonly MedDBContext? medDBContext;
 
         public APourPFManager() { }
 
-        public APourPFManager(FilmRatingContext context)
+        public APourPFManager(MedDBContext context)
         {
-            medDbContext = context;
+            medDBContext = context;
         }
-        public async Task<ActionResult<IEnumerable<APourPF>>> GetAll()
+        public async Task<ActionResult<IEnumerable<APourPf>>> GetAllAsync()
         {
-            return await medDbContext.APourPFs.ToListAsync();
+            return await medDBContext.APourPfs.ToListAsync();
         }
-        public async Task<ActionResult<APourPF>> GetByIdAsync(int id)
+        public async Task<ActionResult<APourPf>> GetByIdAsync(int id)
         {
-            return await medDbContext.APourPFs.FirstOrDefaultAsync(u => u.IdAPourPF == id);
+            return await medDBContext.APourPfs.FirstOrDefaultAsync(u => u.IdAPourPF == id);
         }
         
-        public async Task AddAsync(APourPF entity)
+        public async Task AddAsync(APourPf entity)
         {
-            await medDbContext.APourPFs.AddAsync(entity);
-            await medDbContext.SaveChangesAsync();
+            await medDBContext.APourPFs.AddAsync(entity);
+            await medDBContext.SaveChangesAsync();
         }
-        public async Task UpdateAsync(APourPF aPourPF, APourPF entity)
+        public async Task UpdateAsync(APourPf aPourPF, APourPf entity)
         {
-            medDbContext.Entry(aPourPF).State = EntityState.Modified;
+            medDBContext.Entry(aPourPF).State = EntityState.Modified;
             aPourPF.IdTypeChambre = entity.IdTypeChambre;
             aPourPF.IdPointFort = entity.IdPointFort;
-            aPourPF.PointfortNaviguation = entity.PointfortNaviguation;
+            aPourPF.PointfortNavigation = entity.PointfortNavigation;
             aPourPF.TypechambreNavigation = entity.TypechambreNavigation;
             
 
-            await medDbContext.SaveChangesAsync();
+            await medDBContext.SaveChangesAsync();
         }
-        public async Task DeleteAsync(APourPF entity)
+        public async Task DeleteAsync(APourPf entity)
         {
-            medDbContext.APourPFs.Remove(entity);
-            await medDbContext.SaveChangesAsync();
+            medDBContext.APourPFs.Remove(entity);
+            await medDBContext.SaveChangesAsync();
         }
     }
 }

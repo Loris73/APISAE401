@@ -25,7 +25,7 @@ namespace APISAE401.Models.EntityFramework
 
         [Column("trf_prix")]
         [Required]
-        public int Note { get; set; }
+        public int Prix { get; set; }
 
         [ForeignKey("IdTypeChambre")]
         [InverseProperty("TarifNavigation")]

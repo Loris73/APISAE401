@@ -23,14 +23,14 @@ namespace APISAE401.Models.EntityFramework
         [Required]
         [StringLength(255)]
         [Column("avi_titre")]
-        public string titreAvi { get; set;}
+        public string TitreAvi { get; set;}
 
         [Required]
         [Column("avi_note")]
-        public int noteAvi { get; set; }
+        public int NoteAvi { get; set; }
 
         [Column("avi_commentaire")]
-        public string commentaireAvi { get; set; }
+        public string? CommentaireAvi { get; set; }
 
 
         //=======================================

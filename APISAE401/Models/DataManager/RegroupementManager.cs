@@ -1,29 +1,34 @@
-using API_Film.Models.EntityFramework;
-using API_Film.Models.Repository;
+using APISAE401.Models.EntityFramework;
+using APISAE401.Models.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace API_Film.Models.DataManager
+namespace APISAE401.Models.DataManager
 {
     public class RegroupementManager : IDataRepository<Regroupement>
     {
-        readonly FilmRatingContext? medDbContext;
+        readonly MedDBContext? medDbContext;
 
         public RegroupementManager() { }
 
-        public RegroupementManager(FilmRatingContext context)
+        public RegroupementManager(MedDBContext context)
         {
             medDbContext = context;
         }
-        public async Task<ActionResult<IEnumerable<Regroupement>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Regroupement>>> GetAllAsync()
         {
             return await medDbContext.Regroupements.ToListAsync();
         }
         public async Task<ActionResult<Regroupement>> GetByIdAsync(int id)
         {
-            return await medDbContext.Regroupements.FirstOrDefaultAsync(u => u.IdRegroupement == id);
+            return await medDbContext.Regroupements.FirstOrDefaultAsync(u => u.RegroupementId == id);
         }
-        
+
+        public async Task<ActionResult<Regroupement>> GetByStringAsync(string intitule)
+        {
+            return await medDbContext.Regroupements.FirstOrDefaultAsync(u => u.RegroupementNom.ToUpper() == intitule.ToUpper());
+        }
+
         public async Task AddAsync(Regroupement entity)
         {
             await medDbContext.Regroupements.AddAsync(entity);
