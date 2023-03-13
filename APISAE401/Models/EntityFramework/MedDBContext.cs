@@ -19,7 +19,8 @@ namespace APISAE401.Models.EntityFramework
         public virtual DbSet<Activite> Activites { get; set; } = null!;
         public virtual DbSet<ActiviteALaCarte> ActivitesALaCarte { get; set; } = null!;
         public virtual DbSet<ActiviteIncluse> ActivitesIncluses { get; set; } = null!;
-        public virtual DbSet<APourSousLoc> APourLocs { get; set; } = null!;
+        public virtual DbSet<Appartient> Appartients { get; set; } = null!;
+        public virtual DbSet<APourSousLoc> APourSousLocs { get; set; } = null!;
         public virtual DbSet<APourPf> APourPfs { get; set; } = null!;
         public virtual DbSet<Avi> Avis { get; set; } = null!;
         public virtual DbSet<AvoirComme> AvoirCommes { get; set; } = null!;
@@ -27,7 +28,7 @@ namespace APISAE401.Models.EntityFramework
         public virtual DbSet<Calendrier> Calendriers { get; set; } = null!;
         public virtual DbSet<CarteBancaire> CarteBancaires { get; set; } = null!;
         public virtual DbSet<Client> Clients { get; set; } = null!;
-        public virtual DbSet<Club> Clubs { get; set; } = null!;
+        public virtual DbSet<Club> Club { get; set; } = null!;
         public virtual DbSet<Commodite> Commodites { get; set; } = null!;
         public virtual DbSet<Comptabiliser> Comptabilisers { get; set; } = null!;
         public virtual DbSet<Deplacer> Deplacers { get; set; } = null!;
@@ -61,7 +62,7 @@ namespace APISAE401.Models.EntityFramework
 
 
 
-        //La connexion à été configurer dans Program.cs et appsettings.json
+        //La connexion    t  configurer dans Program.cs et appsettings.json
 
         /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -134,7 +135,7 @@ namespace APISAE401.Models.EntityFramework
             // ========= Appartient ===============
             modelBuilder.Entity<Appartient>(entity =>
             {
-                entity.HasKey(e => new {e.IdClub, e.IdDommaineSkiable}).HasName("pk_appartient");
+                entity.HasKey(e => new { e.IdClub, e.IdDommaineSkiable }).HasName("pk_appartient");
 
                 entity.HasOne(d => d.ClubNavigation).WithMany(p => p.AppartientNavigation)
                     .HasConstraintName("fk_appartient_club");
@@ -200,7 +201,6 @@ namespace APISAE401.Models.EntityFramework
             modelBuilder.Entity<Club>(entity =>
             {
                 entity.HasKey(e => e.IdClub).HasName("pk_club");
-                
             });
 
 
@@ -280,7 +280,6 @@ namespace APISAE401.Models.EntityFramework
             modelBuilder.Entity<Localisation>(entity =>
             {
                 entity.HasKey(e => e.IdLocalisation).HasName("pk_localisation");
-
             });
 
             // ========= Participant ===============
@@ -310,16 +309,16 @@ namespace APISAE401.Models.EntityFramework
                 entity.HasOne(e => e.BarNavigation).WithMany(p => p.PhotoNavigation)
                     .HasConstraintName("fk_photo_bar");
 
-                entity.HasOne(e => e.TypeChambreNavigation).WithMany(p => p.PhotoNavigation)
+                entity.HasOne(e => e.TypechambreNavigation).WithMany(p => p.PhotoNavigation)
                     .HasConstraintName("fk_photo_typechambre");
 
-                entity.HasOne(e => e.TypeActiviteNavigation).WithMany(p => p.PhotoNavigation)
+                entity.HasOne(e => e.TypeactiviteNavigation).WithMany(p => p.PhotoNavigation)
                     .HasConstraintName("fk_photo_typeactivite");
 
                 entity.HasOne(e => e.RestaurantNavigation).WithMany(p => p.PhotoNavigation)
                     .HasConstraintName("fk_photo_restaurant");
 
-                entity.HasOne(e => e.DomaineSkiableNavigation).WithMany(p => p.PhotoNavigation)
+                entity.HasOne(e => e.DomaineskiableNavigation).WithMany(p => p.PhotoNavigation)
                     .HasConstraintName("fk_photo_navigation");
 
                 entity.HasOne(e => e.ClubNavigation).WithMany(p => p.PhotoNavigation)
@@ -465,7 +464,7 @@ namespace APISAE401.Models.EntityFramework
             // ========= Tarif ===============
             modelBuilder.Entity<Tarif>(entity =>
             {
-                entity.HasKey(e => new {e.IdTypeChambre, e.IdClub, e.DateCal}).HasName("pk_tarif");
+                entity.HasKey(e => new { e.IdTypeChambre, e.IdClub, e.DateCal }).HasName("pk_tarif");
 
                 entity.HasOne(d => d.TypechambreNavigation).WithMany(p => p.TarifNavigation)
                     .HasConstraintName("fk_tarif_typechambre");
