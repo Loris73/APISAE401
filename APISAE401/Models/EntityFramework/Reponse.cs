@@ -50,7 +50,7 @@ namespace APISAE401.Models.EntityFramework
         public virtual Client ClientNavigation { get; set; } = new Client();
 
         [ForeignKey("IdClub")]
-        [InverseProperty("ReponseClubNavigation")]
+        [InverseProperty("ReponseNavigation")]
         public virtual Club ClubNavigation { get; set; } = new Club();
 
         [ForeignKey("IdAvis")]

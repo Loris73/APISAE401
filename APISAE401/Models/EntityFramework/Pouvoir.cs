@@ -15,7 +15,6 @@ namespace APISAE401.Models.EntityFramework
         public int IdActivite { get; set; }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column("alc_id")]
         public int IdActiviteALaCarte { get; set; }
 

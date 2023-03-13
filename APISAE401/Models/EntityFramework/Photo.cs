@@ -59,7 +59,7 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdTypeActivite")]
         [InverseProperty("PhotoNavigation")]
-        public virtual TypeActivite TypeActiviteNavigation { get; set; } = new TypeActivite();
+        public virtual TypeActivite TypeactiviteNavigation { get; set; } = new TypeActivite();
 
         [ForeignKey("IdRestaurant")]
         [InverseProperty("PhotoNavigation")]
@@ -67,7 +67,7 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdDomaineSkiable")]
         [InverseProperty("PhotoNavigation")]
-        public virtual DomaineSkiable DomaineSkiableNavigation { get; set; } = new DomaineSkiable();
+        public virtual DomaineSkiable DomaineskiableNavigation { get; set; } = new DomaineSkiable();
 
         [ForeignKey("IdClub")]
         [InverseProperty("PhotoNavigation")]
@@ -75,7 +75,7 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdTypeChambre")]
         [InverseProperty("PhotoNavigation")]
-        public virtual TypeChambre TypeChambreNavigation { get; set; } = new TypeChambre();
+        public virtual TypeChambre TypechambreNavigation { get; set; } = new TypeChambre();
         //=======================================
 
         //=======================================

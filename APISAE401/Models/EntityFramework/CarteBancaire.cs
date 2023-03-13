@@ -22,7 +22,7 @@ namespace APISAE401.Models.EntityFramework
         [Column("cc_dateexpirationcb", TypeName = "date")]
         public DateTime DateExpirationCB { get; set; }
 
-        [InverseProperty("CarteBancaireNavigation")]
+        [InverseProperty("CartebancaireNavigation")]
         public virtual ICollection<Detient> DetientNavigation { get; set; } = new List<Detient>();
     }
 }

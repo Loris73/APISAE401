@@ -32,12 +32,12 @@ namespace APISAE401.Models.EntityFramework
         //ForeignKeys => IdCommodite
 
         [ForeignKey("IdCommodite")]
-        [InverseProperty("ServiceCommoditeNavigation")]
+        [InverseProperty("ServicecommoditeNavigation")]
         public virtual Commodite CommoditeNavigation { get; set; } = new Commodite();
 
         //==========================================================================================================
         // InverseProperty
-        [InverseProperty("ServiceCommoditeNavigation")]
+        [InverseProperty("ServicecommoditeNavigation")]
         public virtual ICollection<AvoirComme> AvoircommeNavigation { get; set; } = new List<AvoirComme>();
 
 

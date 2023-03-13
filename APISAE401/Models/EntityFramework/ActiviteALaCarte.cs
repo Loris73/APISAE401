@@ -51,14 +51,14 @@ namespace APISAE401.Models.EntityFramework
         //ForeignKeys => IdActivite
 
         [ForeignKey("IdActivite")]
-        [InverseProperty("ActiviteALacarteNavigation")]
+        [InverseProperty("ActivitealacarteNavigation")]
         public virtual Activite ActiviteNavigation { get; set; } = new Activite();
 
 
         //=======================================
         //InverseProperty
 
-        [InverseProperty("ActiviteALaCarteNavigation")]
+        [InverseProperty("ActivitealacarteNavigation")]
         public virtual ICollection<Pouvoir> PouvoirNavigation { get; set; } = new List<Pouvoir>();
 
     }

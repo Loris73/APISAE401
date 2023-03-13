@@ -18,8 +18,8 @@ namespace APISAE401.Models.EntityFramework
         [StringLength(255)]
         public string NomTypeClub { get; set; }
 
-        [ForeignKey("IdTypeClub")]
-        [InverseProperty("TypeClubNavigation")]
+        [InverseProperty("TypeclubNavigation")]
         public virtual ICollection<Disposer> DisposerNavigation { get; set; } = new List<Disposer>();
+
     }
 }

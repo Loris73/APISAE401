@@ -16,7 +16,7 @@ namespace APISAE401.Models.EntityFramework
         [Column("tra_detail")]
         public string DetailTrancheAge { get; set; }
 
-        [InverseProperty("TrancheAgeNavigation")]
+        [InverseProperty("TrancheageNavigation")]
         public virtual ICollection<Activite> ActiviteNavigation { get; set; } = new List<Activite>();
     }
 }
