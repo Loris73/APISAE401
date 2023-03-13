@@ -21,12 +21,17 @@ namespace APISAE401.Models.DataManager
         }
         public async Task<ActionResult<APourPf>> GetByIdAsync(int id)
         {
-            return await medDBContext.APourPfs.FirstOrDefaultAsync(u => u.IdAPourPF == id);
+            throw new NotImplementedException();
         }
-        
+
+        public async Task<ActionResult<APourPf>> GetByStringAsync(string intitule)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task AddAsync(APourPf entity)
         {
-            await medDBContext.APourPFs.AddAsync(entity);
+            await medDBContext.APourPfs.AddAsync(entity);
             await medDBContext.SaveChangesAsync();
         }
         public async Task UpdateAsync(APourPf aPourPF, APourPf entity)
@@ -42,7 +47,7 @@ namespace APISAE401.Models.DataManager
         }
         public async Task DeleteAsync(APourPf entity)
         {
-            medDBContext.APourPFs.Remove(entity);
+            medDBContext.APourPfs.Remove(entity);
             await medDBContext.SaveChangesAsync();
         }
     }

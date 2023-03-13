@@ -39,7 +39,6 @@ namespace API_Film.Models.DataManager
             medDbContext.Entry(localisation).State = EntityState.Modified;
             localisation.IdLocalisation = entity.IdLocalisation;
             localisation.LocalisationNom = entity.LocalisationNom;
-            localisation.ApoursouslocNavigation = entity.ApoursouslocNavigation;
             localisation.SouslocalisationNavigation = entity.SouslocalisationNavigation;
 
             await medDbContext.SaveChangesAsync();

@@ -15,15 +15,20 @@ namespace API_Film.Models.DataManager
         {
             medDbContext = context;
         }
-        public async Task<ActionResult<IEnumerable<Calendrier>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Calendrier>>> GetAllAsync()
         {
             return await medDbContext.Calendriers.ToListAsync();
         }
         public async Task<ActionResult<Calendrier>> GetByIdAsync(int id)
         {
-            return await medDbContext.Calendriers.FirstOrDefaultAsync(u => u.DateCal == id);
+            throw new NotImplementedException();
         }
-        
+
+        public async Task<ActionResult<Calendrier>> GetByStringAsync(string intitule)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task AddAsync(Calendrier entity)
         {
             await medDbContext.Calendriers.AddAsync(entity);

@@ -15,19 +15,19 @@ namespace APISAE401.Models.DataManager
         }
         public async Task<ActionResult<IEnumerable<Club>>> GetAllAsync()
         {
-            return await medDBContext.Clubs.ToListAsync();
+            return await medDBContext.Club.ToListAsync();
         }
         public async Task<ActionResult<Club>> GetByIdAsync(int id)
         {
-            return await medDBContext.Clubs.FirstOrDefaultAsync(u => u.IdClub == id);
+            return await medDBContext.Club.FirstOrDefaultAsync(u => u.IdClub == id);
         }
         public async Task<ActionResult<Club>> GetByStringAsync(string intitule)
         {
-            return await medDBContext.Clubs.FirstOrDefaultAsync(u => u.NomClub.ToUpper() == intitule.ToUpper());
+            return await medDBContext.Club.FirstOrDefaultAsync(u => u.NomClub.ToUpper() == intitule.ToUpper());
         }
         public async Task AddAsync(Club entity)
         {
-            await medDBContext.Clubs.AddAsync(entity);
+            await medDBContext.Club.AddAsync(entity);
             await medDBContext.SaveChangesAsync();
         }
         public async Task UpdateAsync(Club Club, Club entity)
@@ -61,7 +61,7 @@ namespace APISAE401.Models.DataManager
         }
         public async Task DeleteAsync(Club Club)
         {
-            medDBContext.Clubs.Remove(Club);
+            medDBContext.Club.Remove(Club);
             await medDBContext.SaveChangesAsync();
         }
     }
