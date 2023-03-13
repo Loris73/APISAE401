@@ -152,7 +152,6 @@ namespace APISAE401.Models.EntityFramework
                     .HasConstraintName("fk_avi_client");
                 entity.HasOne(d => d.ClubNavigation).WithMany(p => p.AviNavigation)
                     .HasConstraintName("fk_avi_club");
-                e
             });
 
 
