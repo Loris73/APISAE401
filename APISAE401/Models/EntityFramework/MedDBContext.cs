@@ -371,10 +371,10 @@ namespace APISAE401.Models.EntityFramework
                 entity.HasKey(e => e.IdReservation).HasName("pk_reservation");
 
                 entity.HasOne(e => e.CalendrierdebutNavigation).WithMany(p => p.ReservationdatedebutNavigation)
-                    .HasConstraintName("fk_reservation_calendrier");
+                    .HasConstraintName("fk_reservation_calendrierdebut");
 
                 entity.HasOne(e => e.CalendrierfinNavigation).WithMany(p => p.ReservationdatefinNavigation)
-                    .HasConstraintName("fk_reservation_calendrier");
+                    .HasConstraintName("fk_reservation_calendrierfin");
 
                 entity.HasOne(e => e.ClientNavigation).WithMany(p => p.ReservationNavigation)
                     .HasConstraintName("fk_reservation_client");
