@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<MedDBContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("MedDBContextRemote")));
+builder.Services.AddDbContext<MedDBContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("MedDBContext")));
 
 var app = builder.Build();
 
