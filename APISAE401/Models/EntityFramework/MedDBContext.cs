@@ -462,7 +462,6 @@ namespace APISAE401.Models.EntityFramework
             modelBuilder.Entity<TypeActivite>(entity =>
             {
                 entity.HasKey(e => e.IdTypeActivite).HasName("pk_typeactivite");
-                entity.HasCheckConstraint("ck_tat_capacite", "tat_capacite_min > 0");
             });
 
 

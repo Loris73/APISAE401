@@ -178,7 +178,7 @@ namespace APISAE401.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_typeactivite", x => x.tat_id);
-                    table.CheckConstraint("ck_tat_capacite", "tat_capacite min 0");
+                    table.CheckConstraint("ck_tat_capacite", "tat_capacite_min > 0");
                 });
 
             migrationBuilder.CreateTable(

@@ -1164,7 +1164,7 @@ namespace APISAE401.Migrations
 
                     b.ToTable("t_e_typeactivite_tat");
 
-                    b.HasCheckConstraint("ck_tat_capacite", "tat_capacite min 0");
+                    b.HasCheckConstraint("ck_tat_capacite", "tat_capacite_min > 0");
                 });
 
             modelBuilder.Entity("APISAE401.Models.EntityFramework.TypeChambre", b =>
