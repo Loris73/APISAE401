@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace APISAE401.Migrations
 {
     [DbContext(typeof(MedDBContext))]
-    [Migration("20230314211123_CreationBDClubmed")]
+    [Migration("20230314212001_CreationBDClubmed")]
     partial class CreationBDClubmed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -530,8 +530,7 @@ namespace APISAE401.Migrations
                     b.HasIndex("IdClub")
                         .IsUnique();
 
-                    b.HasIndex("IdTypeClub")
-                        .IsUnique();
+                    b.HasIndex("IdTypeClub");
 
                     b.ToTable("t_j_disposer_dps");
                 });

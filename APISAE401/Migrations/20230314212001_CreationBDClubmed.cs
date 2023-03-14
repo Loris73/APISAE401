@@ -1189,8 +1189,7 @@ namespace APISAE401.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_t_j_disposer_dps_tcp_id",
                 table: "t_j_disposer_dps",
-                column: "tcp_id",
-                unique: true);
+                column: "tcp_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_j_participer_pte_rsv_id",

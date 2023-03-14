@@ -528,8 +528,7 @@ namespace APISAE401.Migrations
                     b.HasIndex("IdClub")
                         .IsUnique();
 
-                    b.HasIndex("IdTypeClub")
-                        .IsUnique();
+                    b.HasIndex("IdTypeClub");
 
                     b.ToTable("t_j_disposer_dps");
                 });
