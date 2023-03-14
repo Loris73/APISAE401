@@ -76,7 +76,7 @@ namespace APISAE401.Models.EntityFramework
             {
                 entity.HasKey(e => e.IdActivite).HasName("pk_activite");
                 entity.HasOne(d => d.TrancheageNavigation).WithMany(p => p.ActiviteNavigation)
-                    .HasConstraintName("fk_activite_trancheage");
+                    .HasConstraintName("fk_activite_trancheage").IsRequired(false);
 
                 entity.HasOne(d => d.TypeactiviteNavigation).WithMany(p => p.ActiviteNavigation)
                     .HasConstraintName("fk_activite_typeactivite");
@@ -280,22 +280,18 @@ namespace APISAE401.Models.EntityFramework
                 entity.HasKey(e => e.IdPhoto).HasName("pk_photo");
 
                 entity.HasOne(e => e.BarNavigation).WithMany(p => p.PhotoNavigation)
-                    .HasConstraintName("fk_photo_bar");
+                    .HasConstraintName("fk_photo_bar").IsRequired(false);
 
                 entity.HasOne(e => e.TypechambreNavigation).WithMany(p => p.PhotoNavigation)
-                    .HasConstraintName("fk_photo_typechambre");
+                    .HasConstraintName("fk_photo_typechambre").IsRequired(false);
 
-                entity.HasOne(e => e.TypeactiviteNavigation).WithMany(p => p.PhotoNavigation)
-                    .HasConstraintName("fk_photo_typeactivite");
+                entity.HasOne(e => e.TypeactiviteNavigation).WithMany(p => p.PhotoNavigation).HasConstraintName("fk_photo_typeactivite").IsRequired(false);
 
-                entity.HasOne(e => e.RestaurantNavigation).WithMany(p => p.PhotoNavigation)
-                    .HasConstraintName("fk_photo_restaurant");
+                entity.HasOne(e => e.RestaurantNavigation).WithMany(p => p.PhotoNavigation).HasConstraintName("fk_photo_restaurant").IsRequired(false);
 
-                entity.HasOne(e => e.DomaineskiableNavigation).WithMany(p => p.PhotoNavigation)
-                    .HasConstraintName("fk_photo_navigation");
+                entity.HasOne(e => e.DomaineskiableNavigation).WithMany(p => p.PhotoNavigation).HasConstraintName("fk_photo_navigation").IsRequired(false);
 
-                entity.HasOne(e => e.ClubNavigation).WithMany(p => p.PhotoNavigation)
-                    .HasConstraintName("fk_photo_club");
+                entity.HasOne(e => e.ClubNavigation).WithMany(p => p.PhotoNavigation).HasConstraintName("fk_photo_club").IsRequired(false);
 
             });
 

@@ -7,7 +7,7 @@ namespace APISAE401.Models.EntityFramework
     public partial class Pouvoir
     {
         [Key]
-        [Column("rsv_idreservation")]
+        [Column("rsv_id")]
         public int IdReservation { get; set; }
 
         [Key]

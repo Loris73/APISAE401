@@ -13,7 +13,7 @@ namespace APISAE401.Models.EntityFramework
 
 
         [Column("tra_id")]
-        public int IdTrancheAge { get; set; }
+        public int? IdTrancheAge { get; set; }
 
 
         [Column("tat_id")]
@@ -35,9 +35,9 @@ namespace APISAE401.Models.EntityFramework
         [Column("act_agemin")]
         public int AgeMinActivite { get; set; }
 
-        [Required]
+
         [Column("act_frequence")]
-        public string FrequenceActivite { get; set; }
+        public string? FrequenceActivite { get; set; }
 
 
         //=======================================

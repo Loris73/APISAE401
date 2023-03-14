@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace APISAE401.Migrations
 {
     [DbContext(typeof(MedDBContext))]
-    [Migration("20230314104310_CreationBDClubmed")]
+    [Migration("20230314145420_CreationBDClubmed")]
     partial class CreationBDClubmed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,11 +48,10 @@ namespace APISAE401.Migrations
                         .HasColumnName("act_duree");
 
                     b.Property<string>("FrequenceActivite")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("act_frequence");
 
-                    b.Property<int>("IdTrancheAge")
+                    b.Property<int?>("IdTrancheAge")
                         .HasColumnType("integer")
                         .HasColumnName("tra_id");
 
@@ -554,7 +553,7 @@ namespace APISAE401.Migrations
                     b.Property<string>("DescriptionDomaineSkiable")
                         .IsRequired()
                         .HasColumnType("text")
-                        .HasColumnName("skb_descritpion");
+                        .HasColumnName("skb_description");
 
                     b.Property<double>("LongueurPisteDomaineSkiable")
                         .HasMaxLength(50)
@@ -666,27 +665,27 @@ namespace APISAE401.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdPhoto"));
 
-                    b.Property<int>("IdBar")
+                    b.Property<int?>("IdBar")
                         .HasColumnType("integer")
                         .HasColumnName("bar_id");
 
-                    b.Property<int>("IdClub")
+                    b.Property<int?>("IdClub")
                         .HasColumnType("integer")
                         .HasColumnName("clb_id");
 
-                    b.Property<int>("IdDomaineSkiable")
+                    b.Property<int?>("IdDomaineSkiable")
                         .HasColumnType("integer")
                         .HasColumnName("skb_id");
 
-                    b.Property<int>("IdRestaurant")
+                    b.Property<int?>("IdRestaurant")
                         .HasColumnType("integer")
                         .HasColumnName("rsn_id");
 
-                    b.Property<int>("IdTypeActivite")
+                    b.Property<int?>("IdTypeActivite")
                         .HasColumnType("integer")
                         .HasColumnName("tat_id");
 
-                    b.Property<int>("IdTypeChambre")
+                    b.Property<int?>("IdTypeChambre")
                         .HasColumnType("integer")
                         .HasColumnName("tpc_id");
 
@@ -743,7 +742,7 @@ namespace APISAE401.Migrations
                 {
                     b.Property<int>("IdReservation")
                         .HasColumnType("integer")
-                        .HasColumnName("rsv_idreservation");
+                        .HasColumnName("rsv_id");
 
                     b.Property<int>("IdActivite")
                         .HasColumnType("integer")
@@ -1246,8 +1245,6 @@ namespace APISAE401.Migrations
                     b.HasOne("APISAE401.Models.EntityFramework.TrancheAge", "TrancheageNavigation")
                         .WithMany("ActiviteNavigation")
                         .HasForeignKey("IdTrancheAge")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("fk_activite_trancheage");
 
                     b.HasOne("APISAE401.Models.EntityFramework.TypeActivite", "TypeactiviteNavigation")
@@ -1522,43 +1519,31 @@ namespace APISAE401.Migrations
                     b.HasOne("APISAE401.Models.EntityFramework.Bar", "BarNavigation")
                         .WithMany("PhotoNavigation")
                         .HasForeignKey("IdBar")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("fk_photo_bar");
 
                     b.HasOne("APISAE401.Models.EntityFramework.Club", "ClubNavigation")
                         .WithMany("PhotoNavigation")
                         .HasForeignKey("IdClub")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("fk_photo_club");
 
                     b.HasOne("APISAE401.Models.EntityFramework.DomaineSkiable", "DomaineskiableNavigation")
                         .WithMany("PhotoNavigation")
                         .HasForeignKey("IdDomaineSkiable")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("fk_photo_navigation");
 
                     b.HasOne("APISAE401.Models.EntityFramework.Restaurant", "RestaurantNavigation")
                         .WithMany("PhotoNavigation")
                         .HasForeignKey("IdRestaurant")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("fk_photo_restaurant");
 
                     b.HasOne("APISAE401.Models.EntityFramework.TypeActivite", "TypeactiviteNavigation")
                         .WithMany("PhotoNavigation")
                         .HasForeignKey("IdTypeActivite")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("fk_photo_typeactivite");
 
                     b.HasOne("APISAE401.Models.EntityFramework.TypeChambre", "TypechambreNavigation")
                         .WithMany("PhotoNavigation")
                         .HasForeignKey("IdTypeChambre")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("fk_photo_typechambre");
 
                     b.Navigation("BarNavigation");

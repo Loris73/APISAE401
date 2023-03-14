@@ -78,7 +78,7 @@ namespace APISAE401.Migrations
                     skb_altitude = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     skb_longueurpiste = table.Column<double>(type: "double precision", maxLength: 50, nullable: false),
                     skb_nbpistes = table.Column<string>(type: "character varying(3)", maxLength: 3, nullable: false),
-                    skb_descritpion = table.Column<string>(type: "text", nullable: false)
+                    skb_description = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -373,13 +373,13 @@ namespace APISAE401.Migrations
                 {
                     act_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    tra_id = table.Column<int>(type: "integer", nullable: false),
+                    tra_id = table.Column<int>(type: "integer", nullable: true),
                     tat_id = table.Column<int>(type: "integer", nullable: false),
                     act_titre = table.Column<string>(type: "text", nullable: false),
                     act_duree = table.Column<string>(type: "text", nullable: false),
                     act_description = table.Column<string>(type: "text", nullable: false),
                     act_agemin = table.Column<int>(type: "integer", nullable: false),
-                    act_frequence = table.Column<string>(type: "text", nullable: false)
+                    act_frequence = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -388,8 +388,7 @@ namespace APISAE401.Migrations
                         name: "fk_activite_trancheage",
                         column: x => x.tra_id,
                         principalTable: "t_e_trancheage_tra",
-                        principalColumn: "tra_id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "tra_id");
                     table.ForeignKey(
                         name: "fk_activite_typeactivite",
                         column: x => x.tat_id,
@@ -541,12 +540,12 @@ namespace APISAE401.Migrations
                 {
                     pht_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    bar_id = table.Column<int>(type: "integer", nullable: false),
-                    tat_id = table.Column<int>(type: "integer", nullable: false),
-                    rsn_id = table.Column<int>(type: "integer", nullable: false),
-                    skb_id = table.Column<int>(type: "integer", nullable: false),
-                    clb_id = table.Column<int>(type: "integer", nullable: false),
-                    tpc_id = table.Column<int>(type: "integer", nullable: false),
+                    bar_id = table.Column<int>(type: "integer", nullable: true),
+                    tat_id = table.Column<int>(type: "integer", nullable: true),
+                    rsn_id = table.Column<int>(type: "integer", nullable: true),
+                    skb_id = table.Column<int>(type: "integer", nullable: true),
+                    clb_id = table.Column<int>(type: "integer", nullable: true),
+                    tpc_id = table.Column<int>(type: "integer", nullable: true),
                     pht_url = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -556,38 +555,32 @@ namespace APISAE401.Migrations
                         name: "fk_photo_bar",
                         column: x => x.bar_id,
                         principalTable: "t_e_bar_bar",
-                        principalColumn: "bar_id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "bar_id");
                     table.ForeignKey(
                         name: "fk_photo_club",
                         column: x => x.clb_id,
                         principalTable: "t_e_club_clb",
-                        principalColumn: "clb_id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "clb_id");
                     table.ForeignKey(
                         name: "fk_photo_navigation",
                         column: x => x.skb_id,
                         principalTable: "t_e_domaineskiable_skb",
-                        principalColumn: "skb_id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "skb_id");
                     table.ForeignKey(
                         name: "fk_photo_restaurant",
                         column: x => x.rsn_id,
                         principalTable: "t_e_restaurant_rsn",
-                        principalColumn: "rsn_id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "rsn_id");
                     table.ForeignKey(
                         name: "fk_photo_typeactivite",
                         column: x => x.tat_id,
                         principalTable: "t_e_typeactivite_tat",
-                        principalColumn: "tat_id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "tat_id");
                     table.ForeignKey(
                         name: "fk_photo_typechambre",
                         column: x => x.tpc_id,
                         principalTable: "t_e_typechambre_tpc",
-                        principalColumn: "tpc_id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "tpc_id");
                 });
 
             migrationBuilder.CreateTable(
@@ -912,13 +905,13 @@ namespace APISAE401.Migrations
                 name: "t_j_pouvoir_pou",
                 columns: table => new
                 {
-                    rsv_idreservation = table.Column<int>(type: "integer", nullable: false),
+                    rsv_id = table.Column<int>(type: "integer", nullable: false),
                     act_id = table.Column<int>(type: "integer", nullable: false),
                     pou_prixmin = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_pouvoir", x => new { x.rsv_idreservation, x.act_id });
+                    table.PrimaryKey("pk_pouvoir", x => new { x.rsv_id, x.act_id });
                     table.ForeignKey(
                         name: "fk_pouvoir_activite",
                         column: x => x.act_id,
@@ -927,7 +920,7 @@ namespace APISAE401.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_pouvoir_reservation",
-                        column: x => x.rsv_idreservation,
+                        column: x => x.rsv_id,
                         principalTable: "t_e_reservation_rsv",
                         principalColumn: "rsv_idreservation",
                         onDelete: ReferentialAction.Cascade);

@@ -20,29 +20,23 @@ namespace APISAE401.Models.EntityFramework
         [Column("pht_id")]
         public int IdPhoto { get; set; }
 
-        [Required]
         [Column("bar_id")]
-        public int IdBar { get; set; }
+        public int? IdBar { get; set; }
 
-        [Required]
         [Column("tat_id")]
-        public int IdTypeActivite { get; set; }
+        public int? IdTypeActivite { get; set; }
 
-        [Required]
         [Column("rsn_id")]
-        public int IdRestaurant { get; set; }
+        public int? IdRestaurant { get; set; }
 
-        [Required]
         [Column("skb_id")]
-        public int IdDomaineSkiable { get; set; }
+        public int? IdDomaineSkiable { get; set; }
 
-        [Required]
         [Column("clb_id")]
-        public int IdClub { get; set; }
+        public int? IdClub { get; set; }
 
-        [Required]
         [Column("tpc_id")]
-        public int IdTypeChambre { get; set; }
+        public int? IdTypeChambre { get; set; }
 
         [Required]
         [Column("pht_url")]
@@ -55,27 +49,27 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdBar")]
         [InverseProperty("PhotoNavigation")]
-        public virtual Bar BarNavigation { get; set; } = new Bar();
+        public virtual Bar BarNavigation { get; set; }
 
         [ForeignKey("IdTypeActivite")]
         [InverseProperty("PhotoNavigation")]
-        public virtual TypeActivite TypeactiviteNavigation { get; set; } = new TypeActivite();
+        public virtual TypeActivite TypeactiviteNavigation { get; set; }
 
         [ForeignKey("IdRestaurant")]
         [InverseProperty("PhotoNavigation")]
-        public virtual Restaurant RestaurantNavigation { get; set; } = new Restaurant();
+        public virtual Restaurant RestaurantNavigation { get; set; }
 
         [ForeignKey("IdDomaineSkiable")]
         [InverseProperty("PhotoNavigation")]
-        public virtual DomaineSkiable DomaineskiableNavigation { get; set; } = new DomaineSkiable();
+        public virtual DomaineSkiable DomaineskiableNavigation { get; set; }
 
         [ForeignKey("IdClub")]
         [InverseProperty("PhotoNavigation")]
-        public virtual Club ClubNavigation { get; set; } = new Club();
+        public virtual Club ClubNavigation { get; set; }
 
         [ForeignKey("IdTypeChambre")]
         [InverseProperty("PhotoNavigation")]
-        public virtual TypeChambre TypechambreNavigation { get; set; } = new TypeChambre();
+        public virtual TypeChambre TypechambreNavigation { get; set; } = null!;
         //=======================================
 
         //=======================================
