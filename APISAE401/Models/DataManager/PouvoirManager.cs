@@ -42,7 +42,7 @@ namespace API_Film.Models.DataManager
             Pouvoir.IdReservation = entity.IdReservation;
             Pouvoir.ReservationNavigation = entity.ReservationNavigation;
             Pouvoir.ActiviteNavigation = entity.ActiviteNavigation;
-            Pouvoir.ActivitealacarteNavigation = entity.ActivitealacarteNavigation
+            Pouvoir.ActivitealacarteNavigation = entity.ActivitealacarteNavigation;
 
 
             await medDbContext.SaveChangesAsync();
