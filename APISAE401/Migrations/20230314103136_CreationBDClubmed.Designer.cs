@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace APISAE401.Migrations
 {
     [DbContext(typeof(MedDBContext))]
-    [Migration("20230314101104_CreationBDClubmed")]
+    [Migration("20230314103136_CreationBDClubmed")]
     partial class CreationBDClubmed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -281,8 +281,7 @@ namespace APISAE401.Migrations
                         .HasColumnName("clt_adresse");
 
                     b.Property<string>("CodePostalClient")
-                        .HasMaxLength(5)
-                        .HasColumnType("char(5)")
+                        .HasColumnType("text")
                         .HasColumnName("clt_cp");
 
                     b.Property<DateTime>("DateNaissanceClient")
@@ -312,6 +311,10 @@ namespace APISAE401.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("varchar")
                         .HasColumnName("clt_nom");
+
+                    b.Property<int?>("NumeroAdresseClient")
+                        .HasColumnType("integer")
+                        .HasColumnName("clt_numeroadresse");
 
                     b.Property<string>("PasswordClient")
                         .IsRequired()
@@ -1056,14 +1059,10 @@ namespace APISAE401.Migrations
                         .HasColumnType("text")
                         .HasColumnName("slo_nom");
 
-                    b.Property<int>("loc_id")
-                        .HasColumnType("integer")
-                        .HasColumnName("loc_id1");
-
                     b.HasKey("IdSousLocalisation")
                         .HasName("pk_souslocalisation");
 
-                    b.HasIndex("loc_id");
+                    b.HasIndex("IdLocalisation");
 
                     b.ToTable("t_e_souslocalisation_slo");
                 });
@@ -1805,7 +1804,7 @@ namespace APISAE401.Migrations
                 {
                     b.HasOne("APISAE401.Models.EntityFramework.Localisation", "LocalisationNavigation")
                         .WithMany("SouslocalisationNavigation")
-                        .HasForeignKey("loc_id")
+                        .HasForeignKey("IdLocalisation")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_souslocalisation_localisation");

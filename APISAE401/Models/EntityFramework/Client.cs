@@ -24,17 +24,14 @@ namespace APISAE401.Models.EntityFramework
 
         // Genre du Client
         [Column("clt_genre", TypeName = "varchar")]
-        [StringLength(255)]
         public string? GenreClient { get; set; }
 
         // Nom du Client        
         [Column("clt_nom", TypeName = "varchar")]
-        [StringLength(255)]
         public string? NomClient { get; set; }
 
         // Prenom du Client
         [Column("clt_prenom", TypeName = "varchar")]
-        [StringLength(255)]
         public string? PrenomClient { get; set; }
 
         // Date de Naissance du Client
@@ -54,18 +51,20 @@ namespace APISAE401.Models.EntityFramework
         public string? TelClient { get; set; }
 
         // Adresse(rue) du Client
+        [Column("clt_numeroadresse")]
+        public int? NumeroAdresseClient { get; set; }
+
+        // Adresse(rue) du Client
         [Column("clt_adresse", TypeName = "varchar")]
-        [StringLength(255)]
+        
         public string? AdresseClient { get; set; }
 
         // Code Postal du Client
-        [Column("clt_cp", TypeName = "char")]
-        [StringLength(5)]
+        [Column("clt_cp")]
         public string? CodePostalClient { get; set; }
 
         // Ville du Client
         [Column("clt_ville", TypeName = "varchar")]
-        [StringLength(255)]
         public string? VilleClient { get; set; }
 
         // Pays du Client
@@ -75,12 +74,10 @@ namespace APISAE401.Models.EntityFramework
 
         // Login du Client
         [Column("clt_login", TypeName = "varchar")]
-        [StringLength(255)]
         public string? LoginClient { get; set; }
 
         // Mot de Passe du Client
         [Column("clt_pwd", TypeName = "varchar")]
-        [StringLength(255)]
         [Required]
         public string? PasswordClient { get; set; }
 

@@ -12,7 +12,6 @@ namespace APISAE401.Models.EntityFramework
         public int IdTrancheAge { get; set; }
 
         [Required]
-        [StringLength(255)]
         [Column("tra_detail")]
         public string DetailTrancheAge { get; set; }
 

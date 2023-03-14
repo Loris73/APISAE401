@@ -15,7 +15,6 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("tat_nom")]
-        [StringLength(255)]
         public string NomTypeActivite { get; set; }
 
         [Required]

@@ -15,7 +15,6 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("tcb_nom")]
-        [StringLength(255)]
         public string NomTypeClub { get; set; }
 
         [InverseProperty("TypeclubNavigation")]

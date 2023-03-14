@@ -15,7 +15,6 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("rgt_nom")]
-        [StringLength(255)]
         public string? RegroupementNom { get; set; }
 
 

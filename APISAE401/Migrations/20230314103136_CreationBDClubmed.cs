@@ -330,15 +330,14 @@ namespace APISAE401.Migrations
                     slo_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     loc_id = table.Column<int>(type: "integer", nullable: false),
-                    slo_nom = table.Column<string>(type: "text", nullable: false),
-                    loc_id1 = table.Column<int>(type: "integer", nullable: false)
+                    slo_nom = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_souslocalisation", x => x.slo_id);
                     table.ForeignKey(
                         name: "fk_souslocalisation_localisation",
-                        column: x => x.loc_id1,
+                        column: x => x.loc_id,
                         principalTable: "t_e_localisation_loc",
                         principalColumn: "loc_id",
                         onDelete: ReferentialAction.Cascade);
@@ -493,8 +492,9 @@ namespace APISAE401.Migrations
                     clt_datenaissance = table.Column<DateTime>(type: "date", nullable: false),
                     clt_mail = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
                     clt_tel = table.Column<string>(type: "varchar", maxLength: 10, nullable: true),
+                    clt_numeroadresse = table.Column<int>(type: "integer", nullable: true),
                     clt_adresse = table.Column<string>(type: "varchar", maxLength: 255, nullable: true),
-                    clt_cp = table.Column<string>(type: "char(5)", maxLength: 5, nullable: true),
+                    clt_cp = table.Column<string>(type: "text", nullable: true),
                     clt_ville = table.Column<string>(type: "varchar", maxLength: 255, nullable: true),
                     clt_pays = table.Column<string>(type: "varchar", maxLength: 50, nullable: true),
                     clt_login = table.Column<string>(type: "varchar", maxLength: 255, nullable: true),
@@ -1125,9 +1125,9 @@ namespace APISAE401.Migrations
                 column: "tsi_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_t_e_souslocalisation_slo_loc_id1",
+                name: "IX_t_e_souslocalisation_slo_loc_id",
                 table: "t_e_souslocalisation_slo",
-                column: "loc_id1");
+                column: "loc_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_e_typeactivite_tat_tat_id",

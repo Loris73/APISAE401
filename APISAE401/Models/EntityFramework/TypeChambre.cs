@@ -18,12 +18,10 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("tpc_nom")]
-        [StringLength(255)]
         public string? TypeChambreNom { get; set; }
 
         [Required]
         [Column("tpc_dimension")]
-        [StringLength(255)]
         public string? TypeChambreDimension { get; set; }
 
         [Required]
@@ -32,7 +30,6 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("tpc_description")]
-        [StringLength(255)]
         public string? TypeChambreDescription { get; set; }
 
 

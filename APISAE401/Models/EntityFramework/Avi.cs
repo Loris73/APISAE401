@@ -19,7 +19,6 @@ namespace APISAE401.Models.EntityFramework
         public int IdAvi { get; set; }
 
         [Required]
-        [StringLength(255)]
         [Column("avi_titre")]
         public string TitreAvi { get; set;}
 

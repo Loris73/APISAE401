@@ -18,7 +18,6 @@ namespace APISAE401.Models.EntityFramework
 
             [Required]
             [Column("ptf_nom")]
-            [StringLength(255)]
             public string NomPointFort { get; set; }
 
             [InverseProperty("PointfortNavigation")]

@@ -18,8 +18,7 @@ namespace APISAE401.Models.EntityFramework
         public int IdReservation { get; set; }
 
         [Required]
-        [Column("dcp_lieu")]
-        [StringLength(255)]
+        [Column("dcp_lieu")] 
         public string? DeplacerLieu { get; set; }
 
         [Required]

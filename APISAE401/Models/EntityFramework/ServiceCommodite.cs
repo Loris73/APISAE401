@@ -24,7 +24,6 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("sct_nom")]
-        [StringLength(255)]
         public string NomServiceCommodite { get; set; }
         //==========================================================================================================
 

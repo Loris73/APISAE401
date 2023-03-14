@@ -41,7 +41,6 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("clb_adresse")]
-        [StringLength(255)]
         public string AdresseClub { get; set; }
 
         [Required]

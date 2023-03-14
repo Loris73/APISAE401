@@ -19,7 +19,6 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("rsn_nom")]
-        [StringLength(255)]
         public string NomRestaurant { get; set; }
 
         [Required]

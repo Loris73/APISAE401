@@ -17,17 +17,14 @@ namespace APISAE401.Models.EntityFramework
 
         // Genre du Participant
         [Column("pta_genre", TypeName = "varchar")]
-        [StringLength(255)]
         public string? GenreParticipant { get; set; }
 
         // Nom du Participant        
         [Column("pta_nom", TypeName = "varchar")]
-        [StringLength(255)]
         public string? NomParticipant { get; set; }
 
         // Prenom du Participant
         [Column("pta_prenom", TypeName = "varchar")]
-        [StringLength(255)]
         public string? PrenomParticipant { get; set; }
 
         // Date de Naissance du Participant

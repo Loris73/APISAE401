@@ -20,12 +20,10 @@ namespace APISAE401.Models.EntityFramework
         public int IdTypeActivite { get; set; }
 
         [Required]
-        [StringLength(255)]
         [Column("act_titre")]
         public string TitreActivite { get; set; }
 
         [Required]
-        [StringLength(255)]
         [Column("act_duree")]
         public string DureeActivite { get; set; }
 
@@ -38,7 +36,6 @@ namespace APISAE401.Models.EntityFramework
         public int AgeMinActivite { get; set; }
 
         [Required]
-        [StringLength(255)]
         [Column("act_frequence")]
         public string FrequenceActivite { get; set; }
 

@@ -15,7 +15,6 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("loc_nom")]
-        [StringLength(255)]
         public string LocalisationNom { get; set; }
 
         [InverseProperty("LocalisationNavigation")]

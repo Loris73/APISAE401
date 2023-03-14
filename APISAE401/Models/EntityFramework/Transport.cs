@@ -15,7 +15,6 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("tsp_nom")]
-        [StringLength(255)]
         public string? TransportNom { get; set; }
 
         [InverseProperty("TransportNavigation")]

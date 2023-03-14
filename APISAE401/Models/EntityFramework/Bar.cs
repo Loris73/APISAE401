@@ -22,7 +22,6 @@ namespace APISAE401.Models.EntityFramework
 
         [Required]
         [Column("bar_nom")]
-        [StringLength(255)]
         public string NomBar { get; set; }
 
         [Required]

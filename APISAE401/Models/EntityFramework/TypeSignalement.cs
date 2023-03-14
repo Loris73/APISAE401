@@ -12,7 +12,6 @@ namespace APISAE401.Models.EntityFramework
         public int IdTypeSignalement { get; set; }
 
         [Required]
-        [StringLength(255)]
         [Column("tsi_titretype")]
         public string? TitreTypeSignalement { get; set; }
 
