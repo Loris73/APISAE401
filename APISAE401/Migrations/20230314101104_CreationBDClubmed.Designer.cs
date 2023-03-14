@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace APISAE401.Migrations
 {
     [DbContext(typeof(MedDBContext))]
-    [Migration("20230314100803_CreationBDClubmed")]
+    [Migration("20230314101104_CreationBDClubmed")]
     partial class CreationBDClubmed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1165,8 +1165,6 @@ namespace APISAE401.Migrations
                         .IsUnique();
 
                     b.ToTable("t_e_typeactivite_tat");
-
-                    b.HasCheckConstraint("ck_tat_capacite", "tat_capacite_min > 0");
                 });
 
             modelBuilder.Entity("APISAE401.Models.EntityFramework.TypeChambre", b =>

@@ -19,7 +19,7 @@ namespace APISAE401.Models.EntityFramework
         [Column("slo_nom")]
         public string NomSousLocalisation { get; set; }
 
-        [ForeignKey("loc_id")]
+        [ForeignKey("IdLocalisation")]
         [InverseProperty("SouslocalisationNavigation")]
         public virtual Localisation LocalisationNavigation { get; set; } = null!;
 
