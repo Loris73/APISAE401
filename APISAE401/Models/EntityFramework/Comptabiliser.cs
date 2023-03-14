@@ -6,9 +6,11 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_j_comptabiliser_cpt")]
     public class Comptabiliser
     {
+        [Key]
         [Column("clb_id")]
         public int IdClub { get; set; }
 
+        [Key]
         [Column("tpc_id")]
         public int IdTypeChambre { get; set; }
 

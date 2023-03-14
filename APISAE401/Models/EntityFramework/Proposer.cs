@@ -7,9 +7,11 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_j_proposer_pro")]
     public partial class Proposer
     {
+        [Key]
         [Column("clb_id")]
         public int IdClub { get; set; }
 
+        [Key]
         [Column("act_id")]
         public int IdActivite { get; set; }
 

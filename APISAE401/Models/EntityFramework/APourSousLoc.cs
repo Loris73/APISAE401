@@ -9,9 +9,11 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_j_apourloc_alc")]
     public partial class APourSousLoc
     {
+        [Key]
         [Column("clb_id")]
         public int IdClub { get; set; }
 
+        [Key]
         [Column("slo_id")]
         public int IdSousLocalisation { get; set; }
 
