@@ -45,7 +45,7 @@ namespace APISAE401.Migrations
                     clb_latitude = table.Column<double>(type: "double precision", maxLength: 10, nullable: false),
                     clb_longitude = table.Column<double>(type: "double precision", maxLength: 10, nullable: false),
                     clb_description = table.Column<string>(type: "text", nullable: false),
-                    clb_adresse = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    clb_adresse = table.Column<string>(type: "text", nullable: false),
                     clb_tel = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
                     clb_mail = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
                 },
@@ -60,7 +60,7 @@ namespace APISAE401.Migrations
                 {
                     cmd_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    cmd_type = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false)
+                    cmd_type = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -91,7 +91,7 @@ namespace APISAE401.Migrations
                 {
                     loc_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    loc_nom = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false)
+                    loc_nom = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -104,9 +104,9 @@ namespace APISAE401.Migrations
                 {
                     pta_idparticipant = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    pta_genre = table.Column<string>(type: "varchar", maxLength: 255, nullable: true),
-                    pta_nom = table.Column<string>(type: "varchar", maxLength: 255, nullable: true),
-                    pta_prenom = table.Column<string>(type: "varchar", maxLength: 255, nullable: true),
+                    pta_genre = table.Column<string>(type: "varchar", nullable: true),
+                    pta_nom = table.Column<string>(type: "varchar", nullable: true),
+                    pta_prenom = table.Column<string>(type: "varchar", nullable: true),
                     pta_datenaissance = table.Column<DateTime>(type: "date", nullable: false)
                 },
                 constraints: table =>
@@ -120,7 +120,7 @@ namespace APISAE401.Migrations
                 {
                     ptf_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ptf_nom = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false)
+                    ptf_nom = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -133,7 +133,7 @@ namespace APISAE401.Migrations
                 {
                     rgt_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    rgt_nom = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false)
+                    rgt_nom = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -146,7 +146,7 @@ namespace APISAE401.Migrations
                 {
                     tra_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    tra_detail = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false)
+                    tra_detail = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -159,7 +159,7 @@ namespace APISAE401.Migrations
                 {
                     tsp_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    tsp_nom = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false)
+                    tsp_nom = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -172,7 +172,7 @@ namespace APISAE401.Migrations
                 {
                     tat_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    tat_nom = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    tat_nom = table.Column<string>(type: "text", nullable: false),
                     tat_description = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -186,10 +186,10 @@ namespace APISAE401.Migrations
                 {
                     tpc_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    tpc_nom = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    tpc_dimension = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    tpc_nom = table.Column<string>(type: "text", nullable: false),
+                    tpc_dimension = table.Column<string>(type: "text", nullable: false),
                     tpc_capacite = table.Column<int>(type: "integer", nullable: false),
-                    tpc_description = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false)
+                    tpc_description = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -216,7 +216,7 @@ namespace APISAE401.Migrations
                 {
                     tcb_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    tcb_nom = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false)
+                    tcb_nom = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -229,7 +229,7 @@ namespace APISAE401.Migrations
                 {
                     tsi_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    tsi_titretype = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false)
+                    tsi_titretype = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -243,7 +243,7 @@ namespace APISAE401.Migrations
                     bar_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     clb_id = table.Column<int>(type: "integer", nullable: false),
-                    bar_nom = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    bar_nom = table.Column<string>(type: "text", nullable: false),
                     bar_description = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -264,7 +264,7 @@ namespace APISAE401.Migrations
                     rsn_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     clb_id = table.Column<int>(type: "integer", nullable: false),
-                    rsn_nom = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    rsn_nom = table.Column<string>(type: "text", nullable: false),
                     rsn_description = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -285,7 +285,7 @@ namespace APISAE401.Migrations
                     sct_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     cmd_id = table.Column<int>(type: "integer", nullable: false),
-                    sct_nom = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false)
+                    sct_nom = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -375,11 +375,11 @@ namespace APISAE401.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     tra_id = table.Column<int>(type: "integer", nullable: false),
                     tat_id = table.Column<int>(type: "integer", nullable: false),
-                    act_titre = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    act_duree = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    act_titre = table.Column<string>(type: "text", nullable: false),
+                    act_duree = table.Column<string>(type: "text", nullable: false),
                     act_description = table.Column<string>(type: "text", nullable: false),
                     act_agemin = table.Column<int>(type: "integer", nullable: false),
-                    act_frequence = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false)
+                    act_frequence = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -486,19 +486,19 @@ namespace APISAE401.Migrations
                     clt_id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     fk_tpc_idtypeclient = table.Column<int>(type: "integer", nullable: false),
-                    clt_genre = table.Column<string>(type: "varchar", maxLength: 255, nullable: true),
-                    clt_nom = table.Column<string>(type: "varchar", maxLength: 255, nullable: true),
-                    clt_prenom = table.Column<string>(type: "varchar", maxLength: 255, nullable: true),
+                    clt_genre = table.Column<string>(type: "varchar", nullable: true),
+                    clt_nom = table.Column<string>(type: "varchar", nullable: true),
+                    clt_prenom = table.Column<string>(type: "varchar", nullable: true),
                     clt_datenaissance = table.Column<DateTime>(type: "date", nullable: false),
                     clt_mail = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
                     clt_tel = table.Column<string>(type: "varchar", maxLength: 10, nullable: true),
                     clt_numeroadresse = table.Column<int>(type: "integer", nullable: true),
-                    clt_adresse = table.Column<string>(type: "varchar", maxLength: 255, nullable: true),
+                    clt_adresse = table.Column<string>(type: "varchar", nullable: true),
                     clt_cp = table.Column<string>(type: "text", nullable: true),
-                    clt_ville = table.Column<string>(type: "varchar", maxLength: 255, nullable: true),
+                    clt_ville = table.Column<string>(type: "varchar", nullable: true),
                     clt_pays = table.Column<string>(type: "varchar", maxLength: 50, nullable: true),
-                    clt_login = table.Column<string>(type: "varchar", maxLength: 255, nullable: true),
-                    clt_pwd = table.Column<string>(type: "varchar", maxLength: 255, nullable: false)
+                    clt_login = table.Column<string>(type: "varchar", nullable: true),
+                    clt_pwd = table.Column<string>(type: "varchar", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -670,7 +670,7 @@ namespace APISAE401.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     clt_id = table.Column<int>(type: "integer", nullable: false),
                     clu_id = table.Column<int>(type: "integer", nullable: false),
-                    avi_titre = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    avi_titre = table.Column<string>(type: "text", nullable: false),
                     avi_note = table.Column<int>(type: "integer", nullable: false),
                     avi_commentaire = table.Column<string>(type: "text", nullable: true)
                 },
@@ -839,7 +839,7 @@ namespace APISAE401.Migrations
                 {
                     tsp_id = table.Column<int>(type: "integer", nullable: false),
                     rsv_idreservation = table.Column<int>(type: "integer", nullable: false),
-                    dcp_lieu = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
+                    dcp_lieu = table.Column<string>(type: "text", nullable: false),
                     dcp_montant = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>

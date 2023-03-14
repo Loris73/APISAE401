@@ -42,14 +42,12 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("DureeActivite")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("act_duree");
 
                     b.Property<string>("FrequenceActivite")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("act_frequence");
 
                     b.Property<int>("IdTrancheAge")
@@ -62,8 +60,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("TitreActivite")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("act_titre");
 
                     b.HasKey("IdActivite")
@@ -161,8 +158,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("TitreAvi")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("avi_titre");
 
                     b.HasKey("IdAvi")
@@ -213,8 +209,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("NomBar")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("bar_nom");
 
                     b.HasKey("IdBar")
@@ -274,7 +269,6 @@ namespace APISAE401.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdClient"));
 
                     b.Property<string>("AdresseClient")
-                        .HasMaxLength(255)
                         .HasColumnType("varchar")
                         .HasColumnName("clt_adresse");
 
@@ -287,7 +281,6 @@ namespace APISAE401.Migrations
                         .HasColumnName("clt_datenaissance");
 
                     b.Property<string>("GenreClient")
-                        .HasMaxLength(255)
                         .HasColumnType("varchar")
                         .HasColumnName("clt_genre");
 
@@ -296,7 +289,6 @@ namespace APISAE401.Migrations
                         .HasColumnName("fk_tpc_idtypeclient");
 
                     b.Property<string>("LoginClient")
-                        .HasMaxLength(255)
                         .HasColumnType("varchar")
                         .HasColumnName("clt_login");
 
@@ -306,7 +298,6 @@ namespace APISAE401.Migrations
                         .HasColumnName("clt_mail");
 
                     b.Property<string>("NomClient")
-                        .HasMaxLength(255)
                         .HasColumnType("varchar")
                         .HasColumnName("clt_nom");
 
@@ -316,7 +307,6 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("PasswordClient")
                         .IsRequired()
-                        .HasMaxLength(255)
                         .HasColumnType("varchar")
                         .HasColumnName("clt_pwd");
 
@@ -326,7 +316,6 @@ namespace APISAE401.Migrations
                         .HasColumnName("clt_pays");
 
                     b.Property<string>("PrenomClient")
-                        .HasMaxLength(255)
                         .HasColumnType("varchar")
                         .HasColumnName("clt_prenom");
 
@@ -336,7 +325,6 @@ namespace APISAE401.Migrations
                         .HasColumnName("clt_tel");
 
                     b.Property<string>("VilleClient")
-                        .HasMaxLength(255)
                         .HasColumnType("varchar")
                         .HasColumnName("clt_ville");
 
@@ -365,8 +353,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("AdresseClub")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("clb_adresse");
 
                     b.Property<string>("DescriptionClub")
@@ -422,8 +409,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("TypeCommodite")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("cmd_type");
 
                     b.HasKey("IdCommodite")
@@ -469,8 +455,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("DeplacerLieu")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("dcp_lieu");
 
                     b.Property<int>("DeplacerMontant")
@@ -612,8 +597,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("LocalisationNom")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("loc_nom");
 
                     b.HasKey("IdLocalisation")
@@ -636,17 +620,14 @@ namespace APISAE401.Migrations
                         .HasColumnName("pta_datenaissance");
 
                     b.Property<string>("GenreParticipant")
-                        .HasMaxLength(255)
                         .HasColumnType("varchar")
                         .HasColumnName("pta_genre");
 
                     b.Property<string>("NomParticipant")
-                        .HasMaxLength(255)
                         .HasColumnType("varchar")
                         .HasColumnName("pta_nom");
 
                     b.Property<string>("PrenomParticipant")
-                        .HasMaxLength(255)
                         .HasColumnType("varchar")
                         .HasColumnName("pta_prenom");
 
@@ -744,8 +725,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("NomPointFort")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("ptf_nom");
 
                     b.HasKey("IdPointFort")
@@ -808,8 +788,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("RegroupementNom")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("rgt_nom");
 
                     b.HasKey("RegroupementId")
@@ -950,8 +929,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("NomRestaurant")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("rsn_nom");
 
                     b.HasKey("IdRestaurant")
@@ -980,8 +958,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("NomServiceCommodite")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("sct_nom");
 
                     b.HasKey("IdServiceCommodite")
@@ -1104,8 +1081,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("DetailTrancheAge")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("tra_detail");
 
                     b.HasKey("IdTrancheAge")
@@ -1125,8 +1101,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("TransportNom")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("tsp_nom");
 
                     b.HasKey("IdTransport")
@@ -1151,8 +1126,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("NomTypeActivite")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("tat_nom");
 
                     b.HasKey("IdTypeActivite")
@@ -1179,20 +1153,17 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("TypeChambreDescription")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("tpc_description");
 
                     b.Property<string>("TypeChambreDimension")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("tpc_dimension");
 
                     b.Property<string>("TypeChambreNom")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("tpc_nom");
 
                     b.HasKey("TypeChambreId")
@@ -1236,8 +1207,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("NomTypeClub")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("tcb_nom");
 
                     b.HasKey("IdTypeClub")
@@ -1260,8 +1230,7 @@ namespace APISAE401.Migrations
 
                     b.Property<string>("TitreTypeSignalement")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("tsi_titretype");
 
                     b.HasKey("IdTypeSignalement")
