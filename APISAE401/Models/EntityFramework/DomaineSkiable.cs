@@ -45,9 +45,9 @@ namespace APISAE401.Models.EntityFramework
         [Column("skb_nbpistes")]
         public string NbPistesDomaineSkiable { get; set; }
 
-        [Required]
+
         [Column("skb_description", TypeName = "text")] //a voir pour le type
-        public string DescriptionDomaineSkiable { get; set; }
+        public string? DescriptionDomaineSkiable { get; set; }
         //=======================================
 
         //=======================================

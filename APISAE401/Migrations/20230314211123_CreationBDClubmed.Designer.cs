@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace APISAE401.Migrations
 {
     [DbContext(typeof(MedDBContext))]
-    [Migration("20230314145420_CreationBDClubmed")]
+    [Migration("20230314211123_CreationBDClubmed")]
     partial class CreationBDClubmed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -245,13 +245,14 @@ namespace APISAE401.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("IdCarteBancaire"));
 
-                    b.Property<DateTime>("DateExpirationCB")
-                        .HasColumnType("date")
+                    b.Property<string>("DateExpirationCB")
+                        .IsRequired()
+                        .HasColumnType("text")
                         .HasColumnName("cc_dateexpirationcb");
 
                     b.Property<string>("NumeroCB")
-                        .HasMaxLength(16)
-                        .HasColumnType("char(16)")
+                        .HasMaxLength(23)
+                        .HasColumnType("char(23)")
                         .HasColumnName("cc_numerocb");
 
                     b.HasKey("IdCarteBancaire")
@@ -475,7 +476,7 @@ namespace APISAE401.Migrations
                 {
                     b.Property<int>("IdReservation")
                         .HasColumnType("integer")
-                        .HasColumnName("rsv_idreservation");
+                        .HasColumnName("rsv_id");
 
                     b.Property<int>("IdTypeChambre")
                         .HasColumnType("integer")
@@ -551,7 +552,6 @@ namespace APISAE401.Migrations
                         .HasColumnName("skb_altitude");
 
                     b.Property<string>("DescriptionDomaineSkiable")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("skb_description");
 
@@ -642,11 +642,11 @@ namespace APISAE401.Migrations
                 {
                     b.Property<int>("IdParticipant")
                         .HasColumnType("integer")
-                        .HasColumnName("pte_idparticipant");
+                        .HasColumnName("pte_id");
 
                     b.Property<int>("IdReservation")
                         .HasColumnType("integer")
-                        .HasColumnName("rsv_idreservation");
+                        .HasColumnName("rsv_id");
 
                     b.HasKey("IdParticipant", "IdReservation")
                         .HasName("pk_participer");
@@ -1485,8 +1485,7 @@ namespace APISAE401.Migrations
                         .WithMany("DisposerNavigation")
                         .HasForeignKey("IdTypeClub")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_disposer_typeclub");
+                        .IsRequired();
 
                     b.Navigation("ClubNavigation");
 

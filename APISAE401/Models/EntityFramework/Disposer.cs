@@ -6,7 +6,6 @@ namespace APISAE401.Models.EntityFramework
 {
     [Table("t_j_disposer_dps")]
     [Index(nameof(IdClub), IsUnique = true)]
-    [Index(nameof(IdTypeClub), IsUnique = true)]
 
     public partial class Disposer
     {
@@ -14,7 +13,6 @@ namespace APISAE401.Models.EntityFramework
         [Column("clb_id")]
         public int IdClub { get; set; }
 
-        [Key]
         [Column("tcp_id")]
         public int IdTypeClub { get; set; }
 

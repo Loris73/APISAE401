@@ -27,8 +27,8 @@ namespace APISAE401.Migrations
                 {
                     cc_idcartebancaire = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    cc_numerocb = table.Column<string>(type: "char(16)", maxLength: 16, nullable: true),
-                    cc_dateexpirationcb = table.Column<DateTime>(type: "date", nullable: false)
+                    cc_numerocb = table.Column<string>(type: "char(23)", maxLength: 23, nullable: true),
+                    cc_dateexpirationcb = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -78,7 +78,7 @@ namespace APISAE401.Migrations
                     skb_altitude = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
                     skb_longueurpiste = table.Column<double>(type: "double precision", maxLength: 50, nullable: false),
                     skb_nbpistes = table.Column<string>(type: "character varying(3)", maxLength: 3, nullable: false),
-                    skb_description = table.Column<string>(type: "text", nullable: false)
+                    skb_description = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -527,7 +527,7 @@ namespace APISAE401.Migrations
                         principalColumn: "clb_id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "fk_disposer_typeclub",
+                        name: "FK_t_j_disposer_dps_t_e_typeclub_tcb_tcp_id",
                         column: x => x.tcp_id,
                         principalTable: "t_e_typeclub_tcb",
                         principalColumn: "tcb_id",
@@ -856,13 +856,13 @@ namespace APISAE401.Migrations
                 name: "t_j_desirreserver_drv",
                 columns: table => new
                 {
-                    rsv_idreservation = table.Column<int>(type: "integer", nullable: false),
+                    rsv_id = table.Column<int>(type: "integer", nullable: false),
                     tpc_id = table.Column<int>(type: "integer", nullable: false),
                     drv_nbparticipants = table.Column<string>(type: "char(3)", maxLength: 3, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_desirereserver", x => new { x.rsv_idreservation, x.tpc_id });
+                    table.PrimaryKey("pk_desirereserver", x => new { x.rsv_id, x.tpc_id });
                     table.ForeignKey(
                         name: "fk_desirereserve_typechambre",
                         column: x => x.tpc_id,
@@ -871,7 +871,7 @@ namespace APISAE401.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_desirereserver_reservation",
-                        column: x => x.rsv_idreservation,
+                        column: x => x.rsv_id,
                         principalTable: "t_e_reservation_rsv",
                         principalColumn: "rsv_idreservation",
                         onDelete: ReferentialAction.Cascade);
@@ -881,21 +881,21 @@ namespace APISAE401.Migrations
                 name: "t_j_participer_pte",
                 columns: table => new
                 {
-                    pte_idparticipant = table.Column<int>(type: "integer", nullable: false),
-                    rsv_idreservation = table.Column<int>(type: "integer", nullable: false)
+                    pte_id = table.Column<int>(type: "integer", nullable: false),
+                    rsv_id = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_participer", x => new { x.pte_idparticipant, x.rsv_idreservation });
+                    table.PrimaryKey("pk_participer", x => new { x.pte_id, x.rsv_id });
                     table.ForeignKey(
                         name: "fk_participer_participant",
-                        column: x => x.pte_idparticipant,
+                        column: x => x.pte_id,
                         principalTable: "t_e_participant_pta",
                         principalColumn: "pta_idparticipant",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_participer_reservation",
-                        column: x => x.rsv_idreservation,
+                        column: x => x.rsv_id,
                         principalTable: "t_e_reservation_rsv",
                         principalColumn: "rsv_idreservation",
                         onDelete: ReferentialAction.Cascade);
@@ -1193,9 +1193,9 @@ namespace APISAE401.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_t_j_participer_pte_rsv_idreservation",
+                name: "IX_t_j_participer_pte_rsv_id",
                 table: "t_j_participer_pte",
-                column: "rsv_idreservation");
+                column: "rsv_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_t_j_pouvoir_pou_act_id",

@@ -16,11 +16,11 @@ namespace APISAE401.Models.EntityFramework
         public int IdCarteBancaire { get; set; }
 
         [Column("cc_numerocb", TypeName = "char")]
-        [StringLength(16)]
+        [StringLength(23)]
         public string? NumeroCB { get; set;}
 
-        [Column("cc_dateexpirationcb", TypeName = "date")]
-        public DateTime DateExpirationCB { get; set; }
+        [Column("cc_dateexpirationcb")]
+        public string DateExpirationCB { get; set; }
 
         [InverseProperty("CartebancaireNavigation")]
         public virtual ICollection<Detient> DetientNavigation { get; set; } = new List<Detient>();

@@ -239,9 +239,6 @@ namespace APISAE401.Models.EntityFramework
                 entity.HasKey(e => new { e.IdClub, e.IdTypeClub }).HasName("pk_disposer");
                 entity.HasOne(e => e.ClubNavigation).WithMany(p => p.DisposerNavigation)
                     .HasConstraintName("fk_disposer_club");
-
-                entity.HasOne(e => e.TypeclubNavigation).WithMany(p => p.DisposerNavigation)
-                    .HasConstraintName("fk_disposer_typeclub");
             });
 
             // ========== Domaine Skiable 

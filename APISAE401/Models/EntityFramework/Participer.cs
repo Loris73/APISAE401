@@ -7,11 +7,11 @@ namespace APISAE401.Models.EntityFramework
     public partial class Participer
     {
         [Key]
-        [Column("pte_idparticipant")]
+        [Column("pte_id")]
         public int IdParticipant { get; set; }
 
         [Key]
-        [Column("rsv_idreservation")]
+        [Column("rsv_id")]
         public int IdReservation { get; set; }
 
         [ForeignKey("IdParticipant")]
