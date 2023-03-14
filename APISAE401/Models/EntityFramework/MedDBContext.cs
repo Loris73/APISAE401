@@ -411,13 +411,13 @@ namespace APISAE401.Models.EntityFramework
                    .HasConstraintName("fk_signalement_club");
 
                 entity.HasOne(e => e.ClientNavigation).WithMany(p => p.SignalementNavigation)
-                    .HasConstraintName("fk_signalement_club");
+                    .HasConstraintName("fk_signalement_client");
 
                 entity.HasOne(e => e.AviNavigation).WithMany(p => p.SignalementNavigation)
-                    .HasConstraintName("fk_signalement_club");
+                    .HasConstraintName("fk_signalement_avi");
 
                 entity.HasOne(e => e.TypesignalementNavigation).WithMany(p => p.SignalementNavigation)
-                    .HasConstraintName("fk_signalement_club");
+                    .HasConstraintName("fk_signalement_typesignalement");
             });
 
             // ========= Sous localisation ===============    
