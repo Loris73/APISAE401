@@ -13,7 +13,7 @@ namespace APISAE401.Models.EntityFramework
         [Column("rsn_id")]
         public int IdRestaurant { get; set; }
 
-        [Key]
+
         [Column("clb_id")]
         public int IdClub { get; set; }
 

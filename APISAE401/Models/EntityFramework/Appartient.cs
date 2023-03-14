@@ -9,15 +9,12 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_j_appartient_ape")]
     public class Appartient
     {
-        [Key]
         [Column("clb_id")]
         public int IdClub { get; set; }
 
-        [Key]
         [Column("skb_id")]
         public int IdDommaineSkiable { get; set; }
 
-        [Key]
         [Column("ape_altitude")]
         public double altitudeClub { get; set; }
 

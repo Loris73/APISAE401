@@ -6,11 +6,9 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_j_detient_dtn")]
     public partial class Detient
     {
-        [Key]
         [Column("cc_id")]
         public int IdCarteBancaire { get; set; }
 
-        [Key]
         [Column("clt_id")]
         public int IdClient { get; set; }
 

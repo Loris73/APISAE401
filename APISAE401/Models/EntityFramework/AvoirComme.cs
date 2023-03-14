@@ -6,11 +6,9 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_j_avoircomme_ace")]
     public class AvoirComme
     {
-        [Key]
         [Column("sct_id")]
         public int IdServiceCommodite { get; set; }
 
-        [Key]
         [Column("tpc_id")]
         public int IdTypeChambre { get; set; }
 

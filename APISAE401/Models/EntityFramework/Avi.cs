@@ -8,11 +8,9 @@ namespace APISAE401.Models.EntityFramework
 
     public partial class Avi
     {
-        [Key]
         [Column("clt_id")]
         public int IdClient { get; set; }
 
-        [Key]
         [Column("clu_id")]
         public int IdClub { get; set;}
 

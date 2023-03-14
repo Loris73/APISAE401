@@ -6,11 +6,9 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_j_desirreserver_drv")]
     public partial class DesirReserve
     {
-        [Key]
         [Column("rsv_idreservation")]
         public int IdReservation { get; set; }
 
-        [Key]
         [Column("tpc_id")]
         public int IdTypeChambre { get; set; }
 

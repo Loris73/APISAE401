@@ -6,11 +6,9 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_j_regrouper_rgr")]
     public class Regrouper
     {
-        [Key]
         [Column("rgt_id")]
         public int RegroupementId { get; set; }
 
-        [Key]
         [Column("clb_id")]
         public int IdClub { get; set; }
 

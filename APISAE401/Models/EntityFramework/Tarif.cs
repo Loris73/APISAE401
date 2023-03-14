@@ -10,15 +10,12 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_j_tarif_trf")]
     public class Tarif
     {
-        [Key]
         [Column("tpc_id")]
         public int IdTypeChambre { get; set; }
 
-        [Key]
         [Column("clb_id")]
         public int IdClub { get; set; }
 
-        [Key]
         [Column("cld_date", TypeName = "date")]
         [Required]
         public DateTime DateCal { get; set; }

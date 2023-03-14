@@ -17,7 +17,6 @@ namespace APISAE401.Models.EntityFramework
         [Column("bar_id")]
         public int IdBar { get; set; }
 
-        [Key]
         [Column("clb_id")]
         public int IdClub { get; set; }
 

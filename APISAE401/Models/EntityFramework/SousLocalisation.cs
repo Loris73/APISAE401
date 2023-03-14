@@ -9,7 +9,6 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_e_souslocalisation_slo")]
     public partial class SousLocalisation
     {
-        [Key]
         [Column("loc_id")]
         public int IdLocalisation { get; set; }
 
@@ -17,7 +16,6 @@ namespace APISAE401.Models.EntityFramework
         [Column("slo_id")]
         public int IdSousLocalisation { get; set; }
 
-        [Key]
         [Column("slo_nom")]
         public string NomSousLocalisation { get; set; }
 

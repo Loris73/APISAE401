@@ -9,13 +9,10 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_j_deplacer_dpc")]
     public partial class Deplacer
     {
-
-        [Key]
         [Column("tsp_id")]
         public int IdTransport { get; set; }
 
 
-        [Key]
         [Column("rsv_idreservation")]
         public int IdReservation { get; set; }
 

@@ -10,11 +10,9 @@ namespace APISAE401.Models.EntityFramework
 
     public partial class Disposer
     {
-        [Key]
         [Column("clb_id")]
         public int IdClub { get; set; }
 
-        [Key]
         [Column("tcp_id")]
         public int IdTypeClub { get; set; }
 
