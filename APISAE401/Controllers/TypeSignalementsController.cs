@@ -9,125 +9,125 @@ namespace APISAE401.Controllers
 {
     [Route("api/[controller]/")]
     [ApiController]
-    public class TypeChambresController : ControllerBase
+    public class TypeSignalementsController : ControllerBase
     {
-        private readonly IDataRepository<TypeChambre> dataRepository;
+        private readonly IDataRepository<TypeSignalement> dataRepository;
 
-        public TypeChambresController(IDataRepository<TypeChambre> dataRepo)
+        public TypeSignalementsController(IDataRepository<TypeSignalement> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/Chambres
+        // GET: api/Signalements
         [HttpGet]
-        [ActionName("GetChambres")]
-        public async Task<ActionResult<IEnumerable<TypeChambre>>> GetTypeChambres()
+        [ActionName("GetSignalements")]
+        public async Task<ActionResult<IEnumerable<TypeSignalement>>> GetTypeSignalements()
         {
             return await dataRepository.GetAllAsync();
         }
 
-        // GET: api/Chambres/toto@titi.fr
+        // GET: api/Signalements/toto@titi.fr
         [HttpGet]
         [Route("[action]/{intitule}")]
         [ActionName("GetByEmail")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreByIntitule(string intitule)
+        public async Task<ActionResult<TypeSignalement>> GetTypeSignalementByIntitule(string intitule)
         {
-            var typeChambre = await dataRepository.GetByStringAsync(intitule);
+            var typeSignalement = await dataRepository.GetByStringAsync(intitule);
 
-            if (typeChambre == null)
+            if (typeSignalement == null)
             {
                 return NotFound();
             }
 
-            if (typeChambre.Value == null)
+            if (typeSignalement.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return typeSignalement;
         }
 
 
-        // GET: api/Chambres/5
+        // GET: api/Signalements/5
         [HttpGet]
         [Route("[action]/{id}")]
         [ActionName("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreById(int id)
+        public async Task<ActionResult<TypeSignalement>> GetTypeSignalementById(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var typeSignalement = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (typeSignalement == null)
             {
                 return NotFound();
             }
-            if (typeChambre.Value == null)
+            if (typeSignalement.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return typeSignalement;
         }
 
-        // PUT: api/Chambres/5
+        // PUT: api/Signalements/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutTypeChambre(int id, TypeChambre typeChambre)
+        public async Task<IActionResult> PutTypeSignalement(int id, TypeSignalement typeSignalement)
         {
-            if (id != typeChambre.TypeChambreId)
+            if (id != typeSignalement.IdTypeSignalement)
             {
                 return BadRequest();
             }
 
-            var typeChambreToUpdate = await dataRepository.GetByIdAsync(id);
-            if (typeChambreToUpdate == null)
+            var typeSignalementToUpdate = await dataRepository.GetByIdAsync(id);
+            if (typeSignalementToUpdate == null)
             {
                 return NotFound();
             }
             else
             {
-                await dataRepository.UpdateAsync(typeChambreToUpdate.Value, typeChambre);
+                await dataRepository.UpdateAsync(typeSignalementToUpdate.Value, typeSignalement);
                 return NoContent();
             }
         }
 
-        // POST: api/Chambres
+        // POST: api/Signalements
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<TypeChambre>> PostChambre(TypeChambre typeChambre)
+        public async Task<ActionResult<TypeSignalement>> PostSignalement(TypeSignalement typeSignalement)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await dataRepository.AddAsync(typeChambre);
+            await dataRepository.AddAsync(typeSignalement);
 
-            return CreatedAtAction("GetById", new { id = typeChambre.TypeChambreId }, typeChambre); // GetById : nom de l’action
+            return CreatedAtAction("GetById", new { id = typeSignalement.IdTypeSignalement }, typeSignalement); // GetById : nom de l’action
         }
 
-        // DELETE: api/Chambres/5
+        // DELETE: api/Signalements/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteTypeChambre(int id)
+        public async Task<IActionResult> DeleteTypeSignalement(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var typeSignalement = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (typeSignalement == null)
             {
                 return NotFound();
             }
 
-            await dataRepository.DeleteAsync(typeChambre.Value);
+            await dataRepository.DeleteAsync(typeSignalement.Value);
 
             return NoContent();
         }

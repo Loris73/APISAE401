@@ -13,22 +13,22 @@ using APISAE401.Models.Repository;
 namespace APISAE401.Controllers
 {
 
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]/")]
     [ApiController]
-    public class APourPfsController : ControllerBase
+    public class PouvoirController : ControllerBase
     {
         
-        private readonly IDataRepository<APourPf> dataRepository;
+        private readonly IDataRepository<Pouvoir> dataRepository;
 
-        public APourPfsController(IDataRepository<APourPf> dataRepo)
+        public PouvoirController(IDataRepository<Pouvoir> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/APourPfs
+        // GET: api/Pouvoirs
         [HttpGet]
-        [ActionName("GetAPourPfs")]
-        public async Task<ActionResult<IEnumerable<APourPf>>> GetAPourPfs()
+        [ActionName("GetPouvoirs")]
+        public async Task<ActionResult<IEnumerable<Pouvoir>>> GetPouvoirs()
         {
             return await dataRepository.GetAllAsync();
         }

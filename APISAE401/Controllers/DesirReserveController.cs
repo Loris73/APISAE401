@@ -15,20 +15,20 @@ namespace APISAE401.Controllers
 
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class APourPfsController : ControllerBase
+    public class DesirReserveController : ControllerBase
     {
         
-        private readonly IDataRepository<APourPf> dataRepository;
+        private readonly IDataRepository<DesirReserve> dataRepository;
 
-        public APourPfsController(IDataRepository<APourPf> dataRepo)
+        public DesirReserveController(IDataRepository<DesirReserve> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/APourPfs
+        // GET: api/DesirReserves
         [HttpGet]
-        [ActionName("GetAPourPfs")]
-        public async Task<ActionResult<IEnumerable<APourPf>>> GetAPourPfs()
+        [ActionName("GetDesirReserves")]
+        public async Task<ActionResult<IEnumerable<DesirReserve>>> GetDesirReserves()
         {
             return await dataRepository.GetAllAsync();
         }

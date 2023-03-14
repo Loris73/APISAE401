@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using API_Film.Models.EntityFramework;
+using APISAE401.Models.EntityFramework;
 using NuGet.Versioning;
-using API_Film.Models.DataManager;
-using API_Film.Models.Repository;
+using APISAE401.Models.DataManager;
+using APISAE401.Models.Repository;
 
 namespace APISAE401.Controllers
 {
@@ -30,7 +30,7 @@ namespace APISAE401.Controllers
         [ActionName("GetAll")]
         public async Task<ActionResult<IEnumerable<Regroupement>>> GetRegroupements()
         {
-            return await datatRepository.GetAll();
+            return await datatRepository.GetAllAsync();
         }
 
         // GET: api/Regroupements/5

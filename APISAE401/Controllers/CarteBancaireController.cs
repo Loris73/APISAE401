@@ -9,125 +9,125 @@ namespace APISAE401.Controllers
 {
     [Route("api/[controller]/")]
     [ApiController]
-    public class TypeChambresController : ControllerBase
+    public class CarteBancaireController : ControllerBase
     {
-        private readonly IDataRepository<TypeChambre> dataRepository;
+        private readonly IDataRepository<CarteBancaire> dataRepository;
 
-        public TypeChambresController(IDataRepository<TypeChambre> dataRepo)
+        public CarteBancaireController(IDataRepository<CarteBancaire> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/Chambres
+        // GET: api/CarteBancaires
         [HttpGet]
-        [ActionName("GetChambres")]
-        public async Task<ActionResult<IEnumerable<TypeChambre>>> GetTypeChambres()
+        [ActionName("GetCarteBancaire")]
+        public async Task<ActionResult<IEnumerable<CarteBancaire>>> GetCarteBancaires()
         {
             return await dataRepository.GetAllAsync();
         }
 
-        // GET: api/Chambres/toto@titi.fr
+        // GET: api/CarteBancaires/La Rosière
         [HttpGet]
-        [Route("[action]/{intitule}")]
-        [ActionName("GetByEmail")]
+        [Route("[action]/{titre}")]
+        [ActionName("GetByTitre")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreByIntitule(string intitule)
+        public async Task<ActionResult<CarteBancaire>> GetCarteBancaireByTitre(string nom)
         {
-            var typeChambre = await dataRepository.GetByStringAsync(intitule);
+            var carteBancaire = await dataRepository.GetByStringAsync(nom);
 
-            if (typeChambre == null)
+            if (carteBancaire == null)
             {
                 return NotFound();
             }
 
-            if (typeChambre.Value == null)
+            if (carteBancaire.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return carteBancaire;
         }
 
 
-        // GET: api/Chambres/5
+        // GET: api/CarteBancaires/5
         [HttpGet]
         [Route("[action]/{id}")]
         [ActionName("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreById(int id)
+        public async Task<ActionResult<CarteBancaire>> GetCarteBancaireById(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var carteBancaire = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (carteBancaire == null)
             {
                 return NotFound();
             }
-            if (typeChambre.Value == null)
+            if (carteBancaire.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return carteBancaire;
         }
 
-        // PUT: api/Chambres/5
+        // PUT: api/CarteBancaires/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutTypeChambre(int id, TypeChambre typeChambre)
+        public async Task<IActionResult> PutCarteBancaire(int id, CarteBancaire carteBancaire)
         {
-            if (id != typeChambre.TypeChambreId)
+            if (id != carteBancaire.IdCarteBancaire)
             {
                 return BadRequest();
             }
 
-            var typeChambreToUpdate = await dataRepository.GetByIdAsync(id);
-            if (typeChambreToUpdate == null)
+            var carteBancaireToUpdate = await dataRepository.GetByIdAsync(id);
+            if (carteBancaireToUpdate == null)
             {
                 return NotFound();
             }
             else
             {
-                await dataRepository.UpdateAsync(typeChambreToUpdate.Value, typeChambre);
+                await dataRepository.UpdateAsync(carteBancaireToUpdate.Value, carteBancaire);
                 return NoContent();
             }
         }
 
-        // POST: api/Chambres
+        // POST: api/CarteBancaires
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<TypeChambre>> PostChambre(TypeChambre typeChambre)
+        public async Task<ActionResult<CarteBancaire>> PostCarteBancaire(CarteBancaire carteBancaire)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await dataRepository.AddAsync(typeChambre);
+            await dataRepository.AddAsync(carteBancaire);
 
-            return CreatedAtAction("GetById", new { id = typeChambre.TypeChambreId }, typeChambre); // GetById : nom de l’action
+            return CreatedAtAction("GetById", new { id = carteBancaire.IdCarteBancaire }, carteBancaire); // GetById : nom de l’action
         }
 
-        // DELETE: api/Chambres/5
+        // DELETE: api/CarteBancaires/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteTypeChambre(int id)
+        public async Task<IActionResult> DeleteCarteBancaire(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var carteBancaire = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (carteBancaire == null)
             {
                 return NotFound();
             }
 
-            await dataRepository.DeleteAsync(typeChambre.Value);
+            await dataRepository.DeleteAsync(carteBancaire.Value);
 
             return NoContent();
         }

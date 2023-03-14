@@ -9,125 +9,125 @@ namespace APISAE401.Controllers
 {
     [Route("api/[controller]/")]
     [ApiController]
-    public class TypeChambresController : ControllerBase
+    public class TypeClubsController : ControllerBase
     {
-        private readonly IDataRepository<TypeChambre> dataRepository;
+        private readonly IDataRepository<TypeClub> dataRepository;
 
-        public TypeChambresController(IDataRepository<TypeChambre> dataRepo)
+        public TypeClubsController(IDataRepository<TypeClub> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/Chambres
+        // GET: api/Clubs
         [HttpGet]
-        [ActionName("GetChambres")]
-        public async Task<ActionResult<IEnumerable<TypeChambre>>> GetTypeChambres()
+        [ActionName("GetClubs")]
+        public async Task<ActionResult<IEnumerable<TypeClub>>> GetTypeClubs()
         {
             return await dataRepository.GetAllAsync();
         }
 
-        // GET: api/Chambres/toto@titi.fr
+        // GET: api/Clubs/toto@titi.fr
         [HttpGet]
         [Route("[action]/{intitule}")]
         [ActionName("GetByEmail")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreByIntitule(string intitule)
+        public async Task<ActionResult<TypeClub>> GetTypeClubByIntitule(string intitule)
         {
-            var typeChambre = await dataRepository.GetByStringAsync(intitule);
+            var typeClub = await dataRepository.GetByStringAsync(intitule);
 
-            if (typeChambre == null)
+            if (typeClub == null)
             {
                 return NotFound();
             }
 
-            if (typeChambre.Value == null)
+            if (typeClub.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return typeClub;
         }
 
 
-        // GET: api/Chambres/5
+        // GET: api/Clubs/5
         [HttpGet]
         [Route("[action]/{id}")]
         [ActionName("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreById(int id)
+        public async Task<ActionResult<TypeClub>> GetTypeClubById(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var typeClub = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (typeClub == null)
             {
                 return NotFound();
             }
-            if (typeChambre.Value == null)
+            if (typeClub.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return typeClub;
         }
 
-        // PUT: api/Chambres/5
+        // PUT: api/Clubs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutTypeChambre(int id, TypeChambre typeChambre)
+        public async Task<IActionResult> PutTypeClub(int id, TypeClub typeClub)
         {
-            if (id != typeChambre.TypeChambreId)
+            if (id != typeClub.IdTypeClub)
             {
                 return BadRequest();
             }
 
-            var typeChambreToUpdate = await dataRepository.GetByIdAsync(id);
-            if (typeChambreToUpdate == null)
+            var typeClubToUpdate = await dataRepository.GetByIdAsync(id);
+            if (typeClubToUpdate == null)
             {
                 return NotFound();
             }
             else
             {
-                await dataRepository.UpdateAsync(typeChambreToUpdate.Value, typeChambre);
+                await dataRepository.UpdateAsync(typeClubToUpdate.Value, typeClub);
                 return NoContent();
             }
         }
 
-        // POST: api/Chambres
+        // POST: api/Clubs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<TypeChambre>> PostChambre(TypeChambre typeChambre)
+        public async Task<ActionResult<TypeClub>> PostClub(TypeClub typeClub)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await dataRepository.AddAsync(typeChambre);
+            await dataRepository.AddAsync(typeClub);
 
-            return CreatedAtAction("GetById", new { id = typeChambre.TypeChambreId }, typeChambre); // GetById : nom de l’action
+            return CreatedAtAction("GetById", new { id = typeClub.IdTypeClub }, typeClub); // GetById : nom de l’action
         }
 
-        // DELETE: api/Chambres/5
+        // DELETE: api/Clubs/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteTypeChambre(int id)
+        public async Task<IActionResult> DeleteTypeClub(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var typeClub = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (typeClub == null)
             {
                 return NotFound();
             }
 
-            await dataRepository.DeleteAsync(typeChambre.Value);
+            await dataRepository.DeleteAsync(typeClub.Value);
 
             return NoContent();
         }

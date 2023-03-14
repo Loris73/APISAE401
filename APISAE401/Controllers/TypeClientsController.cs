@@ -80,7 +80,7 @@ namespace APISAE401.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> PutTypeClient(int id, TypeClient typeclient)
         {
-            if (id != typeclient.ClientId)
+            if (id != typeclient.IdTypeClient)
             {
                 return BadRequest();
             }
@@ -92,7 +92,7 @@ namespace APISAE401.Controllers
             }
             else
             {
-                await dataRepository.UpdateAsync(typeclientToUpdate.Value, client);
+                await dataRepository.UpdateAsync(typeclientToUpdate.Value, typeclient);
                 return NoContent();
             }
         }

@@ -9,125 +9,125 @@ namespace APISAE401.Controllers
 {
     [Route("api/[controller]/")]
     [ApiController]
-    public class TypeChambresController : ControllerBase
+    public class AviController : ControllerBase
     {
-        private readonly IDataRepository<TypeChambre> dataRepository;
+        private readonly IDataRepository<Avi> dataRepository;
 
-        public TypeChambresController(IDataRepository<TypeChambre> dataRepo)
+        public AviController(IDataRepository<Avi> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/Chambres
+        // GET: api/Avis
         [HttpGet]
-        [ActionName("GetChambres")]
-        public async Task<ActionResult<IEnumerable<TypeChambre>>> GetTypeChambres()
+        [ActionName("GetAvi")]
+        public async Task<ActionResult<IEnumerable<Avi>>> GetAvis()
         {
             return await dataRepository.GetAllAsync();
         }
 
-        // GET: api/Chambres/toto@titi.fr
+        // GET: api/Avis/La Rosière
         [HttpGet]
-        [Route("[action]/{intitule}")]
-        [ActionName("GetByEmail")]
+        [Route("[action]/{titre}")]
+        [ActionName("GetByTitre")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreByIntitule(string intitule)
+        public async Task<ActionResult<Avi>> GetAviByTitre(string nom)
         {
-            var typeChambre = await dataRepository.GetByStringAsync(intitule);
+            var avi = await dataRepository.GetByStringAsync(nom);
 
-            if (typeChambre == null)
+            if (avi == null)
             {
                 return NotFound();
             }
 
-            if (typeChambre.Value == null)
+            if (avi.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return avi;
         }
 
 
-        // GET: api/Chambres/5
+        // GET: api/Avis/5
         [HttpGet]
         [Route("[action]/{id}")]
         [ActionName("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreById(int id)
+        public async Task<ActionResult<Avi>> GetAviById(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var avi = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (avi == null)
             {
                 return NotFound();
             }
-            if (typeChambre.Value == null)
+            if (avi.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return avi;
         }
 
-        // PUT: api/Chambres/5
+        // PUT: api/Avis/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutTypeChambre(int id, TypeChambre typeChambre)
+        public async Task<IActionResult> PutAvi(int id, Avi avi)
         {
-            if (id != typeChambre.TypeChambreId)
+            if (id != avi.IdAvi)
             {
                 return BadRequest();
             }
 
-            var typeChambreToUpdate = await dataRepository.GetByIdAsync(id);
-            if (typeChambreToUpdate == null)
+            var aviToUpdate = await dataRepository.GetByIdAsync(id);
+            if (aviToUpdate == null)
             {
                 return NotFound();
             }
             else
             {
-                await dataRepository.UpdateAsync(typeChambreToUpdate.Value, typeChambre);
+                await dataRepository.UpdateAsync(aviToUpdate.Value, avi);
                 return NoContent();
             }
         }
 
-        // POST: api/Chambres
+        // POST: api/Avis
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<TypeChambre>> PostChambre(TypeChambre typeChambre)
+        public async Task<ActionResult<Avi>> PostAvi(Avi avi)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await dataRepository.AddAsync(typeChambre);
+            await dataRepository.AddAsync(avi);
 
-            return CreatedAtAction("GetById", new { id = typeChambre.TypeChambreId }, typeChambre); // GetById : nom de l’action
+            return CreatedAtAction("GetById", new { id = avi.IdAvi }, avi); // GetById : nom de l’action
         }
 
-        // DELETE: api/Chambres/5
+        // DELETE: api/Avis/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteTypeChambre(int id)
+        public async Task<IActionResult> DeleteAvi(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var avi = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (avi == null)
             {
                 return NotFound();
             }
 
-            await dataRepository.DeleteAsync(typeChambre.Value);
+            await dataRepository.DeleteAsync(avi.Value);
 
             return NoContent();
         }

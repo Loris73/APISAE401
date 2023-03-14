@@ -15,20 +15,20 @@ namespace APISAE401.Controllers
 
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class APourPfsController : ControllerBase
+    public class AvoirCommeController : ControllerBase
     {
         
-        private readonly IDataRepository<APourPf> dataRepository;
+        private readonly IDataRepository<AvoirComme> dataRepository;
 
-        public APourPfsController(IDataRepository<APourPf> dataRepo)
+        public AvoirCommeController(IDataRepository<AvoirComme> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/APourPfs
+        // GET: api/AvoirCommes
         [HttpGet]
-        [ActionName("GetAPourPfs")]
-        public async Task<ActionResult<IEnumerable<APourPf>>> GetAPourPfs()
+        [ActionName("GetAvoirCommes")]
+        public async Task<ActionResult<IEnumerable<AvoirComme>>> GetAvoirCommes()
         {
             return await dataRepository.GetAllAsync();
         }

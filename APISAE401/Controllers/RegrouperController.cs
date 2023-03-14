@@ -15,20 +15,20 @@ namespace APISAE401.Controllers
 
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class APourPfsController : ControllerBase
+    public class RegrouperController : ControllerBase
     {
         
-        private readonly IDataRepository<APourPf> dataRepository;
+        private readonly IDataRepository<Regrouper> dataRepository;
 
-        public APourPfsController(IDataRepository<APourPf> dataRepo)
+        public RegrouperController(IDataRepository<Regrouper> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/APourPfs
+        // GET: api/Regroupers
         [HttpGet]
-        [ActionName("GetAPourPfs")]
-        public async Task<ActionResult<IEnumerable<APourPf>>> GetAPourPfs()
+        [ActionName("GetRegroupers")]
+        public async Task<ActionResult<IEnumerable<Regrouper>>> GetRegroupers()
         {
             return await dataRepository.GetAllAsync();
         }

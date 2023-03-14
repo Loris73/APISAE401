@@ -9,125 +9,125 @@ namespace APISAE401.Controllers
 {
     [Route("api/[controller]/")]
     [ApiController]
-    public class TypeChambresController : ControllerBase
+    public class ActiviteALaCarteController : ControllerBase
     {
-        private readonly IDataRepository<TypeChambre> dataRepository;
+        private readonly IDataRepository<ActiviteALaCarte> dataRepository;
 
-        public TypeChambresController(IDataRepository<TypeChambre> dataRepo)
+        public ActiviteALaCarteController(IDataRepository<ActiviteALaCarte> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/Chambres
+        // GET: api/ActivitesALaCarte
         [HttpGet]
-        [ActionName("GetChambres")]
-        public async Task<ActionResult<IEnumerable<TypeChambre>>> GetTypeChambres()
+        [ActionName("GetActiviteALaCarte")]
+        public async Task<ActionResult<IEnumerable<ActiviteALaCarte>>> GetActivitesALaCarte()
         {
             return await dataRepository.GetAllAsync();
         }
 
-        // GET: api/Chambres/toto@titi.fr
+        // GET: api/ActivitesALaCarte/La Rosière
         [HttpGet]
-        [Route("[action]/{intitule}")]
-        [ActionName("GetByEmail")]
+        [Route("[action]/{titre}")]
+        [ActionName("GetByTitre")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreByIntitule(string intitule)
+        public async Task<ActionResult<ActiviteALaCarte>> GetActiviteALaCarteByTitre(string nom)
         {
-            var typeChambre = await dataRepository.GetByStringAsync(intitule);
+            var activite = await dataRepository.GetByStringAsync(nom);
 
-            if (typeChambre == null)
+            if (activite == null)
             {
                 return NotFound();
             }
 
-            if (typeChambre.Value == null)
+            if (activite.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return activite;
         }
 
 
-        // GET: api/Chambres/5
+        // GET: api/ActivitesALaCarte/5
         [HttpGet]
         [Route("[action]/{id}")]
         [ActionName("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreById(int id)
+        public async Task<ActionResult<ActiviteALaCarte>> GetActiviteALaCarteById(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var activite = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (activite == null)
             {
                 return NotFound();
             }
-            if (typeChambre.Value == null)
+            if (activite.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return activite;
         }
 
-        // PUT: api/Chambres/5
+        // PUT: api/ActivitesALaCarte/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutTypeChambre(int id, TypeChambre typeChambre)
+        public async Task<IActionResult> PutActiviteALaCarte(int id, ActiviteALaCarte activite)
         {
-            if (id != typeChambre.TypeChambreId)
+            if (id != activite.IdActivite)
             {
                 return BadRequest();
             }
 
-            var typeChambreToUpdate = await dataRepository.GetByIdAsync(id);
-            if (typeChambreToUpdate == null)
+            var activiteToUpdate = await dataRepository.GetByIdAsync(id);
+            if (activiteToUpdate == null)
             {
                 return NotFound();
             }
             else
             {
-                await dataRepository.UpdateAsync(typeChambreToUpdate.Value, typeChambre);
+                await dataRepository.UpdateAsync(activiteToUpdate.Value, activite);
                 return NoContent();
             }
         }
 
-        // POST: api/Chambres
+        // POST: api/ActivitesALaCarte
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<TypeChambre>> PostChambre(TypeChambre typeChambre)
+        public async Task<ActionResult<ActiviteALaCarte>> PostActiviteALaCarte(ActiviteALaCarte activite)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await dataRepository.AddAsync(typeChambre);
+            await dataRepository.AddAsync(activite);
 
-            return CreatedAtAction("GetById", new { id = typeChambre.TypeChambreId }, typeChambre); // GetById : nom de l’action
+            return CreatedAtAction("GetById", new { id = activite.IdActivite }, activite); // GetById : nom de l’action
         }
 
-        // DELETE: api/Chambres/5
+        // DELETE: api/ActivitesALaCarte/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteTypeChambre(int id)
+        public async Task<IActionResult> DeleteActiviteALaCarte(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var activite = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (activite == null)
             {
                 return NotFound();
             }
 
-            await dataRepository.DeleteAsync(typeChambre.Value);
+            await dataRepository.DeleteAsync(activite.Value);
 
             return NoContent();
         }

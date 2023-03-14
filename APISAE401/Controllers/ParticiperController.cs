@@ -15,20 +15,20 @@ namespace APISAE401.Controllers
 
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class APourPfsController : ControllerBase
+    public class ParticiperController : ControllerBase
     {
         
-        private readonly IDataRepository<APourPf> dataRepository;
+        private readonly IDataRepository<Participer> dataRepository;
 
-        public APourPfsController(IDataRepository<APourPf> dataRepo)
+        public ParticiperController(IDataRepository<Participer> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/APourPfs
+        // GET: api/Participers
         [HttpGet]
-        [ActionName("GetAPourPfs")]
-        public async Task<ActionResult<IEnumerable<APourPf>>> GetAPourPfs()
+        [ActionName("GetParticipers")]
+        public async Task<ActionResult<IEnumerable<Participer>>> GetParticipers()
         {
             return await dataRepository.GetAllAsync();
         }

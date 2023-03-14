@@ -15,20 +15,20 @@ namespace APISAE401.Controllers
 
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class APourPfsController : ControllerBase
+    public class DisposerController : ControllerBase
     {
         
-        private readonly IDataRepository<APourPf> dataRepository;
+        private readonly IDataRepository<Disposer> dataRepository;
 
-        public APourPfsController(IDataRepository<APourPf> dataRepo)
+        public DisposerController(IDataRepository<Disposer> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/APourPfs
+        // GET: api/Disposers
         [HttpGet]
-        [ActionName("GetAPourPfs")]
-        public async Task<ActionResult<IEnumerable<APourPf>>> GetAPourPfs()
+        [ActionName("GetDisposers")]
+        public async Task<ActionResult<IEnumerable<Disposer>>> GetDisposers()
         {
             return await dataRepository.GetAllAsync();
         }

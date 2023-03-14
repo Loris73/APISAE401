@@ -9,125 +9,125 @@ namespace APISAE401.Controllers
 {
     [Route("api/[controller]/")]
     [ApiController]
-    public class TypeChambresController : ControllerBase
+    public class TrancheAgeController : ControllerBase
     {
-        private readonly IDataRepository<TypeChambre> dataRepository;
+        private readonly IDataRepository<TrancheAge> dataRepository;
 
-        public TypeChambresController(IDataRepository<TypeChambre> dataRepo)
+        public TrancheAgeController(IDataRepository<TrancheAge> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/Chambres
+        // GET: api/TrancheAges
         [HttpGet]
-        [ActionName("GetChambres")]
-        public async Task<ActionResult<IEnumerable<TypeChambre>>> GetTypeChambres()
+        [ActionName("GetTrancheAge")]
+        public async Task<ActionResult<IEnumerable<TrancheAge>>> GetTrancheAges()
         {
             return await dataRepository.GetAllAsync();
         }
 
-        // GET: api/Chambres/toto@titi.fr
+        // GET: api/TrancheAges/La Rosière
         [HttpGet]
-        [Route("[action]/{intitule}")]
-        [ActionName("GetByEmail")]
+        [Route("[action]/{titre}")]
+        [ActionName("GetByTitre")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreByIntitule(string intitule)
+        public async Task<ActionResult<TrancheAge>> GetTrancheAgeByTitre(string nom)
         {
-            var typeChambre = await dataRepository.GetByStringAsync(intitule);
+            var trancheAge = await dataRepository.GetByStringAsync(nom);
 
-            if (typeChambre == null)
+            if (trancheAge == null)
             {
                 return NotFound();
             }
 
-            if (typeChambre.Value == null)
+            if (trancheAge.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return trancheAge;
         }
 
 
-        // GET: api/Chambres/5
+        // GET: api/TrancheAges/5
         [HttpGet]
         [Route("[action]/{id}")]
         [ActionName("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreById(int id)
+        public async Task<ActionResult<TrancheAge>> GetTrancheAgeById(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var trancheAge = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (trancheAge == null)
             {
                 return NotFound();
             }
-            if (typeChambre.Value == null)
+            if (trancheAge.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return trancheAge;
         }
 
-        // PUT: api/Chambres/5
+        // PUT: api/TrancheAges/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutTypeChambre(int id, TypeChambre typeChambre)
+        public async Task<IActionResult> PutTrancheAge(int id, TrancheAge trancheAge)
         {
-            if (id != typeChambre.TypeChambreId)
+            if (id != trancheAge.IdTrancheAge)
             {
                 return BadRequest();
             }
 
-            var typeChambreToUpdate = await dataRepository.GetByIdAsync(id);
-            if (typeChambreToUpdate == null)
+            var trancheAgeToUpdate = await dataRepository.GetByIdAsync(id);
+            if (trancheAgeToUpdate == null)
             {
                 return NotFound();
             }
             else
             {
-                await dataRepository.UpdateAsync(typeChambreToUpdate.Value, typeChambre);
+                await dataRepository.UpdateAsync(trancheAgeToUpdate.Value, trancheAge);
                 return NoContent();
             }
         }
 
-        // POST: api/Chambres
+        // POST: api/TrancheAges
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<TypeChambre>> PostChambre(TypeChambre typeChambre)
+        public async Task<ActionResult<TrancheAge>> PostTrancheAge(TrancheAge trancheAge)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await dataRepository.AddAsync(typeChambre);
+            await dataRepository.AddAsync(trancheAge);
 
-            return CreatedAtAction("GetById", new { id = typeChambre.TypeChambreId }, typeChambre); // GetById : nom de l’action
+            return CreatedAtAction("GetById", new { id = trancheAge.IdTrancheAge }, trancheAge); // GetById : nom de l’action
         }
 
-        // DELETE: api/Chambres/5
+        // DELETE: api/TrancheAges/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteTypeChambre(int id)
+        public async Task<IActionResult> DeleteTrancheAge(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var trancheAge = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (trancheAge == null)
             {
                 return NotFound();
             }
 
-            await dataRepository.DeleteAsync(typeChambre.Value);
+            await dataRepository.DeleteAsync(trancheAge.Value);
 
             return NoContent();
         }

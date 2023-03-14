@@ -9,125 +9,125 @@ namespace APISAE401.Controllers
 {
     [Route("api/[controller]/")]
     [ApiController]
-    public class TypeChambresController : ControllerBase
+    public class CommoditeController : ControllerBase
     {
-        private readonly IDataRepository<TypeChambre> dataRepository;
+        private readonly IDataRepository<Commodite> dataRepository;
 
-        public TypeChambresController(IDataRepository<TypeChambre> dataRepo)
+        public CommoditeController(IDataRepository<Commodite> dataRepo)
         {
             dataRepository = dataRepo;
         }
 
-        // GET: api/Chambres
+        // GET: api/Commodites
         [HttpGet]
-        [ActionName("GetChambres")]
-        public async Task<ActionResult<IEnumerable<TypeChambre>>> GetTypeChambres()
+        [ActionName("GetCommodite")]
+        public async Task<ActionResult<IEnumerable<Commodite>>> GetCommodites()
         {
             return await dataRepository.GetAllAsync();
         }
 
-        // GET: api/Chambres/toto@titi.fr
+        // GET: api/Commodites/La Rosière
         [HttpGet]
-        [Route("[action]/{intitule}")]
-        [ActionName("GetByEmail")]
+        [Route("[action]/{titre}")]
+        [ActionName("GetByTitre")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreByIntitule(string intitule)
+        public async Task<ActionResult<Commodite>> GetCommoditeByTitre(string nom)
         {
-            var typeChambre = await dataRepository.GetByStringAsync(intitule);
+            var commodite = await dataRepository.GetByStringAsync(nom);
 
-            if (typeChambre == null)
+            if (commodite == null)
             {
                 return NotFound();
             }
 
-            if (typeChambre.Value == null)
+            if (commodite.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return commodite;
         }
 
 
-        // GET: api/Chambres/5
+        // GET: api/Commodites/5
         [HttpGet]
         [Route("[action]/{id}")]
         [ActionName("GetById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TypeChambre>> GetTypeChambreById(int id)
+        public async Task<ActionResult<Commodite>> GetCommoditeById(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var commodite = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (commodite == null)
             {
                 return NotFound();
             }
-            if (typeChambre.Value == null)
+            if (commodite.Value == null)
             {
                 return NotFound();
             }
 
-            return typeChambre;
+            return commodite;
         }
 
-        // PUT: api/Chambres/5
+        // PUT: api/Commodites/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> PutTypeChambre(int id, TypeChambre typeChambre)
+        public async Task<IActionResult> PutCommodite(int id, Commodite commodite)
         {
-            if (id != typeChambre.TypeChambreId)
+            if (id != commodite.IdCommodite)
             {
                 return BadRequest();
             }
 
-            var typeChambreToUpdate = await dataRepository.GetByIdAsync(id);
-            if (typeChambreToUpdate == null)
+            var commoditeToUpdate = await dataRepository.GetByIdAsync(id);
+            if (commoditeToUpdate == null)
             {
                 return NotFound();
             }
             else
             {
-                await dataRepository.UpdateAsync(typeChambreToUpdate.Value, typeChambre);
+                await dataRepository.UpdateAsync(commoditeToUpdate.Value, commodite);
                 return NoContent();
             }
         }
 
-        // POST: api/Chambres
+        // POST: api/Commodites
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<TypeChambre>> PostChambre(TypeChambre typeChambre)
+        public async Task<ActionResult<Commodite>> PostCommodite(Commodite commodite)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await dataRepository.AddAsync(typeChambre);
+            await dataRepository.AddAsync(commodite);
 
-            return CreatedAtAction("GetById", new { id = typeChambre.TypeChambreId }, typeChambre); // GetById : nom de l’action
+            return CreatedAtAction("GetById", new { id = commodite.IdCommodite }, commodite); // GetById : nom de l’action
         }
 
-        // DELETE: api/Chambres/5
+        // DELETE: api/Commodites/5
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> DeleteTypeChambre(int id)
+        public async Task<IActionResult> DeleteCommodite(int id)
         {
-            var typeChambre = await dataRepository.GetByIdAsync(id);
+            var commodite = await dataRepository.GetByIdAsync(id);
 
-            if (typeChambre == null)
+            if (commodite == null)
             {
                 return NotFound();
             }
 
-            await dataRepository.DeleteAsync(typeChambre.Value);
+            await dataRepository.DeleteAsync(commodite.Value);
 
             return NoContent();
         }
