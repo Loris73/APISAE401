@@ -25,10 +25,10 @@ namespace APISAE401.Models.EntityFramework
 
         // Date Calendrier
         [Column("cld_datedebut")]
-        public int DateDebutCalendrier { get; set; }
+        public DateTime DateDebutCalendrier { get; set; }
 
         [Column("cld_datefin")]
-        public int DateFinCalendrier { get; set; }
+        public DateTime DateFinCalendrier { get; set; }
 
         [Column("rsv_datereservation", TypeName = "date")]
         public DateTime DateReservation { get; set; }
@@ -38,7 +38,7 @@ namespace APISAE401.Models.EntityFramework
 
         [ForeignKey("IdClub")]
         [InverseProperty("ReservationNavigation")]
-        public virtual Club ClubNavigation { get; set; }//navigation dans club à faire
+        public virtual Club ClubNavigation { get; set; }
 
         [ForeignKey("IdClient")]
         [InverseProperty("ReservationNavigation")]
