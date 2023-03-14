@@ -88,8 +88,8 @@ namespace APISAE401.Models.EntityFramework
             // ========= A Pour Point Fort ===============
             modelBuilder.Entity<APourPf>(entity =>
             {
-                //entity.HasKey(e => new { e.IdPointFort, e.IdTypeChambre }).HasName("pk_APourpf");// pas sure
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.IdPointFort, e.IdTypeChambre }).HasName("pk_APourpf");// pas sure
+                // entity.HasNoKey();
                 entity.HasOne(d => d.PointfortNavigation).WithMany(p => p.ApourpfNavigation)
                     .HasConstraintName("fk_apourpf_pointfort");
 
