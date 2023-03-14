@@ -6,7 +6,7 @@ namespace APISAE401.Models.EntityFramework
     [Table("t_e_activitealacarte_alc")]
     public class ActiviteALaCarte
     {
-        [Key]
+
         [Column("act_id")]
         public int IdActivite { get; set; }
 

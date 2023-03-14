@@ -43,11 +43,11 @@ namespace APISAE401.Models.DataManager
             Photo.Urlphoto = entity.Urlphoto;
 
             Photo.BarNavigation = entity.BarNavigation;
-            Photo.TypeActiviteNavigation = entity.TypeActiviteNavigation;
+            Photo.TypeactiviteNavigation = entity.TypeactiviteNavigation;
             Photo.RestaurantNavigation = entity.RestaurantNavigation;
-            Photo.DomaineSkiableNavigation = entity.DomaineSkiableNavigation;
+            Photo.DomaineskiableNavigation = entity.DomaineskiableNavigation;
             Photo.ClubNavigation = entity.ClubNavigation;
-            Photo.TypeChambreNavigation = entity.TypeChambreNavigation;
+            Photo.TypechambreNavigation = entity.TypechambreNavigation;
 
 
             await medDBContext.SaveChangesAsync();
