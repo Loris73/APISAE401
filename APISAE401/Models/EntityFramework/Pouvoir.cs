@@ -12,8 +12,8 @@ namespace APISAE401.Models.EntityFramework
         [Column("act_id")]
         public int IdActivite { get; set; }
 
-        [Column("alc_id")]
-        public int IdActiviteALaCarte { get; set; }
+        [Column("pou_prixmin")]
+        public double PrixMin { get; set;}
 
 
         [ForeignKey("IdReservation")]
@@ -23,10 +23,6 @@ namespace APISAE401.Models.EntityFramework
         [ForeignKey("IdActivite")]
         [InverseProperty("PouvoirNavigation")]
         public virtual Activite ActiviteNavigation { get; set; } = new Activite();
-
-        [ForeignKey("IdActiviteALaCarte")] 
-        [InverseProperty("PouvoirNavigation")]
-        public virtual ActiviteALaCarte ActivitealacarteNavigation { get; set; } = new ActiviteALaCarte();
 
         //=======================================
 

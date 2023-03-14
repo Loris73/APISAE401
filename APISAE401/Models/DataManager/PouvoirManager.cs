@@ -38,11 +38,10 @@ namespace API_Film.Models.DataManager
         {
             medDbContext.Entry(Pouvoir).State = EntityState.Modified;
             Pouvoir.IdActivite = entity.IdActivite;
-            Pouvoir.IdActiviteALaCarte = entity.IdActiviteALaCarte;
             Pouvoir.IdReservation = entity.IdReservation;
+            Pouvoir.PrixMin = entity.PrixMin;
             Pouvoir.ReservationNavigation = entity.ReservationNavigation;
             Pouvoir.ActiviteNavigation = entity.ActiviteNavigation;
-            Pouvoir.ActivitealacarteNavigation = entity.ActivitealacarteNavigation;
 
 
             await medDbContext.SaveChangesAsync();

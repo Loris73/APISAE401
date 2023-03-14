@@ -43,8 +43,6 @@ namespace APISAE401.Models.DataManager
             Activite.FrequenceActivite = entity.FrequenceActivite;
             Activite.TrancheageNavigation = entity.TrancheageNavigation;
             Activite.TypeactiviteNavigation = entity.TypeactiviteNavigation;
-            Activite.ActiviteincluseNavigation = entity.ActiviteincluseNavigation;
-            Activite.ActivitealacarteNavigation = entity.ActivitealacarteNavigation;
             Activite.ProposerNavigation = entity.ProposerNavigation;
             Activite.PouvoirNavigation = entity.PouvoirNavigation;
 

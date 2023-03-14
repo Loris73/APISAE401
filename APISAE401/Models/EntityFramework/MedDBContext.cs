@@ -11,14 +11,11 @@ namespace APISAE401.Models.EntityFramework
         {
         }
 
-        public MedDBContext(DbContextOptions<MedDBContext> options)
-            : base(options)
+        public MedDBContext(DbContextOptions<MedDBContext> options) : base(options)
         {
         }
 
         public virtual DbSet<Activite> Activites { get; set; } = null!;
-        public virtual DbSet<ActiviteALaCarte> ActivitesALaCarte { get; set; } = null!;
-        public virtual DbSet<ActiviteIncluse> ActivitesIncluses { get; set; } = null!;
         public virtual DbSet<Appartient> Appartients { get; set; } = null!;
         public virtual DbSet<APourSousLoc> APourSousLocs { get; set; } = null!;
         public virtual DbSet<APourPf> APourPfs { get; set; } = null!;
@@ -85,25 +82,8 @@ namespace APISAE401.Models.EntityFramework
                     .HasConstraintName("fk_activite_typeactivite");
             });
 
-            // ========= Activite A La Carte ===============
-            modelBuilder.Entity<ActiviteALaCarte>(entity =>
-            {
-                entity.HasKey(e => new { e.IdActiviteALaCarte, e.IdActivite }).HasName("pk_activitealacarte");
-
-                entity.HasOne(d => d.ActiviteNavigation).WithMany(p => p.ActivitealacarteNavigation)
-                    .HasConstraintName("fk_activitealacarte_activite");
-            });
 
 
-            // ========= Activite Incluse ===============
-            modelBuilder.Entity<ActiviteIncluse>(entity =>
-            {
-                entity.HasKey(e => new { e.IdActiviteIncluse, e.IdActivite }).HasName("pk_activiteincluse");
-
-
-                entity.HasOne(d => d.ActiviteNavigation).WithMany(p => p.ActiviteincluseNavigation)
-                    .HasConstraintName("fk_activiteincluse_activite");
-            });
 
             // ========= A Pour Point Fort ===============
             modelBuilder.Entity<APourPf>(entity =>
@@ -337,7 +317,7 @@ namespace APISAE401.Models.EntityFramework
             //============= Pouvoir ============
             modelBuilder.Entity<Pouvoir>(entity =>
             {
-                entity.HasKey(e => new { e.IdReservation, e.IdActivite, e.IdActiviteALaCarte }).HasName("pk_pouvoir"); // pas sure
+                entity.HasKey(e => new { e.IdReservation, e.IdActivite}).HasName("pk_pouvoir"); // pas sure
 
                 entity.HasOne(e => e.ReservationNavigation).WithMany(p => p.PouvoirNavigation)
                     .HasConstraintName("fk_pouvoir_reservation");
@@ -345,8 +325,7 @@ namespace APISAE401.Models.EntityFramework
                 entity.HasOne(e => e.ActiviteNavigation).WithMany(p => p.PouvoirNavigation)
                     .HasConstraintName("fk_pouvoir_activite");
 
-                entity.HasOne(e => e.ActivitealacarteNavigation).WithMany(p => p.PouvoirNavigation)
-                    .HasConstraintName("fk_pouvoir_activitealacarte");
+
 
             });
 
