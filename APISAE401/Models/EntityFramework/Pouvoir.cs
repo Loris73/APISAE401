@@ -9,14 +9,11 @@ namespace APISAE401.Models.EntityFramework
         [Column("rsv_idreservation")]
         public int IdReservation { get; set; }
 
-
         [Column("act_id")]
         public int IdActivite { get; set; }
 
-
         [Column("alc_id")]
         public int IdActiviteALaCarte { get; set; }
-
 
 
         [ForeignKey("IdReservation")]
